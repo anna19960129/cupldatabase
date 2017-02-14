@@ -129,9 +129,10 @@ block content
             td 转专业：
             td
               span 是：
-              input(type = "radio" id = "bI_change_major0" value = "转专业" name = "change_major")
+              input(type = "radio" id = "bI_change_major0" value = "转专业" name = "change_major" onclick="document.getElementById('bI_present_major').style.display='';")
               span 否：
-              input(type = "radio" id = "bI_change_major1" value = "未转专业" name ="change_major")
+              input(type = "radio" id = "bI_change_major1" value = "未转专业" name ="change_major" onclick="document.getElementById('bI_present_major').style.display='none';")
+
           tr
             td 现专业：
             td
@@ -156,9 +157,9 @@ block content
             td 双专业：
             td
               span 是：
-              input(type = "radio" id = "bI_double_major0" value = "double_major" name = "double_major")
+              input(type = "radio" id = "bI_double_major0" value = "double_major" name = "double_major" onclick="document.getElementById('bI_second_major').style.display='';")
               span 否：
-              input(type = "radio" id = "bI_single_major1" value = "single_major" name = "double_major")
+              input(type = "radio" id = "bI_single_major1" value = "single_major" name = "double_major" onclick="document.getElementById('bI_second_major').style.display='none';")
           tr
             td 第二专业：
             td
@@ -185,9 +186,9 @@ block content
             td 辅修：
             td
               span 是：
-              input(type = "radio" id = "bI_minor0" value = "辅修" name ="bI_minor")
+              input(type = "radio" id = "bI_minor0" value = "辅修" name ="bI_minor" onclick="document.getElementById('bI_minor').style.display='';")
               span 否：
-              input(type = "radio" id = "bI_minor1" value = "未辅修" name ="bI_minor")
+              input(type = "radio" id = "bI_minor1" value = "未辅修" name ="bI_minor" onclick="document.getElementById('bI_minor').style.display='none';")
           tr
             td 辅修专业：
             td
