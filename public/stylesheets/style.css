@@ -1,0 +1,89 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#backgroundDiv{
+  /*background: url(/images/logo.jpg) no-repeat;*/
+  background-position: center;
+  opacity: 0.3;
+  margin: 0 auto;
+  position: absolute;
+  width: 90%;
+  height: 1000px;
+  z-index: -1;
+
+}
+
+/*登录界面*/
+#login{
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 300px;
+}
+/*登录界面的表格*/
+#loginTable{
+  border: 1px solid grey;
+  margin: 0 auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+#loginTable tr{
+  height: 30px;
+  border-top: 1px solid grey;
+}
+/*登录界面的两个按钮*/
+#loginBtnDiv{
+  margin: 0 auto;
+  width: 100%;
+}
+#loginBtn{
+  margin-top: 2%;
+  width: 100%;
+  height: 40px;
+}
+#registerBtn{
+  margin-top: 2%;
+  width: 100%;
+  height: 30px;
+}
+
+/*注册界面*/
+#register{
+  display: none;
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 300px;
+}
+/*注册界面表格*/
+#registerTable{
+  border: 1px solid grey;
+  margin: 0 auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+#registerTable tr{
+  height: 30px;
+  border-top: 1px solid grey;
+}
+
+#registerRBtn{
+  margin-top: 2%;
+  width: 100%;
+  height: 40px;
+}
+#loginRBtn{
+  margin-top: 2%;
+  width: 100%;
+  height: 30px;
+}
+#exitBtn{
+  position:absolute;
+  right: 10px;
+  top:10px;
+}

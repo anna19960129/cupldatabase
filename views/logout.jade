@@ -1,0 +1,19 @@
+extends layout
+block content
+  script.
+    function tst(){
+      $.ajax({
+        url:"/ajax/logout",
+        type:"GET",
+        dataType:"json",
+        data:{},
+        success:function(data){
+          console.log(data);
+        },
+        error:function(data){
+          console.log(data);
+        }
+      })
+    }
+  h1 咱们下次见吧！
+  input(type = "button" id = "bb" onclick = "tst()" value = "bb")

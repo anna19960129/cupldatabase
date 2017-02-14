@@ -1,0 +1,44 @@
+.baseStruct{
+    margin: 0 auto;
+}
+.baseStructForm{
+    margin: 0 auto;
+}
+.baseStructTable{
+    margin: 0 auto;
+}
+/*菜单栏*/
+#menuTable{
+    margin: 0 auto;
+    width: 90%;
+    height: 50px;
+}
+.menuBtn{
+    margin-left: 1%;
+    width: 15%;
+    height: 40px;
+}
+#menuIntro{
+    margin-left: 0 ;
+}
+#basicInfoDiv{
+    display:none;
+}
+#cptInfoDiv{
+    display: none;
+}
+#CXCYInfoDiv{
+    display: none;
+}
+#KYXMInfoDiv{
+    display: none;
+}
+#paperInfoDiv{
+    display: none;
+}
+/*主展示窗*/
+#mainDiv{
+    margin: 0 auto;
+    width: 85%;
+    border: 3px solid black;
+}
