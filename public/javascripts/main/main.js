@@ -77,11 +77,16 @@ function graduatetime(){
     if(date4 < 4){
         document.getElementById("basicInfoTable2").style.display='none';
     }
+    else{
+        document.getElementById("basicInfoTable2").style.display='';
+    }
     if(date5 = 4){
         document.getElementById("bIno_graduate_reason").style.display='none';
     }
-    if(date5 < 4){
+     else if(date5 < 4){
         alert("±ÏÒµÊ±¼äÌîÐ´´íÎó");
     }
-
+    else{
+        document.getElementById("bIno_graduate_reason").style.display='';
+    }
 }
