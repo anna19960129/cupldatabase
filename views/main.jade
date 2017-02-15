@@ -250,12 +250,14 @@ block content
           tr
             td 研究生专业：
             td
-              select(id="bI_postgraduate_major")
+              select(id="bI_postgraduate_major" onchange="show()")
                 option(value="经济") 经济
                 option(value="管理") 管理
                 option(value="法学") 法学
                 option(value="理学") 理学
                 option(value="其他") 其他
+            td
+              input(type="text" style="display:none" id="bI_postgraduate_other_major")
           tr
             td 博士就读院校：
             td
