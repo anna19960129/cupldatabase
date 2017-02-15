@@ -60,14 +60,14 @@ function hideAndShow(obj){
     obj.siblings().css("display","none");
     obj.css("display","block");
 }
-
+//TODO
 function show(){
     var pgm = document.getElementById("bI_postgraduate_major");
     if (pgm.value=="ÆäËû"){
         document.getElementById("bI_postgraduate_other_major").style.display="block";
     }
 }
-
+//TODO
 function graduatetime(){
     var date1= document.getElementById("bI_enrol");
     var date2= document.getElementById("bI_graduate");
