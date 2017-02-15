@@ -115,8 +115,8 @@ block content
               input(type = "text" id ="bIgk_english")
           tr
             td 入学时间：
-            td//TODO
-              input(id="bI_enrol" name="bI_enrol" type="month" onchange="graduatetime()" required)
+            td
+              input(id="bI_enrol" name="bI_enrol" type="month" onchange="enroltime()" required)
           tr
             td 入学专业：
             td
@@ -226,7 +226,7 @@ block content
         table(id = "basicInfoTable2" class = "baseStructTable")
           tr
             td 毕业时间：
-            td//TODO
+            td
               input(id="bI_graduate" name="bI_graduate" type="month" onchange="graduatetime()")
           tr
             td 未按时毕业原因：
@@ -319,6 +319,7 @@ block content
             td 行政职务：
             td
               input(type = "text" id ="bI_administrative_function")
+        table(id = "basicInfoTable3" class = "baseStructTable")
           tr
             td
             td
@@ -357,6 +358,7 @@ block content
             td
               input(type = "submit" id = "cptInfo_submit" value = "保存")
               input(type = "button" id = "cptInfo_reset" value = '重置')
+
     div(id = "CXCYInfoDiv" class = "baseStruct")
       form(id = "CXCYInfoForm" class = "baseStructForm")
         table(id = "CXCYInfoTable" class = "baseStructTable")
