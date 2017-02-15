@@ -68,3 +68,20 @@ function show(){
     }
 }
 
+function graduatetime(){
+    var date1= document.getElementById("bI_enrol");
+    var date2= document.getElementById("bI_graduate");
+    var date3= new Date();
+    var date4= date3.getFullYear()-date1.getFullYear();
+    var date5= date2.getFullYear()-date1.getFullYear();
+    if(date4 < 4){
+        document.getElementById("basicInfoTable2").style.display='none';
+    }
+    if(date5 = 4){
+        document.getElementById("bIno_graduate_reason").style.display='none';
+    }
+    if(date5 < 4){
+        alert("±ÏÒµÊ±¼äÌîÐ´´íÎó");
+    }
+
+}
