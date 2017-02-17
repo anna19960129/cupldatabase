@@ -21,7 +21,7 @@ function display_paper4() {
 
 function paper_add1() {
     var element = document.createElement("p");
-    var node = document.createTextNode("其他作者");
+        var node = document.createTextNode("其他作者");
     element.appendChild(node);
     element.setAttribute('class', "otherauth")
     var inp = document.createElement("input");

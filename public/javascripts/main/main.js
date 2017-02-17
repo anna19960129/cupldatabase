@@ -18,22 +18,6 @@ function exit(){
     });
 };
 
-//#basicInfoDiv{
-//    display:none;
-//}
-//#cptInfoDiv{
-//    display: none;
-//}
-//#CXCYInfoDiv{
-//    display: none;
-//}
-//#KYXMInfoDiv{
-//    display: none;
-//}
-//#paperInfoDiv{
-//    display: none;
-//}
-
 setTimeout(function(){
 
     $("#menuIntro").click(function(){
