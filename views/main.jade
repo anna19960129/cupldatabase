@@ -450,27 +450,50 @@ block content
             td
               input(type="text" id = "paperInfo_name")
           tr
-            td 论文作者：
-            td
-              input(type= "text" id = "paperInfo_author")
-          tr
-            td 作者学号：
-            td
-              input(type = "text" id = "paperInfo_id")
-          tr
             td 著作信息：
             td
               span 独著：
-              input(type = "radio" id = "paperInfo_authors0" value = "single" name = "paperInfo_authors")
+              input(type = "radio" id = "paperInfo_authors0" value = "single" name = "paperInfo_authors" onclick="display_paper1()")
               span 合著：
-              input(type = "radio" id = "paperInfo_authors1" value = "multiple" name = "paperInfo_authors")
+              input(type = "radio" id = "paperInfo_authors1" value = "multiple" name = "paperInfo_authors" onclick="display_paper2()")
           tr
-            td 第一作者：
             td
-              span 是：
-              input(type = "radio" id = "paperInfo_firstAuthor" value = "single" name = "paperInfo_authors")
-              span 否：
-              input(type = "radio" id = "paperInfo_authors1" value = "multiple" name = "paperInfo_authors")
+            td
+              span(id="papertext1") 作者名称：
+              input(type="text" id = "peparInfo_author")
+          tr
+            td 第一作者
+            td
+              span(id="papertext2") 是
+              input(type="radio" id="paperInfo_firstAuthor1" name="paper_authors"  value="single" onclick="display_paper3()")
+              span(id="papertext2") 否
+              input(id="paperInfo_authors" name="paper_authors" type="radio" value="multiple" onclick="display_paper4()")
+          tr
+            td
+            td
+              span(id="papaertext3") 其他作者
+              input(type="text" id="paperInfo_otherAuthors1")
+          tr
+            td
+            td
+              input(type="button"   class="btn btn-success"  value="addAuthor" id="paper_addTable" onclick="paper_add1()")
+              input(type="button"   class="btn btn-success"  value="delAuthor" id="paper_deleteTable" onclick="paper_del1()")
+          tr
+            td
+            td
+              span(id="papertext4") 第一作者
+              input(type="text" id="paperInfo_firstAuthor2")
+              span(id="papertext4") 其他作者
+              input(type="text" id="paperInfo_otherAuthors2")
+          tr
+            td
+            td
+              input(type="button"   class="btn btn-success"  value="addAuthor" id="paper_addTable" onclick="paper_add2()")
+              input(type="button"   class="btn btn-success"  value="delAuthor" id="paper_deleteTable" onclick="paper_del2()")
+          tr
+            td 指导老师：
+            td
+              input(type="text" id ="paperInfo_teacherName")
           tr
             td 期刊名称：
             td
@@ -478,7 +501,7 @@ block content
           tr
             td 发表时间：
             td
-              input(type = "month" id = "paperInfo_time")
+              input(type = "month" id ="paperInfo_time")
           tr
             td
             td
