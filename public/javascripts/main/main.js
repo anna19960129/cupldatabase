@@ -101,3 +101,20 @@ function graduatetime(){
         }
     }
 }
+
+var KYXMInfoFormCount=0;
+function creatcpt(){
+    var a=document.createElement("form");
+    var b=document.getElementById("KYXMInfoForm");
+    var c= b.firstChild.cloneNode(true);
+    KYXMInfoFormCount++;
+    a.id="KYXMInfoForm"+KYXMInfoFormCount;
+    c.id= c.id+KYXMInfoFormCount;
+    if(c.childNodes.childNodes.id!==null){
+        c.childNodes.childNodes.id=c.childNodes.childNodes.id+KYXMInfoFormCount;
+    }
+    a.appendChild(c);
+    b.appendChild(a);
+
+}
+
