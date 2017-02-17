@@ -42,18 +42,51 @@ function graduatetime(){
     }
 }
 
-var KYXMInfoFormCount=0;
-function creatcpt(){
-    var a=document.createElement("form");
-    var b=document.getElementById("KYXMInfoForm");
-    var c= b.firstChild.cloneNode(true);
+var KYXMInfoFormCount = 0;
+function createCpt(){
+    //var a=document.createElement("form");
+    //var b=document.getElementById("KYXMInfoForm");
+    //var c= b.firstChild.cloneNode(true);
+    //KYXMInfoFormCount++;
+    //a.id="KYXMInfoForm"+KYXMInfoFormCount;
+    //c.id= c.id+KYXMInfoFormCount;
+    //if(c.childNodes.childNodes.id!==null){
+    //    c.childNodes.childNodes.id=c.childNodes.childNodes.id+KYXMInfoFormCount;
+    //}
+    //a.appendChild(c);
+    //b.appendChild(a);
+
+    //变量的名字易读最好
+    var form=document.createElement("form");
+    var oriForm=document.getElementById("KYXMInfoForm");
+    var table = oriForm.firstChild.cloneNode(true);
     KYXMInfoFormCount++;
-    a.id="KYXMInfoForm"+KYXMInfoFormCount;
-    c.id= c.id+KYXMInfoFormCount;
-    if(c.childNodes.childNodes.id!==null){
-        c.childNodes.childNodes.id=c.childNodes.childNodes.id+KYXMInfoFormCount;
+    form.id="KYXMInfoForm"+KYXMInfoFormCount;
+    table.id= table.id+KYXMInfoFormCount;
+    var children = table.childNodes;
+    /**
+     * 遍历table的所有子元素，并进行赋值，把赋值操作单独写成了一个“renameDiv"函数
+     * 是因为子元素中很可能还有子元素。为了保证每个元素都遍历完成，需要用到“递归”
+     * 可以理解为在函数里还要吊用函数他本身，这样的话就能保证所有的元素都能遍历到
+     * (如果感到递归难以理解，可以先跳过，用到的地方不多）
+     */
+    for(var i = 0;i<children.length;i++){
+        renameDiv(children[i]);
     }
-    a.appendChild(c);
-    b.appendChild(a);
+    function renameDiv(child){
+        if(child.id != ""){
+            child.id += KYXMInfoFormCount;
+        }
+        var children = child.childNodes;
+        for(var i = 0;i<children.length;i++){
+            renameDiv(children[i]);
+        }
+    }
+    /**
+     * 这里有个小问题需要注意：
+     * 不要添加多个表单{form},你只需要添加{table}就好了，就是说
+     */
+    //form.appendChild(table);
+    oriForm.appendChild(table);
 
 }
