@@ -1,7 +1,8 @@
 /**
  * Created by samsung2014 on 2017/2/17.
  */
-function show(){
+
+function bI_PGM_show(){
     var pgm = document.getElementById("bI_postgraduate_major");
     if (pgm.value=="其他"){
         document.getElementById("bI_postgraduate_other_major").style.display="block";
@@ -10,6 +11,27 @@ function show(){
         document.getElementById("bI_postgraduate_other_major").style.display="none";
     }
 }
+
+function bI_D_show(){
+    var D = document.getElementById("bI_doctor_major");
+    if (D.value=="其他"){
+        document.getElementById("bI_doctor_other_major").style.display="block";
+    }
+    else{
+        document.getElementById("bI_doctor_other_major").style.display="none";
+    }
+}
+
+function bI_PD_show(){
+    var PD = document.getElementById("bI_post_doctor_major");
+    if (PD.value=="其他"){
+        document.getElementById("bI_post_doctor_other_major").style.display="block";
+    }
+    else{
+        document.getElementById("bI_post_doctor_other_major").style.display="none";
+    }
+}
+
 
 function enroltime() {
     var bI_enrol = document.getElementById("bI_enrol").value;

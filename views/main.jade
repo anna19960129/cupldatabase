@@ -255,14 +255,14 @@ block content
           tr
             td 研究生专业：
             td
-              select(id="bI_postgraduate_major" onchange="show()")
+              select(id="bI_postgraduate_major" onchange="bI_PGM_show()")
                 option(value="经济") 经济
                 option(value="管理") 管理
                 option(value="法学") 法学
                 option(value="理学") 理学
                 option(value="其他") 其他
             td
-              input(type="text" style="display:none" id="bI_postgraduate_other_major")
+              input(type="text" style="display:none" id="bI_postgraduate_other_major" placeholder="填写具体专业名称")
           tr
             td 博士就读院校：
             td
@@ -270,12 +270,14 @@ block content
           tr
             td 博士专业：
             td
-              select(id="bI_doctor_major")
+              select(id="bI_doctor_major" onchange="bI_D_show()")
                 option(value="经济") 经济
                 option(value="管理") 管理
                 option(value="法学") 法学
                 option(value="理学") 理学
                 option(value="其他") 其他
+            td
+              input(type="text" style="display:none" id="bI_doctor_other_major" placeholder="填写具体专业名称")
           tr
             td 博士后就读院校：
             td
@@ -283,12 +285,14 @@ block content
           tr
             td 博士后专业：
             td
-              select(id="bI_post_doctor_major")
+              select(id="bI_post_doctor_major" onchange="bI_PD_show()")
                 option(value="经济") 经济
                 option(value="管理") 管理
                 option(value="法学") 法学
                 option(value="理学") 理学
                 option(value="其他") 其他
+            td
+              input(type="text" style="display:none" id="bI_post_doctor_other_major" placeholder="填写具体专业名称")
           tr
             td 工作单位：
             td
@@ -350,7 +354,7 @@ block content
           tr
             td 竞赛名称：
             td
-              select(id = "cptInfo_level")
+              select(id = "cptInfo_name" onchange="cptShow()")
                 option(value="北京大学生数学建模与计算机应用竞赛") 北京大学生数学建模与计算机应用竞赛
                 option(value="全国大学生数学建模竞赛") 全国大学生数学建模竞赛
                 option(value="美国大学生数学建模竞赛") 美国大学生数学建模竞赛
@@ -363,50 +367,57 @@ block content
                 option(value="北京大学生模拟法庭竞赛") 北京大学生模拟法庭竞赛
                 option(value="中国政法大学创新论坛") 中国政法大学创新论坛
                 option(value="其他") 其他
-
-          tr
-            td 竞赛形式：
-            td
-              span 个人：
-              input(type = "radio" id = "cpt_form0" value = "cpt_single" name = "cpt_form" onclick="display_cpt4()")
-              span 团体：
-              input(type = "radio" id = "cpt_form1" value = "cpt_multiple" name = "cpt_form" onclick="display_cpt5()")
-          tr
-            td 是否为组长:
-            td
-              span(id="cpt_text2") 是
-              input(type="radio" id="cpt_leader_yes" name="cpt_leader"  value="cpt_single" onclick="display_paper6()")
-              span(id="cpt_text2") 否
-              input(type="radio" id="cpt_leader_no" name="cpt_leader"  value="cpt_multiple" onclick="display_paper7()")
           tr
             td
             td
-              span(id="cpt_text3") 组员
-              input(type="text" id="cpt_othermembers1")
-          tr
-            td
-            td
-              input(type="button"   class="btn btn-success"  value="addmember" id="cpt_addTable" onclick="cpt_add1()")
-              input(type="button"   class="btn btn-success"  value="delmember" id="cpt_deleteTable" onclick="cpt_del1()")
-          tr
-            td
-            td
-              span(id="cpt_text4") 组长
-              input(type="text" id="cpt_leader2")
-              span(id="cpt_text4") 其他组员
-              input(type="text" id="cpt_othermembers2")
-          tr
-            td
-            td
-              input(type="button"   class="btn btn-success"  value="addmember" id="cpt_addTable" onclick="cpt_add2()")
-              input(type="button"   class="btn btn-success"  value="delmember" id="cpt_deleteTable" onclick="cpt_del2()")
-
+              input(type="text" id="cptInfo_name_other" style="display:none" placeholder="填写具体比赛名称")
           tr
             td 获奖时间：
             td
               input(type = "month" id ="cpt_time")
-
-
+          tr
+            td 获奖等级：
+            td
+              input(type = "text" id ="cpt_grade")
+          tr
+            td 竞赛形式：
+            td
+              span 个人：
+              input(type = "radio" id = "cpt_form0" value = "cpt_single" name = "cpt_form" onclick="document.getElementById('cptInfoTableGroup').style.display ='none';")
+              span 团体：
+              input(type = "radio" id = "cpt_form1" value = "cpt_multiple" name = "cpt_form" onclick="document.getElementById('cptInfoTableGroup').style.display ='';")
+        table(id = "cptInfoTableGroup" class = "baseStructTable" style="display:none")
+          tr
+            td 是否为组长:
+            td
+              span(id="cpt_text2") 是
+              input(type="radio" id="cpt_leader_yes" name="cpt_leader"  value="cpt_single" onclick="display_cpt1()")
+              span(id="cpt_text2") 否
+              input(type="radio" id="cpt_leader_no" name="cpt_leader"  value="cpt_multiple" onclick="display_cpt2()")
+        table(id = "cptInfoTableGroupLeader" class = "baseStructTable" style="display:none")
+          tr
+            td
+              span(id="cpt_text3") 组员：
+            td
+              input(type="text" id="cpt_othermembers1")
+            td
+              input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add1()")
+              input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del1()")
+        table(id = "cptInfoTableGroupMember" class = "baseStructTable" style="display:none")
+          tr
+            td
+              span(id="cpt_text4") 组长：
+            td
+              input(type="text" id="cpt_leader2")
+          tr
+            td
+              span(id="cpt_text4") 其他组员：
+            td
+              input(type="text" id="cpt_othermembers2")
+            td
+              input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add2()")
+              input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del2()")
+        table(id = "cptInfoTableLast" class = "baseStructTable")
           tr
             td
             td
@@ -433,6 +444,12 @@ block content
                 option(value="北京市级") 北京市级
                 option(value="校级") 校级
           tr
+            td 项目类别：
+            td
+              select(id = "CXCYInfo_sort")
+                option(value="创新项目") 创新项目
+                option(value="创业项目") 创业项目
+          tr
             td 姓名：
             td
               input(type = "text" id = "CXCYInfo_personName")
@@ -451,28 +468,30 @@ block content
               input(type = "radio" id = "CXCYInfo_position0" value = "teamLeader" name = "CXCYInfo_position" onclick="display_cxcy1()")
               span 组员
               input(type = "radio" id = "CXCYInfo_position1" value = "teammate" name = "CXCYInfo_position" onclick="display_cxcy2()")
+        table(id = "CXCYInfoTableLeader"  class = "baseStructTable" style="display:none")
           tr
-            td
             td
               span(id="cxcytext1") 组员
-              input(id="cxcy_member1" name="member" type="text" placeholder="填写组员姓名")
-          tr
             td
+              input(id="cxcy_member1" name="member"  type="text" placeholder="填写组员姓名")
             td
               input(type="button"   class="btn btn-success"  value="增加" id="cxcyaddTable1" onclick="cxcy_add1()")
               input(type="button"  class="btn btn-success"   value="删除" id="cxcydeleteTable1" onclick="cxcy_del1()")
+        table(id = "CXCYInfoTableMember" class = "baseStructTable" style="display:none")
           tr
             td
+              span(id="cxcytextLeader2" ) 组长
             td
-              span(id="cxcytext2") 组长
-              input(id="cxcy_leader2" name="major" type="text" placeholder="填写组长姓名")
-              span(id="cxcytext2") 组员
-              input(id="cxcy_member2" name="member" type="text" placeholder="填写其他组员姓名")
+              input(id="cxcy_leader2"  name="major" type="text" placeholder="填写组长姓名")
           tr
             td
+              span(id="cxcytextMember2" ) 组员
+            td
+              input(id="cxcy_member2"  name="member" type="text" placeholder="填写其他组员姓名")
             td
               input(type="button"   class="btn btn-success"  value="增加" id="cxcyaddTable2" onclick="cxcy_add2()")
-              input(type="button"  class="btn btn-success"   value="删除" id="cxcydeleteTable2" onclick="cxcy_del2()")
+              input(type="button"  class="btn btn-success"  value="删除" id="cxcydeleteTable2" onclick="cxcy_del2()")
+        table(id = "CXCYInfoTableLast" class = "baseStructTable")
           tr
             td
             td
