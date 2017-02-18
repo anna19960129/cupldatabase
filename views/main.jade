@@ -333,10 +333,6 @@ block content
       form(id = "cptInfoForm" class = "baseStructForm")
         table(id = "cptInfoTable" class = "baseStructTable")
           tr
-            td 竞赛名称：
-            td
-              input(type = "text" id = "cptInfo_cptName")
-          tr
             td 姓名：
             td
               input(type = "text" id = "cptInfo_personName")
@@ -345,18 +341,72 @@ block content
             td
               input(type = "text" id = "cptInfo_personID")
           tr
-            td 竞赛类别：
+            td 竞赛级别：
             td
-              select(id = "cptInfo_type")
-                option(value="single") 个人
-                option(value="group") 团体
+              select(id = "cptInfo_level")
+                option(value="national") 国家级
+                option(value="provincial") 省市级
+                option(value="school") 校级
           tr
-            td 职务：
+            td 竞赛名称：
             td
-              span 组长
-              input(type = "radio" id = "cptInfo_position0" value = "teamLeader" name = "cptInfo_position")
-              span 组员
-              input(type = "radio" id = "cptInfo_position1" value = "teammate" name = "cptYInfo_position")
+              select(id = "cptInfo_level")
+                option(value="北京大学生数学建模与计算机应用竞赛") 北京大学生数学建模与计算机应用竞赛
+                option(value="全国大学生数学建模竞赛") 全国大学生数学建模竞赛
+                option(value="美国大学生数学建模竞赛") 美国大学生数学建模竞赛
+                option(value="全国大学生英语竞赛") 全国大学生英语竞赛
+                option(value="全国大学生电子商务竞赛") 全国大学生电子商务竞赛
+                option(value="全国大学生模拟法庭竞赛") 全国大学生模拟法庭竞赛
+                option(value="中国大学生（文科）计算机设计大赛") 中国大学生（文科）计算机设计大赛
+                option(value="北京大学生模拟法庭竞赛") 北京大学生模拟法庭竞赛
+                option(value="北京大学生英语演讲比赛") 北京大学生英语演讲比赛
+                option(value="北京大学生模拟法庭竞赛") 北京大学生模拟法庭竞赛
+                option(value="中国政法大学创新论坛") 中国政法大学创新论坛
+                option(value="其他") 其他
+
+          tr
+            td 竞赛形式：
+            td
+              span 个人：
+              input(type = "radio" id = "cpt_form0" value = "cpt_single" name = "cpt_form" onclick="display_cpt4()")
+              span 团体：
+              input(type = "radio" id = "cpt_form1" value = "cpt_multiple" name = "cpt_form" onclick="display_cpt5()")
+          tr
+            td 是否为组长:
+            td
+              span(id="cpt_text2") 是
+              input(type="radio" id="cpt_leader_yes" name="cpt_leader"  value="cpt_single" onclick="display_paper6()")
+              span(id="cpt_text2") 否
+              input(type="radio" id="cpt_leader_no" name="cpt_leader"  value="cpt_multiple" onclick="display_paper7()")
+          tr
+            td
+            td
+              span(id="cpt_text3") 组员
+              input(type="text" id="cpt_othermembers1")
+          tr
+            td
+            td
+              input(type="button"   class="btn btn-success"  value="addmember" id="cpt_addTable" onclick="cpt_add1()")
+              input(type="button"   class="btn btn-success"  value="delmember" id="cpt_deleteTable" onclick="cpt_del1()")
+          tr
+            td
+            td
+              span(id="cpt_text4") 组长
+              input(type="text" id="cpt_leader2")
+              span(id="cpt_text4") 其他组员
+              input(type="text" id="cpt_othermembers2")
+          tr
+            td
+            td
+              input(type="button"   class="btn btn-success"  value="addmember" id="cpt_addTable" onclick="cpt_add2()")
+              input(type="button"   class="btn btn-success"  value="delmember" id="cpt_deleteTable" onclick="cpt_del2()")
+
+          tr
+            td 获奖时间：
+            td
+              input(type = "month" id ="cpt_time")
+
+
           tr
             td
             td
