@@ -93,35 +93,38 @@ function createKYXM(){
 
 //论文模块
 var paperInfoFormCount = 0;
+//设置独著
 function display_paper1() {
-
-    document.getElementById("papertext1"+paperInfoFormCount).style.display = "block";
-    document.getElementById("peparInfo_author"+paperInfoFormCount).style.display = "block";
-    document.getElementById("paperInfoTablePartMultiple"+paperInfoFormCount).style.display = "none";
-    document.getElementById("paperInfoTablePartMultipleNotFirstAuthor"+paperInfoFormCount).style.display = "none";
-    document.getElementById("paperInfoTablePartMultipleFirstAuthor"+paperInfoFormCount).style.display = "none";
-
+    document.getElementById("paperInfo_tr_singleA").style.display = "";
+    document.getElementById("paperInfo_tr_firstA").style.display = "none";
+    var multiAuthors = document.getElementsByClassName("multiAuthorInput");
+    for(var i = 0;i<multiAuthors.length;i++){
+        var author_i = multiAuthors[i];
+        author_i.style.display = "none";
+    }
 }
+//设置合著
 function display_paper2() {
-
-    document.getElementById("paperInfoTablePartMultiple"+paperInfoFormCount).style.display = "block";
-    document.getElementById("papertext1"+paperInfoFormCount).style.display = "none";
-    document.getElementById("peparInfo_author"+paperInfoFormCount).style.display = "none";
-
+    document.getElementById("paperInfo_tr_singleA").style.display = "none";
+    document.getElementById("paperInfo_tr_firstA").style.display = "";
 }
-
+//显示作者列表（填充第一作者）
 function display_paper3() {
-
-    document.getElementById("paperInfoTablePartMultipleFirstAuthor"+paperInfoFormCount).style.display = "block";
-    document.getElementById("paperInfoTablePartMultipleNotFirstAuthor"+paperInfoFormCount).style.display = "none";
-
+    var multiAuthors = document.getElementsByClassName("multiAuthorInput");
+    for(var i = 0;i<multiAuthors.length;i++){
+        var author_i = multiAuthors[i];
+        author_i.style.display = "";
+    }
 }
+//显示作者列表（不填充第一作者）
 function display_paper4() {
-
-    document.getElementById("paperInfoTablePartMultipleNotFirstAuthor"+paperInfoFormCount).style.display = "block";
-    document.getElementById("paperInfoTablePartMultipleFirstAuthor"+paperInfoFormCount).style.display = "none";
-
+    var multiAuthors = document.getElementsByClassName("multiAuthorInput");
+    for(var i = 0;i<multiAuthors.length;i++){
+        var author_i = multiAuthors[i];
+        author_i.style.display = "";
+    }
 }
+
 var paperCount=1;
 function paper_add1() {
     var element = document.createElement("table");
@@ -174,28 +177,9 @@ function paper_del2() {
     element.removeChild(lc);
 }
 
-
+//创建paper不需要新增节点（永远只有一篇在编辑区）
 function createPaper() {
-    var div = document.getElementById("paperInfoDiv");
-    var form = div.firstChild.cloneNode(true);
-    paperInfoFormCount++;
-    form.id = "paperInfoForm" + paperInfoFormCount;
-    var children = form.childNodes;
-
-    for (var i = 0; i < children.length; i++) {
-        renameDiv(children[i]);
-    }
-    function renameDiv(child) {
-        if (child.id != "") {
-          //谷歌不识别这句话  child.id = child.id.slice(0, -1);
-            child.id = child.id + paperInfoFormCount;
-        }
-        var children = child.childNodes;
-        for (var i = 0; i < children.length; i++) {
-            renameDiv(children[i]);
-        }
-    }
-
-    div.appendChild(form);
+    var element = document.getElementById("paperInfoForm");
+    element.style.display = "";
 }
 
