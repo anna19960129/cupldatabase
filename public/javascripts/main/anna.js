@@ -43,7 +43,7 @@ function graduatetime(){
 }
 
 var KYXMInfoFormCount = 0;
-function creatKYXM(){
+function createKYXM(){
     //var a=document.createElement("form");
     //var b=document.getElementById("KYXMInfoForm");
     //var c= b.firstChild.cloneNode(true);
@@ -90,6 +90,8 @@ function creatKYXM(){
     oriForm.appendChild(table);
 
 }
+
+//论文模块
 var paperInfoFormCount = 0;
 function display_paper1() {
 
@@ -173,7 +175,7 @@ function paper_del2() {
 }
 
 
-function creatPaper() {
+function createPaper() {
     var div = document.getElementById("paperInfoDiv");
     var form = div.firstChild.cloneNode(true);
     paperInfoFormCount++;
