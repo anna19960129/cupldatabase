@@ -430,7 +430,7 @@ block content
             td
               select(id = "CXCYInfo_time")
                 option(value="国家级") 国家级
-                option(value="北京市") 北京市
+                option(value="北京市级") 北京市级
                 option(value="校级") 校级
           tr
             td 姓名：
@@ -448,9 +448,31 @@ block content
             td 职务：
             td
               span 组长
-              input(type = "radio" id = "CXCYInfo_position0" value = "teamLeader" name = "CXCYInfo_position")
+              input(type = "radio" id = "CXCYInfo_position0" value = "teamLeader" name = "CXCYInfo_position" onclick="display_cxcy1()")
               span 组员
-              input(type = "radio" id = "CXCYInfo_position1" value = "teammate" name = "CXCYInfo_position")
+              input(type = "radio" id = "CXCYInfo_position1" value = "teammate" name = "CXCYInfo_position" onclick="display_cxcy2()")
+          tr
+            td
+            td
+              span(id="cxcytext1") 组员
+              input(id="cxcy_member1" name="member" type="text" placeholder="填写组员姓名")
+          tr
+            td
+            td
+              input(type="button"   class="btn btn-success"  value="增加" id="cxcyaddTable1" onclick="cxcy_add1()")
+              input(type="button"  class="btn btn-success"   value="删除" id="cxcydeleteTable1" onclick="cxcy_del1()")
+          tr
+            td
+            td
+              span(id="cxcytext2") 组长
+              input(id="cxcy_leader2" name="major" type="text" placeholder="填写组长姓名")
+              span(id="cxcytext2") 组员
+              input(id="cxcy_member2" name="member" type="text" placeholder="填写其他组员姓名")
+          tr
+            td
+            td
+              input(type="button"   class="btn btn-success"  value="增加" id="cxcyaddTable2" onclick="cxcy_add2()")
+              input(type="button"  class="btn btn-success"   value="删除" id="cxcydeleteTable2" onclick="cxcy_del2()")
           tr
             td
             td
@@ -526,8 +548,8 @@ block content
           tr
             td
             td
-              input(type="button"   class="btn btn-success"  value="addAuthor" id="paper_addTable" onclick="paper_add1()")
-              input(type="button"   class="btn btn-success"  value="delAuthor" id="paper_deleteTable" onclick="paper_del1()")
+              input(type="button"   class="btn btn-success"  value="addAuthor" id="paper_addTable1" onclick="paper_add1()")
+              input(type="button"   class="btn btn-success"  value="delAuthor" id="paper_deleteTable1" onclick="paper_del1()")
           tr
             td
             td
@@ -538,8 +560,8 @@ block content
           tr
             td
             td
-              input(type="button"   class="btn btn-success"  value="addAuthor" id="paper_addTable" onclick="paper_add2()")
-              input(type="button"   class="btn btn-success"  value="delAuthor" id="paper_deleteTable" onclick="paper_del2()")
+              input(type="button"   class="btn btn-success"  value="addAuthor" id="paper_addTable2" onclick="paper_add2()")
+              input(type="button"   class="btn btn-success"  value="delAuthor" id="paper_deleteTable2" onclick="paper_del2()")
           tr
             td 指导老师：
             td
