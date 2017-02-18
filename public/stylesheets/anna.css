@@ -1,0 +1,21 @@
+#pAS_header{
+    width: 100%;
+    height: 40px;
+    background-color:#1abc9c;
+}
+.pI_title{
+    color:#ecf0f1;
+    font-size: 35px;
+    /*text-align: left;*/
+    /*margin-left: 5%;*/
+}
+#pAS_intro{
+    width: 100%;
+    height: 20px;
+    background-color: #ecf0f1;
+}
+#paperSubmitting{
+    width: 100%;
+    height: 40px;
+    background-color:#16a085;
+}
