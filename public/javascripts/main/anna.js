@@ -64,6 +64,9 @@ function graduatetime(){
     }
 }
 
+
+
+
 var KYXMInfoFormCount = 0;
 function createKYXM(){
     //var a=document.createElement("form");
@@ -113,6 +116,11 @@ function createKYXM(){
 
 }
 
+function creatKYXM(){
+    var element = document.getElementById("KYXMInfoForm");
+    element.style.display = "";
+}
+
 //论文模块
 var paperInfoFormCount = 0;
 //设置独著
@@ -130,15 +138,16 @@ function display_paper2() {
     document.getElementById("paperInfo_tr_singleA").style.display = "none";
     document.getElementById("paperInfo_tr_firstA").style.display = "";
 }
-//显示作者列表（填充第一作者）
+//显示作者列表（不填充第一作者）
 function display_paper3() {
     var multiAuthors = document.getElementsByClassName("multiAuthorInput");
     for(var i = 0;i<multiAuthors.length;i++){
         var author_i = multiAuthors[i];
         author_i.style.display = "";
+        document.getElementById("paperInfoFirstAuthor").style.display = "none";
     }
 }
-//显示作者列表（不填充第一作者）
+//显示作者列表（填充第一作者）
 function display_paper4() {
     var multiAuthors = document.getElementsByClassName("multiAuthorInput");
     for(var i = 0;i<multiAuthors.length;i++){

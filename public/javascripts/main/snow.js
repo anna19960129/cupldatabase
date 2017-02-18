@@ -14,49 +14,44 @@ function cptShow(){
 
 
 function display_cpt1() {
-    document.getElementById("cptInfoTableGroupLeader").style.display = "block";
-    document.getElementById("cptInfoTableGroupMember").style.display = "none";
+    var multiAuthors = document.getElementsByClassName("cptInfoTableLM");
+    for (var i = 0; i < multiAuthors.length; i++) {
+        var author_i = multiAuthors[i];
+        author_i.style.display = "";
+        document.getElementById("cptInfoTableLeader").style.display = "none";
+    }
 }
 function display_cpt2() {
-    document.getElementById("cptInfoTableGroupMember").style.display = "block";
-    document.getElementById("cptInfoTableGroupLeader").style.display = "none";
+    var multiAuthors = document.getElementsByClassName("cptInfoTableLM");
+    for (var i = 0; i < multiAuthors.length; i++) {
+        var author_i = multiAuthors[i];
+        author_i.style.display = "";
+    }
 }
-
-function cpt_add1() {
-    var element = document.createElement("table");
+var cptCount=1;
+function cpt_add() {
+    var element = document.createElement("tr");
     var node = document.createTextNode("其他组员");
     element.appendChild(node);
-    element.setAttribute('class', "baseStructTable")
+    element.setAttribute('class', "cptOtherMember");
     var inp = document.createElement("input");
     inp.setAttribute("type", "text");
+    cptCount++;
+    inp.id='cpt_member'+ paperCount;
     element.appendChild(inp);
-    x = document.getElementById("cptInfoTableGroupLeader");
+    x = document.getElementById("cptInfoTable");
     x.appendChild(element);
 }
 
-function cpt_del1() {
-    var element = document.getElementById("cptInfoTableGroupLeader");
-    var children = element.getElementsByClassName("baseStructTable");
+function cpt_del() {
+    var element = document.getElementById("cptInfoTable");
+    var children = element.getElementsByClassName("cptOtherMember");
     var lc = children[children.length - 1];
     element.removeChild(lc);
 }
 
-function cpt_add2() {
-    var element = document.createElement("table");
-    var node = document.createTextNode("其他组员");
-    element.appendChild(node);
-    element.setAttribute('class', "baseStructTable")
-    var inp = document.createElement("input");
-    inp.setAttribute("type", "text");
-    element.appendChild(inp);
-    x = document.getElementById("cptInfoTableGroupMember");
-    x.appendChild(element);
-}
 
-function cpt_del2() {
-    var element = document.getElementById("cptInfoTableGroupMember");
-    var children = element.getElementsByClassName("baseStructTable");
-    var lc = children[children.length - 1];
-    element.removeChild(lc);
+function creatCpt(){
+    var element = document.getElementById("cptInfoForm");
+    element.style.display = "";
 }
-

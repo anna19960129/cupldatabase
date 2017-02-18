@@ -219,7 +219,7 @@ block content
           tr
             td 手机号：
             td
-              input(type = "text" id ="cellphone" required pattern="\d{11}")
+              input(type = "tel" id ="cellphone" )
           tr
             td 微信号：
             td
@@ -335,7 +335,15 @@ block content
               input(type = "submit" id = "cptInfo_submit" value = "保存")
               input(type = "button" id = "cptInfo_reset" value = '重置')
     div(id = "cptInfoDiv" class = "baseStruct")
-      form(id = "cptInfoForm" class = "baseStructForm")
+      div(id = "cptAlreadySubmit")
+        div(id = "cptAS_header")
+          span(id = "cptAS_header_text" class = "pI_title") 已提交
+        div(id = "cptAS_intro")
+          span 当前已提交竞赛项目数量为：0
+        table
+      div(id = "cptSubmitting")
+        span(id = "cpt_header_text" class = "pI_title") 待提交
+      form(id = "cptInfoForm" class = "baseStructForm" style="display:none")
         table(id = "cptInfoTable" class = "baseStructTable")
           tr
             td 姓名：
@@ -387,47 +395,42 @@ block content
               input(type = "radio" id = "cpt_form0" value = "cpt_single" name = "cpt_form" onclick="document.getElementById('cptInfoTableGroup').style.display ='none';")
               span 团体：
               input(type = "radio" id = "cpt_form1" value = "cpt_multiple" name = "cpt_form" onclick="document.getElementById('cptInfoTableGroup').style.display ='';")
-        table(id = "cptInfoTableGroup" class = "baseStructTable" style="display:none")
-          tr
+          tr(id = "cptInfoTableGroup"  style="display:none")
             td 是否为组长:
             td
-              span(id="cpt_text2") 是
+              span 是
               input(type="radio" id="cpt_leader_yes" name="cpt_leader"  value="cpt_single" onclick="display_cpt1()")
-              span(id="cpt_text2") 否
+              span 否
               input(type="radio" id="cpt_leader_no" name="cpt_leader"  value="cpt_multiple" onclick="display_cpt2()")
-        table(id = "cptInfoTableGroupLeader" class = "baseStructTable" style="display:none")
-          tr
+          tr(id = "cptInfoTableLeader" class = "cptInfoTableLM" style="display:none")
             td
-              span(id="cpt_text3") 组员：
+              span 组长：
             td
-              input(type="text" id="cpt_othermembers1")
+              input(type="text" id="cpt_leader")
+          tr(id = "cptInfoTableMember" class = "cptInfoTableLM" style="display:none")
             td
-              input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add1()")
-              input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del1()")
-        table(id = "cptInfoTableGroupMember" class = "baseStructTable" style="display:none")
-          tr
+              span 其他组员：
             td
-              span(id="cpt_text4") 组长：
-            td
-              input(type="text" id="cpt_leader2")
-          tr
-            td
-              span(id="cpt_text4") 其他组员：
-            td
-              input(type="text" id="cpt_othermembers2")
-            td
-              input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add2()")
-              input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del2()")
-        table(id = "cptInfoTableLast" class = "baseStructTable")
-          tr
+              input(type="text" id="cpt_member1")
+          tr(id = "cptInfoTableButton" class = "cptInfoTableLM" style="display:none")
             td
             td
-              input(type = "submit" id = "cptInfo_submit" value = "保存")
-              input(type = "button" id = "cptInfo_reset" value = '重置')
-
+              input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add()")
+              input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del()")
+        input(type = "submit" id = "cptInfo_submit" value = "保存")
+        input(type = "button" id = "cptInfo_reset" value = '重置')
+      input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatCpt()")
 
     div(id = "CXCYInfoDiv" class = "baseStruct")
-      form(id = "CXCYInfoForm" class = "baseStructForm")
+      div(id = "CXCYAlreadySubmit")
+        div(id = "CXCYAS_header")
+          span(id = "CXCYAS_header_text" class = "pI_title") 已提交
+        div(id = "CXCYAS_intro")
+          span 当前已提交创新创业项目数量为：0
+        table
+      div(id = "CXCYSubmitting")
+        span(id = "CXCY_header_text" class = "pI_title") 待提交
+      form(id = "CXCYInfoForm" class = "baseStructForm" style="display:none")
         table(id = "CXCYInfoTable" class = "baseStructTable")
           tr
             td 项目名称：
@@ -469,37 +472,44 @@ block content
               input(type = "radio" id = "CXCYInfo_position0" value = "teamLeader" name = "CXCYInfo_position" onclick="display_cxcy1()")
               span 组员
               input(type = "radio" id = "CXCYInfo_position1" value = "teammate" name = "CXCYInfo_position" onclick="display_cxcy2()")
-        table(id = "CXCYInfoTableLeader"  class = "baseStructTable" style="display:none")
-          tr
+          tr(id = "CXCYInfoTableLeader" class = "CXCYInfoTableLM" style="display:none" )
             td
-              span(id="cxcytext1") 组员
+              span 组长:
             td
-              input(id="cxcy_member1" name="member"  type="text" placeholder="填写组员姓名")
+              input(id="cxcy_leader"  name="major" type="text" placeholder="填写组长姓名")
+          tr(id = "CXCYInfoTableMember"  class = "CXCYInfoTableLM" style="display:none" )
             td
-              input(type="button"   class="btn btn-success"  value="增加" id="cxcyaddTable1" onclick="cxcy_add1()")
-              input(type="button"  class="btn btn-success"   value="删除" id="cxcydeleteTable1" onclick="cxcy_del1()")
-        table(id = "CXCYInfoTableMember" class = "baseStructTable" style="display:none")
-          tr
+              span 组员1:
             td
-              span(id="cxcytextLeader2" ) 组长
+              input(id="cxcy_member1"  name="member" type="text" placeholder="填写其他组员姓名")
+          tr(  class = "CXCYInfoTableLM" style="display:none" )
             td
-              input(id="cxcy_leader2"  name="major" type="text" placeholder="填写组长姓名")
-          tr
-            td
-              span(id="cxcytextMember2" ) 组员
+              span 组员2:
             td
               input(id="cxcy_member2"  name="member" type="text" placeholder="填写其他组员姓名")
+          tr( class = "CXCYInfoTableLM" style="display:none" )
             td
-              input(type="button"   class="btn btn-success"  value="增加" id="cxcyaddTable2" onclick="cxcy_add2()")
-              input(type="button"  class="btn btn-success"  value="删除" id="cxcydeleteTable2" onclick="cxcy_del2()")
-        table(id = "CXCYInfoTableLast" class = "baseStructTable")
-          tr
+              span 组员3:
             td
+              input(id="cxcy_member3"  name="member" type="text" placeholder="填写其他组员姓名")
+          tr(  class = "CXCYInfoTableLM" style="display:none" )
             td
-              input(type = "submit" id = "CXCYInfo_submit" value = "保存")
-              input(type = "button" id = "CXCYInfo_reset" value = '重置')
+              span 组员4:
+            td
+              input(id="cxcy_member4"  name="member" type="text" placeholder="填写其他组员姓名")
+        input(type = "submit" id = "CXCYInfo_submit" value = "保存")
+        input(type = "button" id = "CXCYInfo_reset" value = '重置')
+      input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatCXCY()")
     div(id = "KYXMInfoDiv" class = "baseStruct")
-      form(id = "KYXMInfoForm" class = "baseStructForm")
+      div(id = "KYXMAlreadySubmit")
+        div(id = "KYXMAS_header")
+          span(id = "KYXMAS_header_text" class = "pI_title") 已提交
+        div(id = "KYXMAS_intro")
+          span 当前已提交科研项目数量为：0
+        table
+      div(id = "KYXMSubmitting")
+        span(id = "KYXM_header_text" class = "pI_title") 待提交
+      form(id = "KYXMInfoForm" class = "baseStructForm" style="display:none")
         table(id = "KYXMInfoTable" class = "baseStructTable")
           tr
             td 项目名称：
@@ -528,12 +538,9 @@ block content
             td 指导教师：
             td
               input(type = "text" id = "KYXMInfo_teacher")
-          tr
-            td
-            td
-              input(type = "submit" id = "KYXMInfo_submit" value = "保存")
-              input(type = "button" id = "KYXMInfo_reset" value = '重置')
-      input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="createKYXM()")
+        input(type = "submit" id = "KYXMInfo_submit" value = "保存")
+        input(type = "button" id = "KYXMInfo_reset" value = '重置')
+      input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatKYXM()")
     div(id = "paperInfoDiv" class = "baseStruct")
       div(id = "paperAlreadySubmit")
         div(id = "pAS_header")
@@ -544,77 +551,77 @@ block content
       div(id = "paperSubmitting")
         span(id = "pAS_header_text" class = "pI_title") 待提交
       form(id = "paperInfoForm" class = "baseStructForm" style="display:none")
-        table(id = "paperInfoTable0" class = "baseStructTable")
+        table(id = "paperInfoTable" class = "baseStructTable")
           tr
             td 论文名称：
             td
-              input(type="text" id = "paperInfo_name0")
+              input(type="text" id = "paperInfo_name")
           tr
             td 著作信息：
             td
               span 独著：
-              input(type = "radio" id = "paperInfo_authors00" value = "single" name = "paperInfo_authors" onclick="display_paper1()" )
+              input(type = "radio" id = "paperInfo_authors0" value = "single" name = "paperInfo_authors" onclick="display_paper1()" )
               span 合著：
-              input(type = "radio" id = "paperInfo_authors10" value = "multiple" name = "paperInfo_authors" onclick="display_paper2()" )
+              input(type = "radio" id = "paperInfo_authors1" value = "multiple" name = "paperInfo_authors" onclick="display_paper2()" )
           tr(id = "paperInfo_tr_singleA" style="display:none")
             td
               span 作者名称：
             td
-              input(type="text" id = "paperInfo_author0" )
+              input(type="text" id = "paperInfo_author" )
           tr(id = "paperInfo_tr_firstA" style="display:none")
             td
               span 第一作者：
             td
               span &nbsp&nbsp&nbsp&nbsp是：
-              input(type="radio" id="paperInfo_firstAuthor10" name="paper_authors"  value="第一作者" onclick="display_paper3()")
+              input(type="radio" id="paperInfo_firstAuthor1" name="paper_authors"  value="第一作者" onclick="display_paper3()")
               span &nbsp&nbsp&nbsp&nbsp否：
-              input(type="radio" id="paperInfo_firsAuthors20" name="paper_authors"  value="非第一作者" onclick="display_paper4()")
+              input(type="radio" id="paperInfo_firsAuthors2" name="paper_authors"  value="非第一作者" onclick="display_paper4()")
           //第一作者
-          tr(style = "display:none" class = "multiAuthorInput")
+          tr(style = "display:none" class = "multiAuthorInput" id="paperInfoFirstAuthor")
             td
               span 第一作者：
             td
-              input(type="text" id = "paperInfo_author0" name = "firstAuthor")
+              input(type="text" id = "paperInfo_author" name = "firstAuthor")
           //合作者1
           tr(style = "display:none" class = "multiAuthorInput")
             td
               span 合作者 1：
             td
-              input(type="text" id = "paperInfo_author0" name = "coAuthor1")
+              input(type="text" id = "paperInfo_author" name = "coAuthor1")
           //合作者2
           tr(style = "display:none" class = "multiAuthorInput")
             td
               span 合作者 2：
             td
-              input(type="text" id = "paperInfo_author0" name = "coAuthor2")
+              input(type="text" id = "paperInfo_author" name = "coAuthor2")
           //合作者3
           tr(style = "display:none" class = "multiAuthorInput")
             td
               span 合作者 3：
             td
-              input(type="text" id = "paperInfo_author0" name = "coAuthor3")
+              input(type="text" id = "paperInfo_author" name = "coAuthor3")
           //合作者4
           tr(style = "display:none" class = "multiAuthorInput")
             td
               span 合作者 4：
             td
-              input(type="text" id = "paperInfo_author0" name = "coAuthor4")
+              input(type="text" id = "paperInfo_author" name = "coAuthor4")
           //指导老师
           tr
             td 指导老师：
             td
-              input(type="text" id ="paperInfo_teacherName0")
+              input(type="text" id ="paperInfo_teacherName")
           tr
             td 期刊名称：
             td
-              input(type = "text" id = "paperInfo_magName0")
+              input(type = "text" id = "paperInfo_magName")
           tr
             td 发表时间：
             td
-              input(type = "month" id ="paperInfo_time0")
+              input(type = "month" id ="paperInfo_time")
 
-        input(type = "submit" id = "paperInfo_submit0" value="保存")
-        input(type = "button" id = "paperInfo_reset0" value="重置")
+        input(type = "submit" id = "paperInfo_submit" value="保存")
+        input(type = "button" id = "paperInfo_reset" value="重置")
       input(type = "button" id ="paperInfo_creat" value="新增" onclick="createPaper()")
 
 
