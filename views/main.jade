@@ -513,73 +513,77 @@ block content
             td
               input(type = "submit" id = "KYXMInfo_submit" value = "保存")
               input(type = "button" id = "KYXMInfo_reset" value = '重置')
-      input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="createCpt()")
+      input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatKYXM()")
     div(id = "paperInfoDiv" class = "baseStruct")
       form(id = "paperInfoForm" class = "baseStructForm")
-        table(id = "paperInfoTable" class = "baseStructTable")
+        table(id = "paperInfoTable0" class = "baseStructTable")
           tr
             td 论文名称：
             td
-              input(type="text" id = "paperInfo_name")
+              input(type="text" id = "paperInfo_name0")
           tr
             td 著作信息：
             td
               span 独著：
-              input(type = "radio" id = "paperInfo_authors0" value = "single" name = "paperInfo_authors" onclick="display_paper1()")
+              input(type = "radio" id = "paperInfo_authors00" value = "single" name = "paperInfo_authors" onclick="display_paper1()")
               span 合著：
-              input(type = "radio" id = "paperInfo_authors1" value = "multiple" name = "paperInfo_authors" onclick="display_paper2()")
+              input(type = "radio" id = "paperInfo_authors10" value = "multiple" name = "paperInfo_authors" onclick="display_paper2()")
           tr
             td
+              span(id="papertext10" style="display:none") 作者名称：
             td
-              span(id="papertext1") 作者名称：
-              input(type="text" id = "peparInfo_author")
-          tr
-            td 第一作者
-            td
-              span(id="papertext2") 是
-              input(type="radio" id="paperInfo_firstAuthor1" name="paper_authors"  value="single" onclick="display_paper3()")
-              span(id="papertext2") 否
-              input(id="paperInfo_authors" name="paper_authors" type="radio" value="multiple" onclick="display_paper4()")
+              input(type="text" id = "peparInfo_author0" style="display:none")
+        table(id = "paperInfoTablePartMultiple0" class = "baseStructTable" style="display:none")
           tr
             td
+              span(id="papertext20") 第一作者
             td
-              span(id="papaertext3") 其他作者
-              input(type="text" id="paperInfo_otherAuthors1")
+              span 是
+              input(type="radio" id="paperInfo_firstAuthor10" name="paper_authors"  value="第一作者" onclick="display_paper3()")
+              span 否
+              input(type="radio" id="paperInfo_firsAuthors20" name="paper_authors"  value="非第一作者" onclick="display_paper4()")
+        table(id = "paperInfoTablePartMultipleFirstAuthor0" class = "baseStructTable" style="display:none")
           tr
             td
+              span(id="papaertext30") 其他作者
             td
-              input(type="button"   class="btn btn-success"  value="addAuthor" id="paper_addTable1" onclick="paper_add1()")
-              input(type="button"   class="btn btn-success"  value="delAuthor" id="paper_deleteTable1" onclick="paper_del1()")
+              input(type="text" id="paperInfo_otherAuthors10")
+            td
+              input(type="button"   class="btn btn-success"  value="增加" id="paper_addTable0" onclick="paper_add1()")
+              input(type="button"   class="btn btn-success"  value="删除" id="paper_deleteTable0" onclick="paper_del1()")
+        table(id = "paperInfoTablePartMultipleNotFirstAuthor0" class = "baseStructTable" style="display:none")
           tr
             td
+              span(id="papertext40") 第一作者
             td
-              span(id="papertext4") 第一作者
-              input(type="text" id="paperInfo_firstAuthor2")
-              span(id="papertext4") 其他作者
-              input(type="text" id="paperInfo_otherAuthors2")
+              input(type="text" id="paperInfo_firstAuthor30")
           tr
             td
+              span(id="papertext50") 其他作者
             td
-              input(type="button"   class="btn btn-success"  value="addAuthor" id="paper_addTable2" onclick="paper_add2()")
-              input(type="button"   class="btn btn-success"  value="delAuthor" id="paper_deleteTable2" onclick="paper_del2()")
+              input(type="text" id="paperInfo_otherAuthors30")
+            td
+              input(type="button"   class="btn btn-success"  value="增加" id="paper_addTable0" onclick="paper_add2()")
+              input(type="button"   class="btn btn-success"  value="删除" id="paper_deleteTable0" onclick="paper_del2()")
+        table(id = "paperInfoTableLast0" class = "baseStructTable")
           tr
             td 指导老师：
             td
-              input(type="text" id ="paperInfo_teacherName")
+              input(type="text" id ="paperInfo_teacherName0")
           tr
             td 期刊名称：
             td
-              input(type = "text" id = "paperInfo_magName")
+              input(type = "text" id = "paperInfo_magName0")
           tr
             td 发表时间：
             td
-              input(type = "month" id ="paperInfo_time")
+              input(type = "month" id ="paperInfo_time0")
           tr
             td
             td
-              input(type = "submit" id = "paperInfo_submit" value="保存")
-              input(type = "button" id = "paperInfo_reset" value="重置")
-
+              input(type = "submit" id = "paperInfo_submit0" value="保存")
+              input(type = "button" id = "paperInfo_reset0" value="重置")
+      input(type = "button" id ="paperInfo_creat" value="新增" onclick="creatPaper()")
 
 
 

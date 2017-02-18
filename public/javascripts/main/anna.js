@@ -43,7 +43,7 @@ function graduatetime(){
 }
 
 var KYXMInfoFormCount = 0;
-function createCpt(){
+function creatKYXM(){
     //var a=document.createElement("form");
     //var b=document.getElementById("KYXMInfoForm");
     //var c= b.firstChild.cloneNode(true);
@@ -90,3 +90,110 @@ function createCpt(){
     oriForm.appendChild(table);
 
 }
+var paperInfoFormCount = 0;
+function display_paper1() {
+
+    document.getElementById("papertext1"+paperInfoFormCount).style.display = "block";
+    document.getElementById("peparInfo_author"+paperInfoFormCount).style.display = "block";
+    document.getElementById("paperInfoTablePartMultiple"+paperInfoFormCount).style.display = "none";
+    document.getElementById("paperInfoTablePartMultipleNotFirstAuthor"+paperInfoFormCount).style.display = "none";
+    document.getElementById("paperInfoTablePartMultipleFirstAuthor"+paperInfoFormCount).style.display = "none";
+
+}
+function display_paper2() {
+
+    document.getElementById("paperInfoTablePartMultiple"+paperInfoFormCount).style.display = "block";
+    document.getElementById("papertext1"+paperInfoFormCount).style.display = "none";
+    document.getElementById("peparInfo_author"+paperInfoFormCount).style.display = "none";
+
+}
+
+function display_paper3() {
+
+    document.getElementById("paperInfoTablePartMultipleFirstAuthor"+paperInfoFormCount).style.display = "block";
+    document.getElementById("paperInfoTablePartMultipleNotFirstAuthor"+paperInfoFormCount).style.display = "none";
+
+}
+function display_paper4() {
+
+    document.getElementById("paperInfoTablePartMultipleNotFirstAuthor"+paperInfoFormCount).style.display = "block";
+    document.getElementById("paperInfoTablePartMultipleFirstAuthor"+paperInfoFormCount).style.display = "none";
+
+}
+var paperCount=1;
+function paper_add1() {
+    var element = document.createElement("table");
+    var node = document.createTextNode("其他作者");
+    element.appendChild(node);
+    element.setAttribute('class', "baseStructTable");
+    paperCount++;
+    element.id='paperInfoTablePartMultipleFirstAuthorOtherAuthor'+ paperCount;
+    var inp = document.createElement("input");
+    inp.setAttribute("type", "text");
+    inp.id='paperInfo_otherAuthors'+paperCount;
+    element.appendChild(inp);
+
+    x = document.getElementById("paperInfoTablePartMultipleFirstAuthor"+paperInfoFormCount);
+
+    x.appendChild(element);
+}
+
+function paper_del1() {
+
+    var element = document.getElementById("paperInfoTablePartMultipleFirstAuthor"+paperInfoFormCount);
+
+    var children = element.getElementsByClassName("baseStructTable");
+    var lc = children[children.length - 1];
+    element.removeChild(lc);
+}
+
+function paper_add2() {
+    var element = document.createElement("table");
+    var node = document.createTextNode("其他作者");
+    element.appendChild(node);
+    element.setAttribute('class', "baseStructTable");
+    paperCount++;
+    element.id='paperInfoTablePartMultipleNotFirstAuthorOtherAuthor'+ paperCount;
+    var inp = document.createElement("input");
+    inp.setAttribute("type", "text");
+    inp.id='paperInfo_otherAuthors'+paperCount;
+    element.appendChild(inp);
+
+    x = document.getElementById("paperInfoTablePartMultipleNotFirstAuthor"+paperInfoFormCount);
+
+    x.appendChild(element);
+}
+
+function paper_del2() {
+    var element = document.getElementById("paperInfoTablePartMultipleNotFirstAuthor"+paperInfoFormCount);
+
+    var children = element.getElementsByClassName("baseStructTable");
+    var lc = children[children.length - 1];
+    element.removeChild(lc);
+}
+
+
+function creatPaper() {
+    var div = document.getElementById("paperInfoDiv");
+    var form = div.firstChild.cloneNode(true);
+    paperInfoFormCount++;
+    form.id = "paperInfoForm" + paperInfoFormCount;
+    var children = form.childNodes;
+
+    for (var i = 0; i < children.length; i++) {
+        renameDiv(children[i]);
+    }
+    function renameDiv(child) {
+        if (child.id != "") {
+          //谷歌不识别这句话  child.id = child.id.slice(0, -1);
+            child.id = child.id + paperInfoFormCount;
+        }
+        var children = child.childNodes;
+        for (var i = 0; i < children.length; i++) {
+            renameDiv(children[i]);
+        }
+    }
+
+    div.appendChild(form);
+}
+
