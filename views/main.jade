@@ -345,14 +345,17 @@ block content
         span(id = "cpt_header_text" class = "pI_title") 待提交
       form(id = "cptInfoForm" class = "baseStructForm" style="display:none")
         table(id = "cptInfoTable" class = "baseStructTable")
+          //姓名
           tr
             td 姓名：
             td
               input(type = "text" id = "cptInfo_personName")
+          //学号
           tr
             td 学号：
             td
               input(type = "text" id = "cptInfo_personID")
+          //竞赛级别
           tr
             td 竞赛级别：
             td
@@ -360,6 +363,7 @@ block content
                 option(value="national") 国家级
                 option(value="provincial") 省市级
                 option(value="school") 校级
+          //竞赛名称
           tr
             td 竞赛名称：
             td
@@ -376,18 +380,22 @@ block content
                 option(value="北京大学生模拟法庭竞赛") 北京大学生模拟法庭竞赛
                 option(value="中国政法大学创新论坛") 中国政法大学创新论坛
                 option(value="其他") 其他
+          //竞赛名称补充
           tr
             td
             td
               input(type="text" id="cptInfo_name_other" style="display:none" placeholder="填写具体比赛名称")
+          //获奖时间
           tr
             td 获奖时间：
             td
               input(type = "month" id ="cpt_time")
+          //获奖等级
           tr
             td 获奖等级：
             td
               input(type = "text" id ="cpt_grade")
+          //竞赛形式
           tr
             td 竞赛形式：
             td
@@ -395,6 +403,7 @@ block content
               input(type = "radio" id = "cpt_form0" value = "cpt_single" name = "cpt_form" onclick="document.getElementById('cptInfoTableGroup').style.display ='none';")
               span 团体：
               input(type = "radio" id = "cpt_form1" value = "cpt_multiple" name = "cpt_form" onclick="document.getElementById('cptInfoTableGroup').style.display ='';")
+          //是否为组长
           tr(id = "cptInfoTableGroup"  style="display:none")
             td 是否为组长:
             td
@@ -402,16 +411,19 @@ block content
               input(type="radio" id="cpt_leader_yes" name="cpt_leader"  value="cpt_single" onclick="display_cpt1()")
               span 否
               input(type="radio" id="cpt_leader_no" name="cpt_leader"  value="cpt_multiple" onclick="display_cpt2()")
+          //组员构成（组长）
           tr(id = "cptInfoTableLeader" class = "cptInfoTableLM" style="display:none")
             td
               span 组长：
             td
               input(type="text" id="cpt_leader")
+          //组员构成（普通组员）
           tr(id = "cptInfoTableMember" class = "cptInfoTableLM" style="display:none")
             td
               span 其他组员：
             td
               input(type="text" id="cpt_member1")
+
           tr(id = "cptInfoTableButton" class = "cptInfoTableLM" style="display:none")
             td
             td
@@ -420,7 +432,7 @@ block content
         input(type = "submit" id = "cptInfo_submit" value = "保存")
         input(type = "button" id = "cptInfo_reset" value = '重置')
       input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatCpt()")
-
+    //创新创业信息框
     div(id = "CXCYInfoDiv" class = "baseStruct")
       div(id = "CXCYAlreadySubmit")
         div(id = "CXCYAS_header")
@@ -500,6 +512,7 @@ block content
         input(type = "submit" id = "CXCYInfo_submit" value = "保存")
         input(type = "button" id = "CXCYInfo_reset" value = '重置')
       input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatCXCY()")
+    //科研项目信息框
     div(id = "KYXMInfoDiv" class = "baseStruct")
       div(id = "KYXMAlreadySubmit")
         div(id = "KYXMAS_header")
@@ -541,6 +554,7 @@ block content
         input(type = "submit" id = "KYXMInfo_submit" value = "保存")
         input(type = "button" id = "KYXMInfo_reset" value = '重置')
       input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatKYXM()")
+    //论文信息框
     div(id = "paperInfoDiv" class = "baseStruct")
       div(id = "paperAlreadySubmit")
         div(id = "pAS_header")
