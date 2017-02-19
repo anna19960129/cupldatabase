@@ -20,6 +20,7 @@ block content
     input(id = "menuKYXM" type = "button" value = "科研项目" class = "button  button-border button-rounded button-inverse menuBtn" )
     input(id = "menuLWQK" type = "button" value = "论文情况" class = "button  button-border button-rounded button-inverse menuBtn" )
   div(id = "mainDiv")
+    //简介信息框
     div(id = "introDiv" class = "baseStruct")
       p 教育部于 2011 年 10 月发布了《关于普通高等学校本科教学评估工作的意见》,
       p 于 2013 年 12 月发布了《关于开展普通高等学校本科教学工作审核评估的通知》，
@@ -42,6 +43,7 @@ block content
       p 收集整理院内学生获奖、参与 科研情况等资料，收集整理工作进行的十分低效。若是
       p 有院级的数据管理系统，不仅可将数 据收集整理工作高效完成，专业评估工作中格式
       p 不统一的问题也将得到有效解决。
+    //基本信息框
     div(id = "basicInfoDiv" class = "baseStruct")
       form(id = "basicInfoForm" class = "baseStructForm")
         table(id = "basicInfoTable1" class = "baseStructTable")
@@ -334,6 +336,7 @@ block content
             td
               input(type = "submit" id = "cptInfo_submit" value = "保存")
               input(type = "button" id = "cptInfo_reset" value = '重置')
+    //竞赛信息框
     div(id = "cptInfoDiv" class = "baseStruct")
       div(id = "cptAlreadySubmit")
         div(id = "cptAS_header")
@@ -556,14 +559,17 @@ block content
       input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatKYXM()")
     //论文信息框
     div(id = "paperInfoDiv" class = "baseStruct")
+      //已提交论文
       div(id = "paperAlreadySubmit")
         div(id = "pAS_header")
           span(id = "pAS_header_text" class = "pI_title") 已提交
         div(id = "pAS_intro")
           span 当前已提交论文数量为：0
         table
+      //待提交论文
       div(id = "paperSubmitting")
         span(id = "pAS_header_text" class = "pI_title") 待提交
+      //待提交表单
       form(id = "paperInfoForm" class = "baseStructForm" style="display:none")
         table(id = "paperInfoTable" class = "baseStructTable")
           tr
@@ -574,52 +580,52 @@ block content
             td 著作信息：
             td
               span 独著：
-              input(type = "radio" id = "paperInfo_authors0" value = "single" name = "paperInfo_authors" onclick="display_paper1()" )
+              input(type = "radio" id = "paperInfo_authors0" value = "single" name = "paperInfo_authorType" onclick="display_paper1()" )
               span 合著：
-              input(type = "radio" id = "paperInfo_authors1" value = "multiple" name = "paperInfo_authors" onclick="display_paper2()" )
+              input(type = "radio" id = "paperInfo_authors1" value = "multiple" name = "paperInfo_authorType" onclick="display_paper2()" )
           tr(id = "paperInfo_tr_singleA" style="display:none")
             td
               span 作者名称：
             td
-              input(type="text" id = "paperInfo_author" )
+              input(type="text" id = "paperInfo_authorSingle" )
           tr(id = "paperInfo_tr_firstA" style="display:none")
             td
               span 第一作者：
             td
               span &nbsp&nbsp&nbsp&nbsp是：
-              input(type="radio" id="paperInfo_firstAuthor1" name="paper_authors"  value="第一作者" onclick="display_paper3()")
+              input(type="radio" id="paperInfo_isFirstAuthor1" name="paperInfo_isFirstAuthor"  value="true" onclick="display_paper3()")
               span &nbsp&nbsp&nbsp&nbsp否：
-              input(type="radio" id="paperInfo_firsAuthors2" name="paper_authors"  value="非第一作者" onclick="display_paper4()")
+              input(type="radio" id="paperInfo_isFirsAuthors2" name="paperInfo_isFirstAuthor"  value="false" onclick="display_paper4()")
           //第一作者
           tr(style = "display:none" class = "multiAuthorInput" id="paperInfoFirstAuthor")
             td
               span 第一作者：
             td
-              input(type="text" id = "paperInfo_author" name = "firstAuthor")
+              input(type="text" id = "paperInfo_firstAuthor" name = "firstAuthor")
           //合作者1
           tr(style = "display:none" class = "multiAuthorInput")
             td
               span 合作者 1：
             td
-              input(type="text" id = "paperInfo_author" name = "coAuthor1")
+              input(type="text" id = "paperInfo_coAuthor1" name = "coAuthor1")
           //合作者2
           tr(style = "display:none" class = "multiAuthorInput")
             td
               span 合作者 2：
             td
-              input(type="text" id = "paperInfo_author" name = "coAuthor2")
+              input(type="text" id = "paperInfo_coAuthor2" name = "coAuthor2")
           //合作者3
           tr(style = "display:none" class = "multiAuthorInput")
             td
               span 合作者 3：
             td
-              input(type="text" id = "paperInfo_author" name = "coAuthor3")
+              input(type="text" id = "paperInfo_coAuthor3" name = "coAuthor3")
           //合作者4
           tr(style = "display:none" class = "multiAuthorInput")
             td
               span 合作者 4：
             td
-              input(type="text" id = "paperInfo_author" name = "coAuthor4")
+              input(type="text" id = "paperInfo_coAuthor4" name = "coAuthor4")
           //指导老师
           tr
             td 指导老师：
@@ -634,7 +640,7 @@ block content
             td
               input(type = "month" id ="paperInfo_time")
 
-        input(type = "submit" id = "paperInfo_submit" value="保存")
+        input(type = "button" id = "paperInfo_submit" value="保存" onclick = "paperSubmit()")
         input(type = "button" id = "paperInfo_reset" value="重置")
       input(type = "button" id ="paperInfo_creat" value="新增" onclick="createPaper()")
 

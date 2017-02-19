@@ -32,7 +32,8 @@ function bI_PD_show(){
     }
 }
 
-
+//ATTENTION!!
+//函数命名法（驼峰命名法，和下划线命名法）
 function enroltime() {
     var bI_enrol = document.getElementById("bI_enrol").value;
     var date1 = bI_enrol.slice(0, 4);
@@ -64,24 +65,8 @@ function graduatetime(){
     }
 }
 
-
-
-
 var KYXMInfoFormCount = 0;
 function createKYXM(){
-    //var a=document.createElement("form");
-    //var b=document.getElementById("KYXMInfoForm");
-    //var c= b.firstChild.cloneNode(true);
-    //KYXMInfoFormCount++;
-    //a.id="KYXMInfoForm"+KYXMInfoFormCount;
-    //c.id= c.id+KYXMInfoFormCount;
-    //if(c.childNodes.childNodes.id!==null){
-    //    c.childNodes.childNodes.id=c.childNodes.childNodes.id+KYXMInfoFormCount;
-    //}
-    //a.appendChild(c);
-    //b.appendChild(a);
-
-    //变量的名字易读最好
     var form=document.createElement("form");
     var oriForm=document.getElementById("KYXMInfoForm");
     var table = oriForm.firstChild.cloneNode(true);
@@ -111,7 +96,6 @@ function createKYXM(){
      * 这里有个小问题需要注意：
      * 不要添加多个表单{form},你只需要添加{table}就好了，就是说
      */
-    //form.appendChild(table);
     oriForm.appendChild(table);
 
 }
@@ -214,3 +198,79 @@ function createPaper() {
     element.style.display = "";
 }
 
+//提交论文
+function paperSubmit(){
+    var paperInfo = {};
+    //获取数据==========================================================================================================
+    //论文名称
+    var paperName = document.getElementById("paperInfo_name").value;
+    //作者类型：{single/multiple}
+    var authorType = $("input[name='paperInfo_authorType']:checked").val();
+    //独著作者
+    var authorSingle = document.getElementById("paperInfo_authorSingle").value;
+    //是否为第一作者:{true/false}
+    var isFirstAuthor = $("input[name='paperInfo_isFirstAuthor']:checked").val();
+    //第一作者
+    var firstAuthor = document.getElementById("paperInfo_firstAuthor").value;
+    //合作者1
+    var coAuthor1 = document.getElementById("paperInfo_coAuthor1").value;
+    //合作者2
+    var coAuthor2 = document.getElementById("paperInfo_coAuthor2").value;
+    //合作者3
+    var coAuthor3 = document.getElementById("paperInfo_coAuthor3").value;
+    //合作者4
+    var coAuthor4 = document.getElementById("paperInfo_coAuthor4").value;
+    //生成合作者列表
+    var coAuthorList = [];
+    if(coAuthor1 != ""){coAuthorList.push(coAuthor1)};
+    if(coAuthor2 != ""){coAuthorList.push(coAuthor2)};
+    if(coAuthor3 != ""){coAuthorList.push(coAuthor3)};
+    if(coAuthor4 != ""){coAuthorList.push(coAuthor4)};
+    //教师姓名
+    var teacherName = document.getElementById("paperInfo_teacherName").value;
+    //期刊名称
+    var magazineName = document.getElementById("paperInfo_magName").value;
+    //发表时间
+    var publishTime = document.getElementById("paperInfo_time").value;
+    //数据检查==========================================================================================================
+    //先检查必填的内容
+    if(paperName == "" || teacherName ==""||magazineName == ""||publishTime == ""){
+        alert("信息不完善，请补全!");
+    }
+    //再根据填写的内容进行检查
+    if(authorType == "single"){
+        if(authorSingle == ""){
+            alert("信息不完善，请补全!");
+        }
+    }else{
+        if(firstAuthor == ""||coAuthorList.length == 0){
+            alert("信息不完善，请补全!");
+        }
+    }
+    //生成数据==========================================================================================================
+    paperInfo.paperName = paperName;
+    paperInfo.authorType = authorType;
+    if(paperInfo.authorType == "single"){
+        paperInfo.authorSingle = authorSingle;
+    }else{
+        paperInfo.isFirstAuthor = isFirstAuthor;
+        paperInfo.firstAuthor = firstAuthor;
+        paperInfo.coAuthorList = coAuthorList;
+    }
+    paperInfo.teacherName = teacherName;
+    paperInfo.magazineName = magazineName;
+    paperInfo.publishTime = publishTime;
+    //提交数据==========================================================================================================
+    $.ajax({
+        url:"/ajax/paperInfoSubmit",
+        type:"POST",
+        dataType:"json",
+        data:{paperInfo:paperInfo},
+        success:function(data){
+            console.log(data);
+        },
+        error:function(data){
+            console.log(data);
+        }
+    });
+}

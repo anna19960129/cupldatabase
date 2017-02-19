@@ -19,7 +19,6 @@ app.get("/index",login.get);
 app.get("/login",login.get);
 app.get("/logout",logout.get);
 app.get("/ajax/logout",logout.ajaxGet);
-//app.get("",login.mainPort);
 app.get("/main",main.get);
 
 app.post("/login",login.post);
