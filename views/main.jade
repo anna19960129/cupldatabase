@@ -406,15 +406,15 @@ block content
             td 是否为组长:
             td
               span 是
-              input(type="radio" id="cpt_leader_yes" name="cpt_leader"  value="cpt_single" onclick="display_cpt1()")
+              input(type="radio" id="cpt_leader_yes" name="cpt_leader"  value="leader" onclick="display_cpt1()")
               span 否
-              input(type="radio" id="cpt_leader_no" name="cpt_leader"  value="cpt_multiple" onclick="display_cpt2()")
+              input(type="radio" id="cpt_leader_no" name="cpt_leader"  value="member" onclick="display_cpt2()")
           //组员构成（组长）
           tr(id = "cptInfoTableLeader" class = "cptInfoTableLM" style="display:none")
             td
               span 组长：
             td
-              input(type="text" id="cpt_leader")
+              input(type="text" id="cpt_leader_name")
           //组员构成（普通组员）
           tr(id = "cptInfoTableMember" class = "cptInfoTableLM" style="display:none")
             td
@@ -427,7 +427,7 @@ block content
             td
               input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add()")
               input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del()")
-        input(type = "submit" id = "cptInfo_submit" value = "保存")
+        input(type = "submit" id = "cptInfo_submit" value = "保存" onclick="cptSubmit()")
         input(type = "button" id = "cptInfo_reset" value = '重置')
       input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatCpt()")
     //创新创业信息框

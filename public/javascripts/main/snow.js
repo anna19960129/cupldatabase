@@ -73,57 +73,92 @@ function cptSubmit(){
     var cptInfo = {};
     //获取数据==========================================================================================================
     //姓名学号
-    var cptpersonName = document.getElementById("cptInfo_personName").value;
-    var cptpersonID = document.getElementById("cptInfo_personID").value;
+    var personName = document.getElementById("cptInfo_personName").value;
+    var personID = document.getElementById("cptInfo_personID").value;
     //竞赛级别
-    var cptlevel = document.getElementById("cptInfo_level").value;
+    var level = document.getElementById("cptInfo_level").value;
     //竞赛名称
     var cptName = document.getElementById("cptInfo_name").value;
     //获奖时间
-    var cpttime = document.getElementById("cpt_time").value;
+    var time = document.getElementById("cpt_time").value;
     //获奖等级
-    var cptgrade = document.getElementById("cpt_grade").value;
+    var grade = document.getElementById("cpt_grade").value;
     //竞赛形式(cpt_single/cpt_multiple)
-    var cptform = $("input[name='cpt_form']:checked").val();
-    //个人
-    var cptSingle = document.getElementById("cptSingle").value;
-
-
-
+    var form = $("input[name='cpt_form']:checked").val();
+    //是否为组长(leader/member)
+    var leader = $("input[name='cpt_leader']:checked").val();
+    //组长
+    var leader_name = document.getElementById("cpt_leader_name").value;
+    //组员1
+    var member1 = document.getElementById("cpt_member1").value;
+    //组员2
+    var member2 = document.getElementById("cpt_member2").value;
+    //组员3
+    var member3 = document.getElementById("cpt_member3").value;
+    //组员4
+    var member4 = document.getElementById("cpt_member4").value;
+    //组员5
+    var member5 = document.getElementById("cpt_member5").value;
+    //组员6
+    var member6 = document.getElementById("cpt_member6").value;
+    //组员7
+    var member7 = document.getElementById("cpt_member7").value;
+    //组员8
+    var member8 = document.getElementById("cpt_member8").value;
+    //组员9
+    var member9 = document.getElementById("cpt_member9").value;
+    //生成合作者列表
+    var memberList = [];
+    if(member1 != ""){memberList.push(member1)};
+    if(member2 != ""){memberList.push(member2)};
+    if(member3 != ""){memberList.push(member3)};
+    if(member4 != ""){memberList.push(member4)};
+    if(member5 != ""){memberList.push(member5)};
+    if(member6 != ""){memberList.push(member6)};
+    if(member7 != ""){memberList.push(member7)};
+    if(member8 != ""){memberList.push(member8)};
+    if(member9 != ""){memberList.push(member9)};
     //数据检查==========================================================================================================
     //先检查必填的内容
-    if(cptpersonName == "" || cptpersonID ==""||cptlevel == ""||cptName == ""|| cpttime == ""|| cptgrade == ""){
+    if(personName == "" || personID ==""||level == ""||cptName == ""|| time == ""|| grade == ""||form== ""){
         alert("信息不完善，请补全!");
     }
     //再根据填写的内容进行检查
-    if(cptform == "cpt_single"){
-        if(authorSingle == ""){
+    if(leader == "leader"){
+        if(memberList.length == 0){
             alert("信息不完善，请补全!");
         }
     }else{
-        if(firstAuthor == ""||coAuthorList.length == 0){
+        if(leader_name == ""||memberList.length == 0){
             alert("信息不完善，请补全!");
         }
     }
     //生成数据==========================================================================================================
-    paperInfo.cptpersonName = cptpersonName;
-    paperInfo.cptpersonID = cptpersonID;
-    paperInfo.cptlevel = cptlevel;
-    paperInfo.cptName= cptName;
-    paperInfo.cpttime = cpttime;
-    paperInfo. cptgrade=  cptgrade;
-
-
-    if(cptInfo.cptform == "cpt_single"){
-
+    cptInfo.personName = personName;
+    cptInfo.personID = personID;
+    cptInfo.level = level;
+    cptInfo.cptName= cptName;
+    cptInfo.time = time;
+    cptInfo.grade=  grade;
+    cptInfo.form=  form;
+    if (cptInfo.leader == "leader") {
+        cptInfo.leader_name = personName;
+        cptInfo.leader = leader;
+        cptInfo.memberList = memberList;
+    } else {
+        cptInfo.leader = leader;
+        cptInfo.leader_name = leader_name;
+        cptInfo.memberList = memberList;
     }
+
+
 
     //提交数据==========================================================================================================
     $.ajax({
         url:"/ajax/cptInfoSubmit",
         type:"POST",
         dataType:"json",
-        data:{paperInfo:cptInfo},
+        data:{cptInfo:cptInfo},
         success:function(data){
             console.log(data);
         },

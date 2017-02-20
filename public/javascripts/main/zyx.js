@@ -64,7 +64,7 @@ function CXCYSubmit() {
     var studentID = document.getElementById("CXCYInfo_personID").value;
     //指导教师
     var teacherName = document.getElementById("CXCYInfo_teacher").value;
-    //职务:{leader/member}
+    //职务:{teamLeader/teammate}
     var duty = $("input[name='CXCYInfo_position']:checked").val();
     //组长
     var Leader = document.getElementById("cxcy_leader").value;
@@ -101,12 +101,12 @@ function CXCYSubmit() {
         alert("信息不完善，请补全!");
     }
     //再根据填写的内容进行检查
-    if (duty == "teammate") {
-        if (Leader == "") {
+    if (duty == "teamLeader") {
+        if (MemberList.length == 0) {
             alert("信息不完善，请补全!");
         }
     } else {
-        if (MemberList.length == 0) {
+        if (Leader == ""||MemberList.length == 0) {
             alert("信息不完善，请补全!");
         }
     }
