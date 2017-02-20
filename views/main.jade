@@ -458,7 +458,7 @@ block content
           tr
             td 项目级别：
             td
-              select(id = "CXCYInfo_time")
+              select(id = "CXCYInfo_level")
                 option(value="国家级") 国家级
                 option(value="北京市级") 北京市级
                 option(value="校级") 校级
@@ -512,9 +512,9 @@ block content
               span 组员4:
             td
               input(id="cxcy_member4"  name="member" type="text" placeholder="填写其他组员姓名")
-        input(type = "submit" id = "CXCYInfo_submit" value = "保存")
+        input(type = "submit" id = "CXCYInfo_submit" value = "保存" onclick="CXCYsubmit")
         input(type = "button" id = "CXCYInfo_reset" value = '重置')
-      input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatCXCY()")
+      input(type = "button" id ="KYXMInfo_create" value="新增" onclick="creatCXCY()")
     //科研项目信息框
     div(id = "KYXMInfoDiv" class = "baseStruct")
       div(id = "KYXMAlreadySubmit")

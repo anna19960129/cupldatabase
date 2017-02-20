@@ -40,7 +40,102 @@ function cxcy_del() {
     var lc = children[children.length - 1];
     element.removeChild(lc);
 }
-function creatCXCY() {
+//创建paper不需要新增节点（永远只有一篇在编辑区）
+function createCXCY() {
     var element = document.getElementById("CXCYInfoForm");
     element.style.display = "";
+}
+
+//提交
+function CXCYSubmit() {
+    var CXCYInfo = {};
+    //获取数据==========================================================================================================
+    //创新创业项目名称
+    var projectName = document.getElementById("CXCYInfo_projectName").value;
+    //立项年份
+    var projectTime = document.getElementById("CXCYInfo_time").value;
+    //项目级别：{national/municipal/school}
+    var projectLevel = $("input[name='CXCYInfo_level']:checked").val();
+    //项目类别：{innovate/entrepreneurship}
+    var projectSort = $("input[name='CXCYInfo_sort']:checked").val();
+    //姓名
+    var studentName = document.getElementById("CXCYInfo_personName").value;
+    //学号
+    var studentID = document.getElementById("CXCYInfo_personID").value;
+    //指导教师
+    var teacherName = document.getElementById("CXCYInfo_teacher").value;
+    //职务:{leader/member}
+    var duty = $("input[name='CXCYInfoTableLeader']:checked").val();
+    //组长
+    var Leader = document.getElementById("cxcy_leader").value;
+    //组员1
+    var Member1 = document.getElementById("cxcy_member1").value;
+    //组员2
+    var Member2 = document.getElementById("cxcy_member2").value;
+    //组员3
+    var Member3 = document.getElementById("cxcy_member3").value;
+    //组员4
+    var Member4 = document.getElementById("cxcy_member4").value;
+    //生成组员列表
+    var MemberList = [];
+    if (Member1 != "") {
+        MemberList.push(Member1)
+    }
+    ;
+    if (Member2 != "") {
+        MemberList.push(Member2)
+    }
+    ;
+    if (Member3 != "") {
+        MemberList.push(Member3)
+    }
+    ;
+    if (Member4 != "") {
+        MemberList.push(Member4)
+    }
+    ;
+
+    //数据检查==========================================================================================================
+    //先检查必填的内容
+    if (projectName == "" || studentName == "" || studentID == "" || teacherName == "" || projectLevel == "" || projectsort == "" || projectTime == "") {
+        alert("信息不完善，请补全!");
+    }
+    //再根据填写的内容进行检查
+    if (duty == "teammate") {
+        if (Leader == "") {
+            alert("信息不完善，请补全!");
+        }
+    } else {
+        if (MemberList.length == 0) {
+            alert("信息不完善，请补全!");
+        }
+    }
+    //生成数据==========================================================================================================
+    CXCYInfo.projectName = projectName;
+    CXCYInfo.projectLevel = projectLevel;
+    CXCYInfo.projectSort = projectSort;
+    if (CXCYInfo.duty == "teamLeader") {
+        CXCYInfo.Leader = studentName;
+    } else {
+        CXCYInfo.duty = duty;
+        CXCYInfo.Leader = Leader;
+        CXCYInfo.MemberList = MemberList;
+    }
+    CXCYInfo.teacherName = teacherName;
+    CXCYInfo.studentName = studentName;
+    CXCYInfo.studentID = studentID;
+    CXCYInfo.projectTime = projectTime;
+    //提交数据==========================================================================================================
+    $.ajax({
+        url: "/ajax/CXCYInfoSubmit",
+        type: "POST",
+        dataType: "json",
+        data: {CXCYInfo: CXCYInfo},
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
 }
