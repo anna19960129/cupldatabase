@@ -45,7 +45,7 @@ block content
       p 不统一的问题也将得到有效解决。
     //基本信息框
     div(id = "basicInfoDiv" class = "baseStruct")
-      form(id = "basicInfoForm" class = "baseStructForm")
+      form(id = "basicInfoForm" class = "baseStructForm" method="post")
         table(id = "basicInfoTable1" class = "baseStructTable")
           tr
             td 姓名：
@@ -199,7 +199,7 @@ block content
           tr
             td 辅修专业：
             td
-              select(id="bI_minor")
+              select(id="bI_minor_program")
                 option(value="法学专业") 法学专业
                 option(value="政治学与行政学专业") 政治学与行政学专业
                 option(value="国际政治专业") 国际政治专业
@@ -225,7 +225,7 @@ block content
           tr
             td 微信号：
             td
-              input(type = "text" id ="wechat")
+              input(type = "text" id ="weChat")
           tr
             td 邮箱：
             td
@@ -242,11 +242,11 @@ block content
           tr
             td 毕业论文分数：
             td
-              input(type = "text" id ="bI_finalpaper")
+              input(type = "text" id ="bI_finalPaper")
           tr
             td 毕业去向：
             td
-              select(id="bI_aftergraduate")
+              select(id="bI_afterGraduate")
                 option(value="出国读研") 出国读研
                 option(value="国内读研") 国内读研
                 option(value="直接就业") 直接就业
@@ -325,18 +325,13 @@ block content
           tr
             td 技术职务：
             td
-              input(type = "text" id ="bI_tech-position")
+              input(type = "text" id ="bI_tech_position")
           tr
             td 行政职务：
             td
               input(type = "text" id ="bI_administrative_function")
-        table(id = "basicInfoTable3" class = "baseStructTable")
-          tr
-            td
-            td
-              input(type = "submit" id = "cptInfo_submit" value = "保存")
-              input(type = "button" id = "cptInfo_reset" value = '重置')
-    //竞赛信息框
+        input(type = "submit" id = "bIInfo_submit" value = "保存" onclick = "bISubmit()")
+        input(type = "button" id = "bIInfo_reset" value = '重置')
     div(id = "cptInfoDiv" class = "baseStruct")
       div(id = "cptAlreadySubmit")
         div(id = "cptAS_header")
