@@ -367,8 +367,8 @@ function bISubmit(){
 }
 
 //提交论文
-function BISubmit(){
-    var BIInfo = {};
+function paperSubmit(){
+    var paperInfo = {};
     //获取数据==========================================================================================================
     //论文名称
     var paperName = document.getElementById("paperInfo_name").value;
