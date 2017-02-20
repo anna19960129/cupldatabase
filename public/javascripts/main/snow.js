@@ -66,3 +66,69 @@ function creatCpt(){
     var element = document.getElementById("cptInfoForm");
     element.style.display = "";
 }
+
+
+//提交竞赛
+function cptSubmit(){
+    var cptInfo = {};
+    //获取数据==========================================================================================================
+    //姓名学号
+    var cptpersonName = document.getElementById("cptInfo_personName").value;
+    var cptpersonID = document.getElementById("cptInfo_personID").value;
+    //竞赛级别
+    var cptlevel = document.getElementById("cptInfo_level").value;
+    //竞赛名称
+    var cptName = document.getElementById("cptInfo_name").value;
+    //获奖时间
+    var cpttime = document.getElementById("cpt_time").value;
+    //获奖等级
+    var cptgrade = document.getElementById("cpt_grade").value;
+    //竞赛形式(cpt_single/cpt_multiple)
+    var cptform = $("input[name='cpt_form']:checked").val();
+    //个人
+    var cptSingle = document.getElementById("cptSingle").value;
+
+
+
+    //数据检查==========================================================================================================
+    //先检查必填的内容
+    if(cptpersonName == "" || cptpersonID ==""||cptlevel == ""||cptName == ""|| cpttime == ""|| cptgrade == ""){
+        alert("信息不完善，请补全!");
+    }
+    //再根据填写的内容进行检查
+    if(cptform == "cpt_single"){
+        if(authorSingle == ""){
+            alert("信息不完善，请补全!");
+        }
+    }else{
+        if(firstAuthor == ""||coAuthorList.length == 0){
+            alert("信息不完善，请补全!");
+        }
+    }
+    //生成数据==========================================================================================================
+    paperInfo.cptpersonName = cptpersonName;
+    paperInfo.cptpersonID = cptpersonID;
+    paperInfo.cptlevel = cptlevel;
+    paperInfo.cptName= cptName;
+    paperInfo.cpttime = cpttime;
+    paperInfo. cptgrade=  cptgrade;
+
+
+    if(cptInfo.cptform == "cpt_single"){
+
+    }
+
+    //提交数据==========================================================================================================
+    $.ajax({
+        url:"/ajax/cptInfoSubmit",
+        type:"POST",
+        dataType:"json",
+        data:{paperInfo:cptInfo},
+        success:function(data){
+            console.log(data);
+        },
+        error:function(data){
+            console.log(data);
+        }
+    });
+}
