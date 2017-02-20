@@ -45,7 +45,7 @@ function createCXCY() {
     var element = document.getElementById("CXCYInfoForm");
     element.style.display = "";
 }
-
+document.getElementById("CXCYInfo_sort").value;
 //提交
 function CXCYSubmit() {
     var CXCYInfo = {};
@@ -55,9 +55,9 @@ function CXCYSubmit() {
     //立项年份
     var projectTime = document.getElementById("CXCYInfo_time").value;
     //项目级别：{national/municipal/school}
-    var projectLevel = $("input[name='CXCYInfo_level']:checked").val();
+    var projectLevel = document.getElementById("CXCYInfo_level").value;
     //项目类别：{innovate/entrepreneurship}
-    var projectSort = $("input[name='CXCYInfo_sort']:checked").val();
+    var projectSort = document.getElementById("CXCYInfo_sort").value;
     //姓名
     var studentName = document.getElementById("CXCYInfo_personName").value;
     //学号
@@ -65,7 +65,7 @@ function CXCYSubmit() {
     //指导教师
     var teacherName = document.getElementById("CXCYInfo_teacher").value;
     //职务:{leader/member}
-    var duty = $("input[name='CXCYInfoTableLeader']:checked").val();
+    var duty = $("input[name='CXCYInfo_position']:checked").val();
     //组长
     var Leader = document.getElementById("cxcy_leader").value;
     //组员1
@@ -97,7 +97,7 @@ function CXCYSubmit() {
 
     //数据检查==========================================================================================================
     //先检查必填的内容
-    if (projectName == "" || studentName == "" || studentID == "" || teacherName == "" || projectLevel == "" || projectsort == "" || projectTime == "") {
+    if (projectName == "" || studentName == "" || studentID == "" || teacherName == "" || projectLevel == "" || projectSort == "" || projectTime == "") {
         alert("信息不完善，请补全!");
     }
     //再根据填写的内容进行检查
@@ -116,6 +116,8 @@ function CXCYSubmit() {
     CXCYInfo.projectSort = projectSort;
     if (CXCYInfo.duty == "teamLeader") {
         CXCYInfo.Leader = studentName;
+        CXCYInfo.duty = duty;
+        CXCYInfo.MemberList = MemberList;
     } else {
         CXCYInfo.duty = duty;
         CXCYInfo.Leader = Leader;
