@@ -106,12 +106,12 @@ function cptSubmit(){
         }
     }
     //生成数据==========================================================================================================
-    paperInfo.cptpersonName = cptpersonName;
-    paperInfo.cptpersonID = cptpersonID;
-    paperInfo.cptlevel = cptlevel;
-    paperInfo.cptName= cptName;
-    paperInfo.cpttime = cpttime;
-    paperInfo. cptgrade=  cptgrade;
+    cptInfo.cptpersonName = cptpersonName;
+    cptInfo.cptpersonID = cptpersonID;
+    cptInfo.cptlevel = cptlevel;
+    cptInfo.cptName= cptName;
+    cptInfo.cpttime = cpttime;
+    cptInfo. cptgrade=  cptgrade;
 
 
     if(cptInfo.cptform == "cpt_single"){
