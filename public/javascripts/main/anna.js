@@ -65,8 +65,24 @@ function graduatetime(){
     }
 }
 
+
+
+
 var KYXMInfoFormCount = 0;
 function createKYXM(){
+    //var a=document.createElement("form");
+    //var b=document.getElementById("KYXMInfoForm");
+    //var c= b.firstChild.cloneNode(true);
+    //KYXMInfoFormCount++;
+    //a.id="KYXMInfoForm"+KYXMInfoFormCount;
+    //c.id= c.id+KYXMInfoFormCount;
+    //if(c.childNodes.childNodes.id!==null){
+    //    c.childNodes.childNodes.id=c.childNodes.childNodes.id+KYXMInfoFormCount;
+    //}
+    //a.appendChild(c);
+    //b.appendChild(a);
+
+    //变量的名字易读最好
     var form=document.createElement("form");
     var oriForm=document.getElementById("KYXMInfoForm");
     var table = oriForm.firstChild.cloneNode(true);
@@ -96,6 +112,7 @@ function createKYXM(){
      * 这里有个小问题需要注意：
      * 不要添加多个表单{form},你只需要添加{table}就好了，就是说
      */
+    //form.appendChild(table);
     oriForm.appendChild(table);
 
 }
@@ -128,7 +145,7 @@ function display_paper3() {
     for(var i = 0;i<multiAuthors.length;i++){
         var author_i = multiAuthors[i];
         author_i.style.display = "";
-        document.getElementById("paperInfoFirstAuthor").style.display = "none";
+
     }
 }
 //显示作者列表（填充第一作者）
@@ -198,9 +215,160 @@ function createPaper() {
     element.style.display = "";
 }
 
+
+
+//提交基本信息
+function bISubmit(){
+    var bIInfo = {};
+    //获取数据==========================================================================================================
+    //姓名
+    var Name = document.getElementById("bIName").value;
+    var ID= document.getElementById("bIId").value;
+    //性别：{male/female}
+    var gender = $("input[name='gender']:checked").val();
+    //出生年月
+    var birthday = document.getElementById("bI_birthday").value;
+    //高考省份
+    var province=document.getElementById("bI_province").value;
+    //高考类别:{文科/理科}
+    var gk_sort = $("input[name='gk_sort']:checked").val();
+    //高考数学成绩
+    var math = document.getElementById("bIgk_math").value;
+    //高考英语成绩
+    var english = document.getElementById("bIgk_english").value;
+    //入学时间
+    var enrol = document.getElementById("bI_enrol").value;
+    //入学专业
+    var enrol_major = document.getElementById("bI_enrol_major").value;
+    //转专业：{转专业/未转专业}
+    var change_major = $("input[name='change_major']:checked").val();
+    //现专业
+    var present_major= document.getElementById("bI_present_major").value;
+    //双专业：{double_major/single_major}
+    var double_major = $("input[name='double_major']:checked").val();
+    //第二专业
+    var second_major= document.getElementById("bI_second_major").value;
+    //辅修：{辅修/未辅修}
+    var minor = $("input[name='bI_minor']:checked").val();
+    //辅修专业
+    var minor_program= document.getElementById("bI_minor_program").value;
+    //手机号
+    var cellphone = document.getElementById("cellphone").value;
+    // 微信号
+    var weChat = document.getElementById("weChat").value;
+    //邮箱
+    var email = document.getElementById("email").value;
+    //毕业时间
+    var graduate = document.getElementById("bI_graduate").value;
+    //未按时毕业原因
+    var no_graduate_reason = document.getElementById("bIno_graduate_reason").value;
+    //毕业论文分数
+    var finalPaper = document.getElementById("bI_finalPaper").value;
+    //毕业去向
+    var afterGraduate = document.getElementById("bI_afterGraduate").value;
+    //研究生就读院校
+    var postgraduate = document.getElementById("bI_postgraduate").value;
+    //研究生就读专业
+    var postgraduate_major = document.getElementById("bI_postgraduate_major").value;
+    if(postgraduate_major=="其他"){postgraduate_major=document.getElementById("bI_postgraduate_other_major").value;}
+    //博士就读院校
+    var doctor = document.getElementById("bI_doctor").value;
+    //博士就读专业
+    var doctor_major = document.getElementById("bI_doctor_major").value;
+    if(doctor_major=="其他"){doctor_major=document.getElementById("bI_doctor_other_major").value;}
+    //博士后就读院校
+    var post_doctor = document.getElementById("bI_post_doctor").value;
+    //博士后就读专业
+    var post_doctor_major = document.getElementById("bI_post_doctor_major").value;
+    if(post_doctor_major=="其他"){post_doctor_major=document.getElementById("bI_post_doctor_other_major").value;}
+    //工作单位
+    var job = document.getElementById("bI_job").value;
+    //工作单位类型
+    var job_sort = document.getElementById("bI_job_sort").value;
+    //工作部门
+    var department = document.getElementById("bI_department").value;
+    //工作部门偏向
+    var department_sort = document.getElementById("bI_department_sort").value;
+    //技术职务
+    var tech_position = document.getElementById("bI_tech_position").value;
+    //行政职务
+    var administrative_function = document.getElementById("bI_administrative_function").value;
+
+    //数据检查==========================================================================================================
+    //先检查必填的内容
+    if(Name == "" || ID ==""||gender == ""||birthday == ""||province == ""||gk_sort == ""||enrol == ""||change_major == ""||enrol_major == ""||double_major == ""||minor == ""||cellphone == ""||email == ""){
+        alert("信息不完善，请补全!");
+    }
+    //再根据填写的内容进行检查
+    if(change_major == "转专业"){
+        if(present_major == ""){
+            alert("信息不完善，请补全!");
+        }
+    }
+    if(double_major == "double_major"){
+        if(second_major == ""){
+            alert("信息不完善，请补全!");
+        }
+    }
+    if(minor == "辅修"){
+        if(minor_program == ""){
+            alert("信息不完善，请补全!");
+        }
+    }
+    //生成数据==========================================================================================================
+    bIInfo.Name = Name;
+    bIInfo.ID = ID;
+    bIInfo.gender=gender;
+    bIInfo.birthday=birthday;
+    bIInfo.province=province;
+    bIInfo.gk_sort=gk_sort;
+    bIInfo.math=math;
+    bIInfo.english=english;
+    bIInfo.enrol=enrol;
+    bIInfo.enrol_major=enrol_major;
+    bIInfo.change_major=change_major;
+    bIInfo.present_major=present_major;
+    bIInfo.double_major=double_major;
+    bIInfo.second_major=second_major;
+    bIInfo.minor=minor;
+    bIInfo.minor_program=minor_program;
+    bIInfo.cellphone=cellphone;
+    bIInfo.weChat=weChat;
+    bIInfo.email=email;
+    bIInfo.graduate=graduate;
+    bIInfo.no_graduate_reason=no_graduate_reason;
+    bIInfo.finalPaper=finalPaper;
+    bIInfo.afterGraduate=afterGraduate;
+    bIInfo.postgraduate=postgraduate;
+    bIInfo.postgraduate_major=postgraduate_major;
+    bIInfo.doctor=doctor;
+    bIInfo.doctor_major=doctor_major;
+    bIInfo.post_doctor=post_doctor;
+    bIInfo.post_doctor_major=post_doctor_major;
+    bIInfo.job=job;
+    bIInfo.job_sort=job_sort;
+    bIInfo.department=department;
+    bIInfo.department_sort=department_sort;
+    bIInfo.tech_position=tech_position;
+    bIInfo.administrative_function=administrative_function;
+    //提交数据==========================================================================================================
+    $.ajax({
+        url:"/ajax/bIInfoSubmit",
+        type:"POST",
+        dataType:"json",
+        data:{bIInfo:bIInfo},
+        success:function(data){
+            console.log(data);
+        },
+        error:function(data){
+            console.log(data);
+        }
+    });
+}
+
 //提交论文
-function paperSubmit(){
-    var paperInfo = {};
+function BISubmit(){
+    var BIInfo = {};
     //获取数据==========================================================================================================
     //论文名称
     var paperName = document.getElementById("paperInfo_name").value;
