@@ -366,6 +366,50 @@ function bISubmit(){
     });
 }
 
+//提交科研项目
+function KYXMSubmit(){
+    var KYXMInfo = {};
+    //获取数据==========================================================================================================
+    //项目名称
+    var projectName = document.getElementById("KYXMInfo_projectName").value;
+    //立项时间
+    var time = document.getElementById("KYXMInfo_time").value;
+    //项目级别
+    var level = document.getElementById("KYXMInfo_level").value;
+    //姓名
+    var personName = document.getElementById("KYXMInfo_personName").value;
+    //学号
+    var personID = document.getElementById("KYXMInfo_personID").value;
+    //教师姓名
+    var teacher = document.getElementById("KYXMInfo_teacher").value;
+    //数据检查==========================================================================================================
+    //先检查必填的内容
+    if(projectName == "" || time ==""|| level ==""|| teacher ==""||personName == ""||personID == ""){
+        alert("信息不完善，请补全!");
+    }
+
+    //生成数据==========================================================================================================
+    paperInfo.projectName = projectName;
+    paperInfo.time = time;
+    paperInfo.level = level;
+    paperInfo.personName = personName;
+    paperInfo.personID = personID;
+    paperInfo.teacher = teacher;
+    //提交数据==========================================================================================================
+    $.ajax({
+        url:"/ajax/KYXMInfoSubmit",
+        type:"POST",
+        dataType:"json",
+        data:{KYXMInfo:KYXMInfo},
+        success:function(data){
+            console.log(data);
+        },
+        error:function(data){
+            console.log(data);
+        }
+    });
+}
+
 //提交论文
 function paperSubmit(){
     var paperInfo = {};

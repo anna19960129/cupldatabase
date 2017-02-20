@@ -533,7 +533,7 @@ block content
           tr
             td 项目级别：
             td
-              select(id = "KYXMInfo_time")
+              select(id = "KYXMInfo_level")
                 option(value="国家级") 国家级
                 option(value="北京市") 北京市
                 option(value="校级") 校级
@@ -549,7 +549,7 @@ block content
             td 指导教师：
             td
               input(type = "text" id = "KYXMInfo_teacher")
-        input(type = "submit" id = "KYXMInfo_submit" value = "保存")
+        input(type = "submit" id = "KYXMInfo_submit" value = "保存" onclick="KYXMSubmit()")
         input(type = "button" id = "KYXMInfo_reset" value = '重置')
       input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatKYXM()")
     //论文信息框
