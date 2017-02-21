@@ -1,6 +1,15 @@
 /**
  * Created by wgw on 2017/2/8.
  */
+
+
+////查询
+//connection.query('select * from `mytable`', function(err, rows, fields) {
+//    if (err) throw err;
+//    console.log('The solution is: ', rows);
+//});
+
+
 main = function(){
 
 }

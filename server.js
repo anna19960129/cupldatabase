@@ -9,14 +9,10 @@ var server = app.listen(app.get('port'), function() {
     debug('Express server listening on port ' + server.address().port);
 });
 
-app.use(function(req,res,next){
-    //console.log("haha");
-    next();
-})
-
 
 app.get("/index",login.get);
 app.get("/login",login.get);
+app.get("/reLogin",login.reLoginGet);
 app.get("/logout",logout.get);
 app.get("/ajax/logout",logout.ajaxGet);
 app.get("/main",main.get);

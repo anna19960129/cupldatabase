@@ -1,0 +1,17 @@
+
+准备工作：
+1.安装数据库并成功启动（在网上有教程）
+2.创建一个数据库（命名为：test)
+3.在数据库中创建一个表（命名为：login),有两个字段：name和password
+  ( 命令为： create table login(name varchar(20),password varchar(20));  )注意分号
+4.在数据库中插入一条数据
+  ( 命令为： insert into login value('abc','abc');  )
+
+好了准备工作已经完成了。
+数据库的配置在private/databaseManager.js 文件中，6-12行，注意！很有可能你们在安装数据库的时候
+端口选择了3306，那么要改成响应的端口和密码。
+设置好配置后，将该文件第19行，this.setOK 从false改为true(表示你已经设置完成数据库了）。
+我已经初始化好了数据库，我们需要数据库的时候，只要添加private/login/login.js 文件中的第4/5两行
+就可以获得数据库对象了。
+具体的数据库应用，以登录为例（同样写在private/login/login.js文件中）
+登录的代码，是25到41行。大家可以大家可以先看一下。不明白随时提出来。
