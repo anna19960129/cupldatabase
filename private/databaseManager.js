@@ -5,9 +5,9 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
     host: 'localhost',
-    port:"3305",
+    port:"3306",
     user: 'root',
-    password: 'mysql',
+    password: 'anna0129',
     database:'test'
 });
 var instance = null;
@@ -16,7 +16,7 @@ var instance = null;
  * 数据库管理类
  */
 dataBase = function(){
-    this.setOK = false;
+    this.setOK = true;
     this.connection = null;
     this.isConnected = false;
     this.init();
@@ -49,3 +49,6 @@ exports.getInstance = function(){
     }
     return instance;
 }
+
+
+

@@ -62,7 +62,7 @@ function cpt_del() {
     element.removeChild(lc);
 }
 
-function creatCpt(){
+function createCpt(){
     var element = document.getElementById("cptInfoForm");
     element.style.display = "";
 }

@@ -29,8 +29,11 @@ login.post = function(req,res,next){
 
     connection.query('select password from login where name="'+userName+'"', function(err, rows, fields) {
         if (err) throw err;
+        if(!rows.length){
+            res.redirect("/reLogin");
+            return;
+        }
         var result =  rows[0].password;
-        console.log(result);
         if(result == password){
             req.session.userId = "haha";
             res.redirect('/main');
@@ -53,3 +56,4 @@ login.logout = function(req,res,next){
 }
 
 module.exports = login;
+

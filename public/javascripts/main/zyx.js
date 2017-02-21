@@ -45,7 +45,7 @@ function createCXCY() {
     var element = document.getElementById("CXCYInfoForm");
     element.style.display = "";
 }
-document.getElementById("CXCYInfo_sort").value;
+
 //提交
 function CXCYSubmit() {
     var CXCYInfo = {};
