@@ -1,6 +1,7 @@
 var debug = require('debug')('qx-chat');
 var app = require('./app');
 var login = require('./private/login/login');
+var register = require('./private/register/register');
 var logout = require('./private/login/logout');
 var main = require('./private/main/main');
 
@@ -18,4 +19,6 @@ app.get("/ajax/logout",logout.ajaxGet);
 app.get("/main",main.get);
 
 app.post("/login",login.post);
+//需要在这里添加响应！
+app.post("/register",register.post);
 app.post("/logout",logout.post);
