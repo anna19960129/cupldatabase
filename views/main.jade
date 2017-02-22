@@ -414,17 +414,13 @@ block content
             td
               span 组长：
             td
-              input(type="text" id="cpt_leader_name")
+              input(type="text" id="cpt_leader_name"  placeholder="请填写组长姓名")
           //组员构成（普通组员）
           tr(id = "cptInfoTableMember" class = "cptInfoTableLM" style="display:none")
             td
-              span 其他组员：
+              span 组员：
             td
-              input(type="text" id="cpt_member1")
-
-          tr(id = "cptInfoTableButton" class = "cptInfoTableLM" style="display:none")
-            td
-            td
+              input(type="text" id="cpt_member1" placeholder="请填写组员姓名")
               input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add()")
               input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del()")
         input(type = "submit" id = "cptInfo_submit" value = "保存" onclick="cptSubmit()")
@@ -570,7 +566,15 @@ block content
           tr
             td 论文名称：
             td
+              input(type="text" id = "paperInfo_paperName")
+          tr
+            td 姓名：
+            td
               input(type="text" id = "paperInfo_name")
+          tr
+            td 学号：
+            td
+              input(type="text" id = "paperInfo_ID")
           tr
             td 著作信息：
             td

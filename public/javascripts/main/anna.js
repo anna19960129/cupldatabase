@@ -389,12 +389,12 @@ function KYXMSubmit(){
     }
 
     //生成数据==========================================================================================================
-    paperInfo.projectName = projectName;
-    paperInfo.time = time;
-    paperInfo.level = level;
-    paperInfo.personName = personName;
-    paperInfo.personID = personID;
-    paperInfo.teacher = teacher;
+    KYXMInfo.projectName = projectName;
+    KYXMInfo.time = time;
+    KYXMInfo.level = level;
+    KYXMInfo.personName = personName;
+    KYXMInfo.personID = personID;
+    KYXMInfo.teacher = teacher;
     //提交数据==========================================================================================================
     $.ajax({
         url:"/ajax/KYXMInfoSubmit",
@@ -415,7 +415,11 @@ function paperSubmit(){
     var paperInfo = {};
     //获取数据==========================================================================================================
     //论文名称
-    var paperName = document.getElementById("paperInfo_name").value;
+    var paperName = document.getElementById("paperInfo_paperName").value;
+    //论文名称
+    var Name = document.getElementById("paperInfo_name").value;
+    //论文名称
+    var ID = document.getElementById("paperInfo_ID").value;
     //作者类型：{single/multiple}
     var authorType = $("input[name='paperInfo_authorType']:checked").val();
     //独著作者
@@ -446,7 +450,7 @@ function paperSubmit(){
     var publishTime = document.getElementById("paperInfo_time").value;
     //数据检查==========================================================================================================
     //先检查必填的内容
-    if(paperName == "" || teacherName ==""||magazineName == ""||publishTime == ""){
+    if(paperName == "" ||Name == "" ||ID == "" || teacherName ==""||magazineName == ""||publishTime == ""){
         alert("信息不完善，请补全!");
     }
     //再根据填写的内容进行检查
@@ -461,6 +465,8 @@ function paperSubmit(){
     }
     //生成数据==========================================================================================================
     paperInfo.paperName = paperName;
+    paperInfo.Name = Name;
+    paperInfo.ID = ID;
     paperInfo.authorType = authorType;
     if(paperInfo.authorType == "single"){
         paperInfo.authorSingle = authorSingle;

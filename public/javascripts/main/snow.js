@@ -32,7 +32,6 @@ var cptCount=1;
 
 function cpt_add() {
     var element = document.createElement("tr");
-    element.setAttribute('class', "cptOtherMember");
     //表格的一行还包括了两列，所以必须要把列结构也添上
     //如果没有td的话，所有的内容都会挤占在默认的第一列
     //会让你感觉到都在左边
@@ -43,23 +42,20 @@ function cpt_add() {
     var inp = document.createElement("input");
     inp.setAttribute("type", "text");
     cptCount++;
-    inp.id='cpt_member'+ paperCount;
+    inp.id='cpt_member'+ cptCount;
     td2.appendChild(inp);
-
     element.appendChild(td1);
     element.appendChild(td2);
-
     //这里指定了在table的最后一行前面添加一行
     var table = document.getElementById("cptInfoTable");
-    var lastLine = document.getElementById("cptInfoTableButton");
-    table.children[0].insertBefore(element,lastLine);
+    table.appendChild(element);
 }
 
 function cpt_del() {
     var element = document.getElementById("cptInfoTable");
-    var children = element.getElementsByClassName("cptOtherMember");
-    var lc = children[children.length - 1];
-    element.removeChild(lc);
+    if(element.rows.length>11){
+        element.deleteRow(element.rows.length-1);
+    }
 }
 
 function createCpt(){
