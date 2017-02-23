@@ -448,6 +448,7 @@ function paperSubmit(){
     var magazineName = document.getElementById("paperInfo_magName").value;
     //发表时间
     var publishTime = document.getElementById("paperInfo_time").value;
+
     //数据检查==========================================================================================================
     //先检查必填的内容
     if(paperName == "" ||Name == "" ||ID == "" || teacherName ==""||magazineName == ""||publishTime == ""){

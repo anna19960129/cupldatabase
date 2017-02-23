@@ -112,21 +112,23 @@ function CXCYSubmit() {
     }
     //生成数据==========================================================================================================
     CXCYInfo.projectName = projectName;
+    CXCYInfo.projectTime=projectTime;
     CXCYInfo.projectLevel = projectLevel;
     CXCYInfo.projectSort = projectSort;
+    CXCYInfo.studentName = studentName;
+    CXCYInfo.studentID = studentID;
+    CXCYInfo.teacherName = teacherName;
     if (CXCYInfo.duty == "teamLeader") {
-        CXCYInfo.Leader = studentName;
         CXCYInfo.duty = duty;
+        CXCYInfo.Leader = studentName;
         CXCYInfo.MemberList = MemberList;
     } else {
         CXCYInfo.duty = duty;
         CXCYInfo.Leader = Leader;
         CXCYInfo.MemberList = MemberList;
     }
-    CXCYInfo.teacherName = teacherName;
-    CXCYInfo.studentName = studentName;
-    CXCYInfo.studentID = studentID;
-    CXCYInfo.projectTime = projectTime;
+
+
     //提交数据==========================================================================================================
     $.ajax({
         url: "/ajax/CXCYInfoSubmit",

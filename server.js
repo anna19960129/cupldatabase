@@ -25,4 +25,8 @@ app.post("/logout",logout.post);
 //第二个参数main.KYXMInfoPost表示用哪个函数来处理你传递来的数据
 //像你最初写的，KYXM.post的话，其实并没有这个函数吖，所以没法
 //处理。你定义的处理函数放在了main里面，所以第二个参数是main.KYXMInfoPost
+app.post("/ajax/bIInfoSubmit",main.bIInfoPost);
+app.post("/ajax/cptInfoSubmit",main.cptInfoPost);
+app.post("/ajax/CXCYInfoSubmit",main.CXCYInfoPost);
 app.post("/ajax/KYXMInfoSubmit",main.KYXMInfoPost);
+app.post("/ajax/paperInfoSubmit",main.paperInfoPost);
