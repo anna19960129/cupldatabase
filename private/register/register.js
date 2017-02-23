@@ -28,7 +28,7 @@ register.post = function(req,res,next){
             req.session.name="haha";
             res.redirect('/index');
         } else{
-            res.redirect("/reLogin");
+            res.redirect("/reRegister");
         }
     });
 }

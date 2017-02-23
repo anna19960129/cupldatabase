@@ -1,0 +1,645 @@
+//
+   Created by samsung2014 on 2017/2/23.
+
+extends layout
+block content
+   script(src="javascripts/main/main.js")
+   script(src="javascripts/main/anna.js")
+   script(src="javascripts/main/snow.js")
+   script(src="javascripts/main/dwh.js")
+   script(src="javascripts/main/zyx.js")
+   link(rel='stylesheet', href='/stylesheets/buttons.css')
+   link(rel='stylesheet', href='/stylesheets/main.css')
+   link(rel='stylesheet', href='/stylesheets/anna.css')
+   h1 中国政法大学商学院学生信息录入系统
+   input(type = "button" id = "exitBtn" value = "退出" onclick= "exit()" )
+   div(id = "menuTable")
+      input(id = "menuIntro" type = "button" value = "系统介绍" class = "button  button-border button-rounded button-inverse menuBtn" )
+      input(id = "menuBasicInfo" type = "button" value = "个人信息" class = "button  button-border button-rounded button-inverse menuBtn" )
+      input(id = "menuCpt" type = "button" value = "竞赛情况" class = "button  button-border button-rounded button-inverse menuBtn" )
+      input(id = "menuCXCY" type = "button" value = "创新创业" class = "button  button-border button-rounded button-inverse menuBtn" )
+      input(id = "menuKYXM" type = "button" value = "科研项目" class = "button  button-border button-rounded button-inverse menuBtn" )
+      input(id = "menuLWQK" type = "button" value = "论文情况" class = "button  button-border button-rounded button-inverse menuBtn" )
+   div
+      span(id = "inform") 所填内容已存在
+   div(id = "mainDiv")
+      //简介信息框
+      div(id = "introDiv" class = "baseStruct")
+         p 教育部于 2011 年 10 月发布了《关于普通高等学校本科教学评估工作的意见》,
+         p 于 2013 年 12 月发布了《关于开展普通高等学校本科教学工作审核评估的通知》，
+         p 并附上了具体的普 通高等学校本科教学工作审核评估方案。自此，各大高校陆续进
+         p 入自评工作中。 中国政法大学于 2016 年 4 月 6 日，成立中国政法大学本科教学
+         p 审核评估工作领导小组 和办公室，统筹安排、领导学校 2017 年本科教学审核评估
+         p 工作。2016 年 6 月 24 日下午， 2017 年本科教学工作审核评估工作部署会在昌
+         p 平校区国际交流中心召开，标志着中国政法 大学 2017 年本科教学工作审核评估工
+         p 作正式启动。此后，各院展开了紧张的专业自评工作， 撰写专业自评报告，此过程
+         p 中，却遇到了数据缺失，数据收集难等问题。数据缺失主要体现 两方面：一是5年前
+         p 移动互联网还不发达，在一定程度上限制了数据的收集，造成了 2011~2013 年部分
+         p 数据缺失；二是中国政法大学法学背景雄厚，一个专业分成了四个院，不 存在院内
+         p 还需分专业的问题，日常提交报告也多以院级作为个体统计数据，商学院忽略了分专
+         p 业统计数据，造成了部分分专业数据缺失。数据收集难也主要体现在两方面：一是毕
+         p 业生在填写问卷时,个人情况简介为开放题，许多毕业生未填写或填写内容过少造成了
+         p 优秀校友个人资料难收集；二是用人单位对毕业生的评价情况难收集，主要是由于能
+         p 联系上的校友中， 在职工作的较少，而且让毕业生的领导填写问卷，问卷的发放与收
+         p 集都会有较大困难。 针对在专业评估工作中遇到的困难，可看出日常对于资料的收集
+         p 整理是十分重要的。但 目前主要还是靠人工的方式进行，通过各班或学生会有关部门
+         p 收集整理院内学生获奖、参与 科研情况等资料，收集整理工作进行的十分低效。若是
+         p 有院级的数据管理系统，不仅可将数 据收集整理工作高效完成，专业评估工作中格式
+         p 不统一的问题也将得到有效解决。
+      //基本信息框
+      div(id = "basicInfoDiv" class = "baseStruct")
+         form(id = "basicInfoForm" class = "baseStructForm" method="post" action="./main")
+            table(id = "basicInfoTable1" class = "baseStructTable")
+               tr
+                  td 姓名：
+                  td
+                     input(type = "text" id = "bIName")
+               tr
+                  td 学号：
+                  td
+                     input(type = "text" id = "bIId")
+               tr
+                  td 性别：
+                  td
+                     span 男：
+                     input(type = "radio" id = "bIGender0" value = "male" name = "gender")
+                     span 女：
+                     input(type = "radio" id = "bIGender1" value = "female" name ="gender")
+               tr
+                  td 出生年月：
+                  td
+                     input(id="bI_birthday" name="birthday" type="month" required)
+               tr
+                  td 高考省份：
+                  td
+                     select(id = "bI_province")
+                        option(value="安徽") 安徽
+                        option(value="澳门") 澳门
+                        option(value="北京") 北京
+                        option(value="重庆") 重庆
+                        option(value="福建") 福建
+                        option(value="甘肃") 甘肃
+                        option(value="广东") 广东
+                        option(value="广西") 广西
+                        option(value="贵州") 贵州
+                        option(value="海南") 海南
+                        option(value="上海") 上海
+                        option(value="河北") 河北
+                        option(value="河南") 河南
+                        option(value="黑龙江") 黑龙江
+                        option(value="湖北") 湖北
+                        option(value="湖南") 湖南
+                        option(value="吉林") 吉林
+                        option(value="江苏") 江苏
+                        option(value="江西") 江西
+                        option(value="辽宁") 辽宁
+                        option(value="内蒙古") 内蒙古
+                        option(value="宁夏") 宁夏
+                        option(value="青海") 青海
+                        option(value="山东") 山东
+                        option(value="山西") 山西
+                        option(value="陕西") 陕西
+                        option(value="上海") 上海
+                        option(value="四川") 四川
+                        option(value="台湾") 台湾
+                        option(value="天津") 天津
+                        option(value="西藏") 西藏
+                        option(value="香港") 香港
+                        option(value="新疆") 新疆
+                        option(value="云南") 云南
+                        option(value="浙江") 浙江
+               tr
+                  td 高考类别：
+                  td
+                     span 文科：
+                     input(type = "radio" id = "bIgk_sort0" value = "文科" name ="gk_sort")
+                     span 理科：
+                     input(type = "radio" id = "bIgk_sort1" value = "理科" name ="gk_sort")
+               tr
+                  td 高考数学成绩：
+                  td
+                     input(type = "text" id ="bIgk_math" )
+               tr
+                  td 高考英语成绩：
+                  td
+                     input(type = "text" id ="bIgk_english")
+               tr
+                  td 入学时间：
+                  td
+                     input(id="bI_enrol" name="bI_enrol" type="month" onchange="enroltime()" required)
+               tr
+                  td 入学专业：
+                  td
+                     select(id ="bI_enrol_major")
+                        option(value="工商管理") 工商管理
+                        option(value="国际商务") 国际商务
+                        option(value="经济学") 经济学
+                        option(value="成思危现代金融菁英班") 成思危现代金融菁英班
+               tr
+                  td 转专业：
+                  td
+                     span 是：
+                     input(type = "radio" id = "bI_change_major0" value = "转专业" name = "change_major" onclick="document.getElementById('bI_present_major').style.display='';")
+                     span 否：
+                     input(type = "radio" id = "bI_change_major1" value = "未转专业" name ="change_major" onclick="document.getElementById('bI_present_major').style.display='none';")
+               tr
+                  td 现专业：
+                  td
+                     select(id="bI_present_major")
+                        option(value="政治学与行政学专业") 政治学与行政学专业
+                        option(value="国际政治专业") 国际政治专业
+                        option(value="行政管理专业") 行政管理专业
+                        option(value="公共事业管理专业") 公共事业管理专业
+                        option(value="工商管理专业") 工商管理专业
+                        option(value="经济学专业") 经济学专业
+                        option(value="国际商务专业") 国际商务专业
+                        option(value="汉语言文学专业") 汉语言文学专业
+                        option(value="哲学专业") 哲学专业
+                        option(value="新闻学专业") 新闻学专业
+                        option(value="思想政治教育专业") 思想政治教育专业
+                        option(value="社会学专业") 社会学专业
+                        option(value="应用心理学专业") 应用心理学专业
+                        option(value="社会工作专业") 社会工作专业
+                        option(value="英语专业") 英语专业 
+                        option(value="翻译专业") 翻译专业
+               tr
+                  td 双专业：
+                  td
+                     span 是：
+                     input(type = "radio" id = "bI_double_major0" value = "double_major" name = "double_major" onclick="document.getElementById('bI_second_major').style.display='';")
+                     span 否：
+                     input(type = "radio" id = "bI_single_major1" value = "single_major" name = "double_major" onclick="document.getElementById('bI_second_major').style.display='none';")
+               tr
+                  td 第二专业：
+                  td
+                     select(id="bI_second_major")
+                        option(value="法学专业") 法学专业
+                        option(value="政治学与行政学专业") 政治学与行政学专业
+                        option(value="国际政治专业") 国际政治专业
+                        option(value="行政管理专业") 行政管理专业
+                        option(value="公共事业管理专业") 公共事业管理专业
+                        option(value="工商管理专业") 工商管理专业
+                        option(value="经济学专业") 经济学专业
+                        option(value="国际商务专业") 国际商务专业
+                        option(value="汉语言文学专业") 汉语言文学专业
+                        option(value="哲学专业") 哲学专业
+                        option(value="新闻学专业") 新闻学专业
+                        option(value="思想政治教育专业") 思想政治教育专业
+                        option(value="社会学专业") 社会学专业
+                        option(value="应用心理学专业") 应用心理学专业
+                        option(value="社会工作专业") 社会工作专业
+                        option(value="英语专业") 英语专业
+                        option(value="德语专业") 德语专业 
+                        option(value="翻译专业") 翻译专业
+               tr
+                  td 辅修：
+                  td
+                     span 是：
+                     input(type = "radio" id = "bI_minor0" value = "辅修" name ="bI_minor" onclick="document.getElementById('bI_minor').style.display='';")
+                     span 否：
+                     input(type = "radio" id = "bI_minor1" value = "未辅修" name ="bI_minor" onclick="document.getElementById('bI_minor').style.display='none';")
+               tr
+                  td 辅修专业：
+                  td
+                     select(id="bI_minor_program")
+                        option(value="法学专业") 法学专业
+                        option(value="政治学与行政学专业") 政治学与行政学专业
+                        option(value="国际政治专业") 国际政治专业
+                        option(value="行政管理专业") 行政管理专业
+                        option(value="公共事业管理专业") 公共事业管理专业
+                        option(value="工商管理专业") 工商管理专业
+                        option(value="经济学专业") 经济学专业
+                        option(value="国际商务专业") 国际商务专业
+                        option(value="汉语言文学专业") 汉语言文学专业
+                        option(value="哲学专业") 哲学专业
+                        option(value="新闻学专业") 新闻学专业
+                        option(value="思想政治教育专业") 思想政治教育专业
+                        option(value="社会学专业") 社会学专业
+                        option(value="应用心理学专业") 应用心理学专业
+                        option(value="社会工作专业") 社会工作专业
+                        option(value="英语专业") 英语专业
+                        option(value="德语专业") 德语专业 
+                        option(value="翻译专业") 翻译专业
+               tr
+                  td 手机号：
+                  td
+                     input(type = "tel" id ="cellphone" )
+               tr
+                  td 微信号：
+                  td
+                     input(type = "text" id ="weChat")
+               tr
+                  td 邮箱：
+                  td
+                     input(type = "email" id ="email")
+            table(id = "basicInfoTable2" class = "baseStructTable")
+               tr
+                  td 毕业时间：
+                  td
+                     input(id="bI_graduate" name="bI_graduate" type="month" onchange="graduatetime()")
+               tr
+                  td 未按时毕业原因：
+                  td
+                     input(id="bIno_graduate_reason" name="bIno_graduate_reason" type="text" placeholder="未按时毕业同学请填此项")
+               tr
+                  td 毕业论文分数：
+                  td
+                     input(type = "text" id ="bI_finalPaper")
+               tr
+                  td 毕业去向：
+                  td
+                     select(id="bI_afterGraduate")
+                        option(value="出国读研") 出国读研
+                        option(value="国内读研") 国内读研
+                        option(value="直接就业") 直接就业
+                        option(value="其他") 其他
+               tr
+                  td 研究生就读院校：
+                  td
+                     input(type = "text" id ="bI_postgraduate")
+               tr
+                  td 研究生专业：
+                  td
+                     select(id="bI_postgraduate_major" onchange="bI_PGM_show()")
+                        option(value="经济") 经济
+                        option(value="管理") 管理
+                        option(value="法学") 法学
+                        option(value="理学") 理学
+                        option(value="其他") 其他
+                  td
+                     input(type="text" style="display:none" id="bI_postgraduate_other_major" placeholder="填写具体专业名称")
+               tr
+                  td 博士就读院校：
+                  td
+                     input(type = "text" id ="bI_doctor")
+               tr
+                  td 博士专业：
+                  td
+                     select(id="bI_doctor_major" onchange="bI_D_show()")
+                        option(value="经济") 经济
+                        option(value="管理") 管理
+                        option(value="法学") 法学
+                        option(value="理学") 理学
+                        option(value="其他") 其他
+                  td
+                     input(type="text" style="display:none" id="bI_doctor_other_major" placeholder="填写具体专业名称")
+               tr
+                  td 博士后就读院校：
+                  td
+                     input(type = "text" id ="bI_post_doctor")
+               tr
+                  td 博士后专业：
+                  td
+                     select(id="bI_post_doctor_major" onchange="bI_PD_show()")
+                        option(value="经济") 经济
+                        option(value="管理") 管理
+                        option(value="法学") 法学
+                        option(value="理学") 理学
+                        option(value="其他") 其他
+                  td
+                     input(type="text" style="display:none" id="bI_post_doctor_other_major" placeholder="填写具体专业名称")
+               tr
+                  td 工作单位：
+                  td
+                     input(type = "text" id ="bI_job")
+               tr
+                  td 工作单位类型：
+                  td
+                     select(id="bI_job_sort")
+                        option(value="政府机构") 政府机构
+                        option(value="事业单位") 事业单位
+                        option(value="企业") 企业
+                        option(value="灵活就业") 灵活就业
+                        option(value="其他") 其他
+               tr
+                  td 所在部门：
+                  td
+                     input(type = "text" id ="bI_department")
+               tr
+                  td 所在部门工作偏向：
+                  td
+                     select(id="bI_department_sort")
+                        option(value="经济") 经济
+                        option(value="管理") 管理
+                        option(value="法学") 法学
+                        option(value="理学") 理学
+                        option(value="其他") 其他
+               tr
+                  td 技术职务：
+                  td
+                     input(type = "text" id ="bI_tech_position")
+               tr
+                  td 行政职务：
+                  td
+                     input(type = "text" id ="bI_administrative_function")
+            input(type = "submit" id = "bIInfo_submit" value = "保存" onclick = "bISubmit()")
+            input(type = "button" id = "bIInfo_reset" value = '重置')
+      div(id = "cptInfoDiv" class = "baseStruct")
+         div(id = "cptAlreadySubmit")
+            div(id = "cptAS_header")
+               span(id = "cptAS_header_text" class = "pI_title") 已提交
+            div(id = "cptAS_intro")
+               span 当前已提交竞赛项目数量为：0
+            table
+         div(id = "cptSubmitting")
+            span(id = "cpt_header_text" class = "pI_title") 待提交
+         form(id = "cptInfoForm" class = "baseStructForm" style="display:none")
+            table(id = "cptInfoTable" class = "baseStructTable")
+               //姓名
+               tr
+                  td 姓名：
+                  td
+                     input(type = "text" id = "cptInfo_personName")
+               //学号
+               tr
+                  td 学号：
+                  td
+                     input(type = "text" id = "cptInfo_personID")
+               //竞赛级别
+               tr
+                  td 竞赛级别：
+                  td
+                     select(id = "cptInfo_level")
+                        option(value="national") 国家级
+                        option(value="provincial") 省市级
+                        option(value="school") 校级
+               //竞赛名称
+               tr
+                  td 竞赛名称：
+                  td
+                     select(id = "cptInfo_name" onchange="cptShow()")
+                        option(value="北京大学生数学建模与计算机应用竞赛") 北京大学生数学建模与计算机应用竞赛
+                        option(value="全国大学生数学建模竞赛") 全国大学生数学建模竞赛
+                        option(value="美国大学生数学建模竞赛") 美国大学生数学建模竞赛
+                        option(value="全国大学生英语竞赛") 全国大学生英语竞赛
+                        option(value="全国大学生电子商务竞赛") 全国大学生电子商务竞赛
+                        option(value="全国大学生模拟法庭竞赛") 全国大学生模拟法庭竞赛
+                        option(value="中国大学生（文科）计算机设计大赛") 中国大学生（文科）计算机设计大赛
+                        option(value="北京大学生模拟法庭竞赛") 北京大学生模拟法庭竞赛
+                        option(value="北京大学生英语演讲比赛") 北京大学生英语演讲比赛
+                        option(value="北京大学生模拟法庭竞赛") 北京大学生模拟法庭竞赛
+                        option(value="中国政法大学创新论坛") 中国政法大学创新论坛
+                        option(value="其他") 其他
+               //竞赛名称补充
+               tr
+                  td
+                  td
+                     input(type="text" id="cptInfo_name_other" style="display:none" placeholder="填写具体比赛名称")
+               //获奖时间
+               tr
+                  td 获奖时间：
+                  td
+                     input(type = "month" id ="cpt_time")
+               //获奖等级
+               tr
+                  td 获奖等级：
+                  td
+                     input(type = "text" id ="cpt_grade")
+               //竞赛形式
+               tr
+                  td 竞赛形式：
+                  td
+                     span 个人：
+                     input(type = "radio" id = "cpt_form0" value = "cpt_single" name = "cpt_form" onclick="document.getElementById('cptInfoTableGroup').style.display ='none';")
+                     span 团体：
+                     input(type = "radio" id = "cpt_form1" value = "cpt_multiple" name = "cpt_form" onclick="document.getElementById('cptInfoTableGroup').style.display ='';")
+               //是否为组长
+               tr(id = "cptInfoTableGroup"  style="display:none")
+                  td 是否为组长:
+                  td
+                     span 是
+                     input(type="radio" id="cpt_leader_yes" name="cpt_leader"  value="leader" onclick="display_cpt1()")
+                     span 否
+                     input(type="radio" id="cpt_leader_no" name="cpt_leader"  value="member" onclick="display_cpt2()")
+               //组员构成（组长）
+               tr(id = "cptInfoTableLeader" class = "cptInfoTableLM" style="display:none")
+                  td
+                     span 组长：
+                  td
+                     input(type="text" id="cpt_leader_name"  placeholder="请填写组长姓名")
+               //组员构成（普通组员）
+               tr(id = "cptInfoTableMember" class = "cptInfoTableLM" style="display:none")
+                  td
+                     span 组员：
+                  td
+                     input(type="text" id="cpt_member1" placeholder="请填写组员姓名")
+                     input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add()")
+                     input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del()")
+            input(type = "submit" id = "cptInfo_submit" value = "保存" onclick="cptSubmit()")
+            input(type = "button" id = "cptInfo_reset" value = '重置')
+         input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="createCpt()")
+      //创新创业信息框
+      div(id = "CXCYInfoDiv" class = "baseStruct")
+         div(id = "CXCYAlreadySubmit")
+            div(id = "CXCYAS_header")
+               span(id = "CXCYAS_header_text" class = "pI_title") 已提交
+            div(id = "CXCYAS_intro")
+               span 当前已提交创新创业项目数量为：0
+            table
+         div(id = "CXCYSubmitting")
+            span(id = "CXCY_header_text" class = "pI_title") 待提交
+         form(id = "CXCYInfoForm" class = "baseStructForm" style="display:none")
+            table(id = "CXCYInfoTable" class = "baseStructTable")
+               tr
+                  td 项目名称：
+                  td
+                     input(type = "text" id = "CXCYInfo_projectName")
+               tr
+                  td 立项年份：
+                  td
+                     input(type = "month" id = "CXCYInfo_time")
+               tr
+                  td 项目级别：
+                  td
+                     select(id = "CXCYInfo_level")
+                        option(value="国家级") 国家级
+                        option(value="北京市级") 北京市级
+                        option(value="校级") 校级
+               tr
+                  td 项目类别：
+                  td
+                     select(id = "CXCYInfo_sort")
+                        option(value="创新项目") 创新项目
+                        option(value="创业项目") 创业项目
+               tr
+                  td 姓名：
+                  td
+                     input(type = "text" id = "CXCYInfo_personName")
+               tr
+                  td 学号：
+                  td
+                     input(type = "text" id = "CXCYInfo_personID")
+               tr
+                  td 指导教师：
+                  td
+                     input(type = "text" id = "CXCYInfo_teacher")
+               tr
+                  td 职务：
+                  td
+                     span 组长
+                     input(type = "radio" id = "CXCYInfo_position0" value = "teamLeader" name = "CXCYInfo_position" onclick="display_cxcy1()")
+                     span 组员
+                     input(type = "radio" id = "CXCYInfo_position1" value = "teammate" name = "CXCYInfo_position" onclick="display_cxcy2()")
+               tr(id = "CXCYInfoTableLeader" class = "CXCYInfoTableLM" style="display:none" )
+                  td
+                     span 组长:
+                  td
+                     input(id="cxcy_leader"  name="major" type="text" placeholder="填写组长姓名")
+               tr(id = "CXCYInfoTableMember"  class = "CXCYInfoTableLM" style="display:none" )
+                  td
+                     span 组员1:
+                  td
+                     input(id="cxcy_member1"  name="member" type="text" placeholder="填写其他组员姓名")
+               tr(  class = "CXCYInfoTableLM" style="display:none" )
+                  td
+                     span 组员2:
+                  td
+                     input(id="cxcy_member2"  name="member" type="text" placeholder="填写其他组员姓名")
+               tr( class = "CXCYInfoTableLM" style="display:none" )
+                  td
+                     span 组员3:
+                  td
+                     input(id="cxcy_member3"  name="member" type="text" placeholder="填写其他组员姓名")
+               tr(  class = "CXCYInfoTableLM" style="display:none" )
+                  td
+                     span 组员4:
+                  td
+                     input(id="cxcy_member4"  name="member" type="text" placeholder="填写其他组员姓名")
+            input(type = "submit" id = "CXCYInfo_submit" value = "保存" onclick="CXCYSubmit()")
+            input(type = "button" id = "CXCYInfo_reset" value = '重置')
+         input(type = "button" id ="KYXMInfo_create" value="新增" onclick="createCXCY()")
+      //科研项目信息框
+      div(id = "KYXMInfoDiv" class = "baseStruct")
+         div(id = "KYXMAlreadySubmit")
+            div(id = "KYXMAS_header")
+               span(id = "KYXMAS_header_text" class = "pI_title") 已提交
+            div(id = "KYXMAS_intro")
+               span 当前已提交科研项目数量为：0
+            table
+         div(id = "KYXMSubmitting")
+            span(id = "KYXM_header_text" class = "pI_title") 待提交
+         form(id = "KYXMInfoForm" class = "baseStructForm" style="display:none")
+            table(id = "KYXMInfoTable" class = "baseStructTable")
+               tr
+                  td 项目名称：
+                  td
+                     input(type = "text" id = "KYXMInfo_projectName")
+               tr
+                  td 立项年份：
+                  td
+                     input(type = "month" id = "KYXMInfo_time")
+               tr
+                  td 项目级别：
+                  td
+                     select(id = "KYXMInfo_level")
+                        option(value="国家级") 国家级
+                        option(value="北京市") 北京市
+                        option(value="校级") 校级
+               tr
+                  td 姓名：
+                  td
+                     input(type = "text" id = "KYXMInfo_personName")
+               tr
+                  td 学号：
+                  td
+                     input(type = "text" id = "KYXMInfo_personID")
+               tr
+                  td 指导教师：
+                  td
+                     input(type = "text" id = "KYXMInfo_teacher")
+            input(type = "submit" id = "KYXMInfo_submit" value = "保存" onclick="KYXMSubmit()")
+            input(type = "button" id = "KYXMInfo_reset" value = '重置')
+         input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatKYXM()")
+      //论文信息框
+      div(id = "paperInfoDiv" class = "baseStruct")
+         //已提交论文
+         div(id = "paperAlreadySubmit")
+            div(id = "pAS_header")
+               span(id = "pAS_header_text" class = "pI_title") 已提交
+            div(id = "pAS_intro")
+               span 当前已提交论文数量为：0
+            table
+         //待提交论文
+         div(id = "paperSubmitting")
+            span(id = "pAS_header_text" class = "pI_title") 待提交
+         //待提交表单
+         form(id = "paperInfoForm" class = "baseStructForm" style="display:none")
+            table(id = "paperInfoTable" class = "baseStructTable")
+               tr
+                  td 论文名称：
+                  td
+                     input(type="text" id = "paperInfo_paperName")
+               tr
+                  td 姓名：
+                  td
+                     input(type="text" id = "paperInfo_name")
+               tr
+                  td 学号：
+                  td
+                     input(type="text" id = "paperInfo_ID")
+               tr
+                  td 著作信息：
+                  td
+                     span 独著：
+                     input(type = "radio" id = "paperInfo_authors0" value = "single" name = "paperInfo_authorType" onclick="display_paper1()" )
+                     span 合著：
+                     input(type = "radio" id = "paperInfo_authors1" value = "multiple" name = "paperInfo_authorType" onclick="display_paper2()" )
+               tr(id = "paperInfo_tr_singleA" style="display:none")
+                  td
+                     span 作者名称：
+                  td
+                     input(type="text" id = "paperInfo_authorSingle" )
+               tr(id = "paperInfo_tr_firstA" style="display:none")
+                  td
+                     span 第一作者：
+                  td
+                     span &nbsp&nbsp&nbsp&nbsp是：
+                     input(type="radio" id="paperInfo_isFirstAuthor1" name="paperInfo_isFirstAuthor"  value="true" onclick="display_paper3()")
+                     span &nbsp&nbsp&nbsp&nbsp否：
+                     input(type="radio" id="paperInfo_isFirsAuthors2" name="paperInfo_isFirstAuthor"  value="false" onclick="display_paper4()")
+               //第一作者
+               tr(style = "display:none" class = "multiAuthorInput" id="paperInfoFirstAuthor")
+                  td
+                     span 第一作者：
+                  td
+                     input(type="text" id = "paperInfo_firstAuthor" name = "firstAuthor")
+               //合作者1
+               tr(style = "display:none" class = "multiAuthorInput")
+                  td
+                     span 合作者 1：
+                  td
+                     input(type="text" id = "paperInfo_coAuthor1" name = "coAuthor1")
+               //合作者2
+               tr(style = "display:none" class = "multiAuthorInput")
+                  td
+                     span 合作者 2：
+                  td
+                     input(type="text" id = "paperInfo_coAuthor2" name = "coAuthor2")
+               //合作者3
+               tr(style = "display:none" class = "multiAuthorInput")
+                  td
+                     span 合作者 3：
+                  td
+                     input(type="text" id = "paperInfo_coAuthor3" name = "coAuthor3")
+               //合作者4
+               tr(style = "display:none" class = "multiAuthorInput")
+                  td
+                     span 合作者 4：
+                  td
+                     input(type="text" id = "paperInfo_coAuthor4" name = "coAuthor4")
+               //指导老师
+               tr
+                  td 指导老师：
+                  td
+                     input(type="text" id ="paperInfo_teacherName")
+               tr
+                  td 期刊名称：
+                  td
+                     input(type = "text" id = "paperInfo_magName")
+               tr
+                  td 发表时间：
+                  td
+                     input(type = "month" id ="paperInfo_time")
+            input(type = "button" id = "paperInfo_submit" value="保存" onclick = "paperSubmit()")
+            input(type = "button" id = "paperInfo_reset" value="重置")
+         input(type = "button" id ="paperInfo_creat" value="新增" onclick="createPaper()")

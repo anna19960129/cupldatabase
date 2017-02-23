@@ -5,9 +5,9 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
     host: 'localhost',
-    port:"3305",
+    port:"3306",
     user: 'root',
-    password: 'mysql',
+    password: 'anna0129',
     database:'test'
 });
 var instance = null;

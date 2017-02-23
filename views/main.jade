@@ -45,7 +45,7 @@ block content
       p 不统一的问题也将得到有效解决。
     //基本信息框
     div(id = "basicInfoDiv" class = "baseStruct")
-      form(id = "basicInfoForm" class = "baseStructForm" method="post")
+      form(id = "basicInfoForm" class = "baseStructForm" method="post" action="./main")
         table(id = "basicInfoTable1" class = "baseStructTable")
           tr
             td 姓名：
@@ -516,7 +516,7 @@ block content
         table
       div(id = "KYXMSubmitting")
         span(id = "KYXM_header_text" class = "pI_title") 待提交
-      form(id = "KYXMInfoForm" class = "baseStructForm" style="display:none")
+      form(id = "KYXMInfoForm" class = "baseStructForm" style="display:none" action="./main")
         table(id = "KYXMInfoTable" class = "baseStructTable")
           tr
             td 项目名称：
