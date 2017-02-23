@@ -21,5 +21,5 @@ app.get("/main",main.get);
 app.post("/login",login.post);
 //需要在这里添加响应！
 app.post("/register",register.post);
-app.post("/main",main.post);
 app.post("/logout",logout.post);
+app.post("/ajax/KYXMInfoSubmit",KYXMInfo.post);

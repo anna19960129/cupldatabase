@@ -48,3 +48,23 @@ main.post = function(req,res,next){
 
 
 module.exports = main;
+
+KYXMInfo=function(){
+
+}
+KYXMInfo.post = function(req,res,next){
+    var projectName=req.body.KYXMInfo.projectName;
+    var time=req.body.KYXMInfo.time;
+    var level=req.body.KYXMInfo.level;
+    var personName=req.body.KYXMInfo.personName;
+    var personID=req.body.KYXMInfo.personID;
+    var teacher=req.body.KYXMInfo.teacher;
+    connection.query("insert into KYXM values('" +projectName + "','" + time + "','" + level + "','" + personName + "','" + personID + "','" + teacher + "')",function(err,result){
+        if(result.affectedRows==1){
+            req.session.name="haha";
+            res.redirect('/main');
+        } else{
+            res.redirect("/remain");
+        }
+    });
+}
