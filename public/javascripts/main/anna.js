@@ -356,7 +356,7 @@ function bISubmit(){
         url:"/ajax/bIInfoSubmit",
         type:"POST",
         dataType:"json",
-        data:{bIInfo:bIInfo},
+        data:bIInfo,
         success:function(data){
             console.log(data);
         },
@@ -400,7 +400,7 @@ function KYXMSubmit(){
         url:"/ajax/KYXMInfoSubmit",
         type:"POST",
         dataType:"json",
-        data:{KYXMInfo:KYXMInfo},
+        data:KYXMInfo,
         success:function(data){
             console.log(data);
         },
@@ -483,7 +483,7 @@ function paperSubmit(){
         url:"/ajax/paperInfoSubmit",
         type:"POST",
         dataType:"json",
-        data:{paperInfo:paperInfo},
+        data:paperInfo,
         success:function(data){
             console.log(data);
         },

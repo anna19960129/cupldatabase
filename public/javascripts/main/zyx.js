@@ -132,7 +132,7 @@ function CXCYSubmit() {
         url: "/ajax/CXCYInfoSubmit",
         type: "POST",
         dataType: "json",
-        data: {CXCYInfo: CXCYInfo},
+        data:CXCYInfo,
         success: function (data) {
             console.log(data);
         },

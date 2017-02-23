@@ -154,7 +154,7 @@ function cptSubmit(){
         url:"/ajax/cptInfoSubmit",
         type:"POST",
         dataType:"json",
-        data:{cptInfo:cptInfo},
+        data:cptInfo,
         success:function(data){
             console.log(data);
         },

@@ -1,0 +1,2 @@
+主要改了server.js
+和private/main/main.js两个函数，注释都写在里面了，可以通过工具栏上的VCS->git->showHistory功能查看我改了哪些内容
