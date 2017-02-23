@@ -438,10 +438,10 @@ function paperSubmit(){
     var coAuthor4 = document.getElementById("paperInfo_coAuthor4").value;
     //生成合作者列表
     var coAuthorList = [];
-    if(coAuthor1 != ""){coAuthorList.push(coAuthor1)};
-    if(coAuthor2 != ""){coAuthorList.push(coAuthor2)};
-    if(coAuthor3 != ""){coAuthorList.push(coAuthor3)};
-    if(coAuthor4 != ""){coAuthorList.push(coAuthor4)};
+    if(coAuthor1 != ""){coAuthorList+= coAuthor1};
+    if(coAuthor2 != ""){coAuthorList+= ";";coAuthorList+=coAuthor2};
+    if(coAuthor3 != ""){coAuthorList+= ";";coAuthorList+=coAuthor3};
+    if(coAuthor4 != ""){coAuthorList+= ";";coAuthorList+=coAuthor4};
     //教师姓名
     var teacherName = document.getElementById("paperInfo_teacherName").value;
     //期刊名称
@@ -453,15 +453,18 @@ function paperSubmit(){
     //先检查必填的内容
     if(paperName == "" ||Name == "" ||ID == "" || teacherName ==""||magazineName == ""||publishTime == ""){
         alert("信息不完善，请补全!");
+        return;
     }
     //再根据填写的内容进行检查
     if(authorType == "single"){
         if(authorSingle == ""){
             alert("信息不完善，请补全!");
+            return;
         }
     }else{
-        if(firstAuthor == ""||coAuthorList.length == 0){
+        if(firstAuthor == ""||coAuthorList == ""){
             alert("信息不完善，请补全!");
+            return;
         }
     }
     //生成数据==========================================================================================================
@@ -471,7 +474,11 @@ function paperSubmit(){
     paperInfo.authorType = authorType;
     if(paperInfo.authorType == "single"){
         paperInfo.authorSingle = authorSingle;
+        paperInfo.isFirstAuthor = "noData";
+        paperInfo.firstAuthor = "noData";
+        paperInfo.coAuthorList = "noData";
     }else{
+        paperInfo.authorSingle = "noData";
         paperInfo.isFirstAuthor = isFirstAuthor;
         paperInfo.firstAuthor = firstAuthor;
         paperInfo.coAuthorList = coAuthorList;

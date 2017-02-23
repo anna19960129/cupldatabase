@@ -8,11 +8,5 @@ router.get('/', function(req, res, next) {
 router.get('/testAjax',function(req,res,next){
   res.json({success:1});
 });
-router.post('/ajax/paperInfoSubmit',function(req,res,next){
-  console.log(req.body);
-  res.json({success:1});
-})
-
-
 
 module.exports = router;

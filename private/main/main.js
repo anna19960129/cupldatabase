@@ -90,7 +90,11 @@ main.cptInfoPost = function(req,res,next) {
     var leader=req.body.leader;
     var leader_name = req.body.leader_name;
     var memberList = req.body.memberList;
+    console.log()
     connection.query("insert into competition values('" +personName + "','" + personID + "','" + level + "','" + cptName + "','" + time + "','" + grade + "','" + form + "','" + leader + "','" + leader_name + "','" + memberList + "')",function(err,result){
+        if(!result.affectedRows){
+            res.redirect('/main');
+        }
         if(result.affectedRows==1){
             req.session.name="haha";
             res.redirect('/main');
@@ -147,16 +151,17 @@ main.paperInfoPost=function(req,res,next){
     var paperName = req.body.paperName;
     var Name = req.body.Name;
     var ID = req.body.ID;
-    var authorType = req.body.authorType;
-    var authorSingle = req.body.authorSingle;
-    var isFirstAuthor = req.body.isFirstAuthor;
-    var firstAuthor = req.body.firstAuthor;
+    var authorType = req.body.authorType||"noData";
+    var authorSingle = req.body.authorSingle||"noData";
+    var isFirstAuthor = req.body.isFirstAuthor||"noData";
+    var firstAuthor = req.body.firstAuthor||"noData";
     var coAuthorList = req.body.coAuthorList;
     var teacherName = req.body.teacherName;
     var magazineName = req.body.magazineName;
     var publishTime = req.body.publishTime;
-
-    connection.query("insert into paper values('" +paperName + "','" + Name + "','" + ID + "','" + authorType + "','" + authorSingle + "','" + isFirstAuthor + "','" + firstAuthor + "','" + coAuthorList + "','" + teacherName + "','" + magazineName + "','" + publishTime + "')",function(err,result){
+    connection.query("insert into paper values('" +paperName + "','" + Name + "','" + ID + "','" + authorType + "','" +
+        authorSingle + "','" + isFirstAuthor + "','" + firstAuthor + "','" + coAuthorList + "','" + teacherName + "','" +
+        magazineName + "','" + publishTime + "')",function(err,result){
         if(result.affectedRows==1){
             req.session.name="haha";
             res.redirect('/main');

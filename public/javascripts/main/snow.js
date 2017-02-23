@@ -85,50 +85,42 @@ function cptSubmit(){
     var leader = $("input[name='cpt_leader']:checked").val();
     //组长
     var leader_name = document.getElementById("cpt_leader_name").value;
-    //组员1
-    var member1 = document.getElementById("cpt_member1").value;
-    //组员2
-    var member2 = document.getElementById("cpt_member2").value;
-    //组员3
-    var member3 = document.getElementById("cpt_member3").value;
-    //组员4
-    var member4 = document.getElementById("cpt_member4").value;
-    //组员5
-    var member5 = document.getElementById("cpt_member5").value;
-    //组员6
-    var member6 = document.getElementById("cpt_member6").value;
-    //组员7
-    var member7 = document.getElementById("cpt_member7").value;
-    //组员8
-    var member8 = document.getElementById("cpt_member8").value;
-    //组员9
-    var member9 = document.getElementById("cpt_member9").value;
-    //生成合作者列表
-    var memberList = [];
-    if(member1 != ""){memberList.push(member1)};
-    if(member2 != ""){memberList.push(member2)};
-    if(member3 != ""){memberList.push(member3)};
-    if(member4 != ""){memberList.push(member4)};
-    if(member5 != ""){memberList.push(member5)};
-    if(member6 != ""){memberList.push(member6)};
-    if(member7 != ""){memberList.push(member7)};
-    if(member8 != ""){memberList.push(member8)};
-    if(member9 != ""){memberList.push(member9)};
+    //因为组员数据不是定长的，所以没法直接取值
+    var memberList = "";
+    for(var i= 1;i<20;i++){
+        if(memberList != ""){memberList+=";"}
+        var name = "cpt_member" + i;
+        var obj = document.getElementById(name);
+        if(!obj)break;
+        var val = obj.value;
+        memberList +(val);
+    }
+    if(i >=20){
+        alert("超出了最大组员数！");
+        return;
+    }
+
     //数据检查==========================================================================================================
     //先检查必填的内容
     if(personName == "" || personID ==""||level == ""||cptName == ""|| time == ""|| grade == ""||form== ""){
         alert("信息不完善，请补全!");
+        return;
     }
     //再根据填写的内容进行检查
-    if(leader == "leader"){
-        if(memberList.length == 0){
-            alert("信息不完善，请补全!");
-        }
-    }else{
-        if(leader_name == ""||memberList.length == 0){
-            alert("信息不完善，请补全!");
+    if(form != "cpt_single"){
+        if(leader == "leader"){
+            if(memberList == ""){
+                alert("信息不完善，请补全!");
+                return;
+            }
+        }else{
+            if(leader_name == ""||memberList == ""){
+                alert("信息不完善，请补全!");
+                return;
+            }
         }
     }
+
     //生成数据==========================================================================================================
     cptInfo.personName = personName;
     cptInfo.personID = personID;
@@ -137,17 +129,13 @@ function cptSubmit(){
     cptInfo.time = time;
     cptInfo.grade=  grade;
     cptInfo.form=  form;
-    if (cptInfo.leader == "leader") {
+    cptInfo.leader = leader||"noData";
+    if (leader == "leader") {
         cptInfo.leader_name = personName;
-        cptInfo.leader = leader;
-        cptInfo.memberList = memberList;
     } else {
-        cptInfo.leader = leader;
         cptInfo.leader_name = leader_name;
-        cptInfo.memberList = memberList;
     }
-
-
+    cptInfo.memberList = memberList;
 
     //提交数据==========================================================================================================
     $.ajax({
