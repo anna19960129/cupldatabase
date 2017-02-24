@@ -322,8 +322,8 @@ function bISubmit(){
     bIInfo.birthday=birthday;
     bIInfo.province=province;
     bIInfo.gk_sort=gk_sort;
-    bIInfo.math=math;
-    bIInfo.english=english;
+    bIInfo.math=math||"noData";
+    bIInfo.english=english||"noData";
     bIInfo.enrol=enrol;
     bIInfo.enrol_major=enrol_major;
     bIInfo.change_major=change_major;
@@ -333,24 +333,24 @@ function bISubmit(){
     bIInfo.minor=minor;
     bIInfo.minor_program=minor_program;
     bIInfo.cellphone=cellphone;
-    bIInfo.weChat=weChat;
+    bIInfo.weChat=weChat||"noData";
     bIInfo.email=email;
-    bIInfo.graduate=graduate;
-    bIInfo.no_graduate_reason=no_graduate_reason;
-    bIInfo.finalPaper=finalPaper;
+    bIInfo.graduate=graduate||"noData";
+    bIInfo.no_graduate_reason=no_graduate_reason||"noData";
+    bIInfo.finalPaper=finalPaper||"noData";
     bIInfo.afterGraduate=afterGraduate;
-    bIInfo.postgraduate=postgraduate;
+    bIInfo.postgraduate=postgraduate||"noData";
     bIInfo.postgraduate_major=postgraduate_major;
-    bIInfo.doctor=doctor;
+    bIInfo.doctor=doctor||"noData";
     bIInfo.doctor_major=doctor_major;
-    bIInfo.post_doctor=post_doctor;
+    bIInfo.post_doctor=post_doctor||"noData";
     bIInfo.post_doctor_major=post_doctor_major;
-    bIInfo.job=job;
+    bIInfo.job=job||"noData";
     bIInfo.job_sort=job_sort;
-    bIInfo.department=department;
+    bIInfo.department=department||"noData";
     bIInfo.department_sort=department_sort;
-    bIInfo.tech_position=tech_position;
-    bIInfo.administrative_function=administrative_function;
+    bIInfo.tech_position=tech_position||"noData";
+    bIInfo.administrative_function=administrative_function||"noData";
     //提交数据==========================================================================================================
     $.ajax({
         url:"/ajax/bIInfoSubmit",

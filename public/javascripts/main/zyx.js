@@ -78,22 +78,10 @@ function CXCYSubmit() {
     var Member4 = document.getElementById("cxcy_member4").value;
     //生成组员列表
     var MemberList = [];
-    if (Member1 != "") {
-        MemberList.push(Member1)
-    }
-    ;
-    if (Member2 != "") {
-        MemberList.push(Member2)
-    }
-    ;
-    if (Member3 != "") {
-        MemberList.push(Member3)
-    }
-    ;
-    if (Member4 != "") {
-        MemberList.push(Member4)
-    }
-    ;
+    if (Member1 != "") {MemberList+=Member1};
+    if (Member2 != "") {MemberList+= ";";MemberList+=Member2};
+    if (Member3 != "") {MemberList+= ";";MemberList+=Member3};
+    if (Member4 != "") {MemberList+= ";";MemberList+=Member4};
 
     //数据检查==========================================================================================================
     //先检查必填的内容
@@ -102,12 +90,14 @@ function CXCYSubmit() {
     }
     //再根据填写的内容进行检查
     if (duty == "teamLeader") {
-        if (MemberList.length == 0) {
+        if (MemberList == "") {
             alert("信息不完善，请补全!");
+            return;
         }
     } else {
-        if (Leader == ""||MemberList.length == 0) {
+        if (Leader == ""||MemberList == "") {
             alert("信息不完善，请补全!");
+            return;
         }
     }
     //生成数据==========================================================================================================
@@ -118,15 +108,13 @@ function CXCYSubmit() {
     CXCYInfo.studentName = studentName;
     CXCYInfo.studentID = studentID;
     CXCYInfo.teacherName = teacherName;
+    CXCYInfo.duty = duty;
     if (CXCYInfo.duty == "teamLeader") {
-        CXCYInfo.duty = duty;
-        CXCYInfo.Leader = studentName;
-        CXCYInfo.MemberList = MemberList;
+        CXCYInfo.Leader == studentName;
     } else {
-        CXCYInfo.duty = duty;
         CXCYInfo.Leader = Leader;
-        CXCYInfo.MemberList = MemberList;
     }
+    CXCYInfo.MemberList = MemberList;
 
 
     //提交数据==========================================================================================================

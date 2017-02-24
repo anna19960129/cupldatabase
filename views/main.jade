@@ -45,7 +45,7 @@ block content
       p 不统一的问题也将得到有效解决。
     //基本信息框
     div(id = "basicInfoDiv" class = "baseStruct")
-      form(id = "basicInfoForm" class = "baseStructForm" method="post" action="./main")
+      form(id = "basicInfoForm" class = "baseStructForm" action="./main" )
         table(id = "basicInfoTable1" class = "baseStructTable")
           tr
             td 姓名：
@@ -144,7 +144,7 @@ block content
             td 现专业：
             td
               select(id="bI_present_major")
-                option(value="")
+                option(value="noData")
                 option(value="政治学与行政学专业") 政治学与行政学专业
                 option(value="国际政治专业") 国际政治专业
                 option(value="行政管理专业") 行政管理专业
@@ -172,7 +172,7 @@ block content
             td 第二专业：
             td
               select(id="bI_second_major")
-                option(value="")
+                option(value="noData")
                 option(value="法学专业") 法学专业
                 option(value="政治学与行政学专业") 政治学与行政学专业
                 option(value="国际政治专业") 国际政治专业
@@ -202,7 +202,7 @@ block content
             td 辅修专业：
             td
               select(id="bI_minor_program")
-                option(value="")
+                option(value="noData")
                 option(value="法学专业") 法学专业
                 option(value="政治学与行政学专业") 政治学与行政学专业
                 option(value="国际政治专业") 国际政治专业
@@ -250,7 +250,7 @@ block content
             td 毕业去向：
             td
               select(id="bI_afterGraduate")
-                option(value="")
+                option(value="noData")
                 option(value="出国读研") 出国读研
                 option(value="国内读研") 国内读研
                 option(value="直接就业") 直接就业
@@ -263,7 +263,7 @@ block content
             td 研究生专业：
             td
               select(id="bI_postgraduate_major" onchange="bI_PGM_show()")
-                option(value="")
+                option(value="noData")
                 option(value="经济") 经济
                 option(value="管理") 管理
                 option(value="法学") 法学
@@ -279,7 +279,7 @@ block content
             td 博士专业：
             td
               select(id="bI_doctor_major" onchange="bI_D_show()")
-                option(value="")
+                option(value="noData")
                 option(value="经济") 经济
                 option(value="管理") 管理
                 option(value="法学") 法学
@@ -295,7 +295,7 @@ block content
             td 博士后专业：
             td
               select(id="bI_post_doctor_major" onchange="bI_PD_show()")
-                option(value="")
+                option(value="noData")
                 option(value="经济") 经济
                 option(value="管理") 管理
                 option(value="法学") 法学
@@ -311,7 +311,7 @@ block content
             td 工作单位类型：
             td
               select(id="bI_job_sort")
-                option(value="")
+                option(value="noData")
                 option(value="政府机构") 政府机构
                 option(value="事业单位") 事业单位
                 option(value="企业") 企业
@@ -325,7 +325,7 @@ block content
             td 所在部门工作偏向：
             td
               select(id="bI_department_sort")
-                option(value="")
+                option(value="noData")
                 option(value="经济") 经济
                 option(value="管理") 管理
                 option(value="法学") 法学
@@ -350,7 +350,7 @@ block content
         table
       div(id = "cptSubmitting")
         span(id = "cpt_header_text" class = "pI_title") 待提交
-      form(id = "cptInfoForm" class = "baseStructForm" style="display:none" action="./main")
+      form(id = "cptInfoForm" class = "baseStructForm" style="display:none" action="./main"  )
         table(id = "cptInfoTable" class = "baseStructTable")
           //姓名
           tr
@@ -496,22 +496,22 @@ block content
             td
               span 组员1:
             td
-              input(id="cxcy_member1"  name="member" type="text" placeholder="填写其他组员姓名")
+              input(id="cxcy_member1"  name="member" type="text" placeholder="填写组员姓名,包括本人")
           tr(  class = "CXCYInfoTableLM" style="display:none" )
             td
               span 组员2:
             td
-              input(id="cxcy_member2"  name="member" type="text" placeholder="填写其他组员姓名")
+              input(id="cxcy_member2"  name="member" type="text" placeholder="填写组员姓名,包括本人")
           tr( class = "CXCYInfoTableLM" style="display:none" )
             td
               span 组员3:
             td
-              input(id="cxcy_member3"  name="member" type="text" placeholder="填写其他组员姓名")
+              input(id="cxcy_member3"  name="member" type="text" placeholder="填写组员姓名,包括本人")
           tr(  class = "CXCYInfoTableLM" style="display:none" )
             td
               span 组员4:
             td
-              input(id="cxcy_member4"  name="member" type="text" placeholder="填写其他组员姓名")
+              input(id="cxcy_member4"  name="member" type="text" placeholder="填写组员姓名,包括本人")
         input(type = "submit" id = "CXCYInfo_submit" value = "保存" onclick="CXCYSubmit()")
         input(type = "button" id = "CXCYInfo_reset" value = '重置')
       input(type = "button" id ="KYXMInfo_create" value="新增" onclick="createCXCY()")

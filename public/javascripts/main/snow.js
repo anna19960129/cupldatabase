@@ -86,14 +86,13 @@ function cptSubmit(){
     //组长
     var leader_name = document.getElementById("cpt_leader_name").value;
     //因为组员数据不是定长的，所以没法直接取值
-    var memberList = "";
+    var memberList ="";
     for(var i= 1;i<20;i++){
         if(memberList != ""){memberList+=";"}
         var name = "cpt_member" + i;
         var obj = document.getElementById(name);
         if(!obj)break;
-        var val = obj.value;
-        memberList +(val);
+        memberList += obj.value;
     }
     if(i >=20){
         alert("超出了最大组员数！");

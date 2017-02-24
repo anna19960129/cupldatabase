@@ -36,8 +36,8 @@ main.bIInfoPost = function(req,res,next){
     var birthday=req.body.birthday;
     var province=req.body.province;
     var gk_sort=req.body.gk_sort;
-    var math=req.body.math;
-    var english=req.body.english;
+    var math=req.body.math||"noData";
+    var english=req.body.english||"noData";
     var enrol=req.body.enrol;
     var enrol_major=req.body.enrol_major;
     var change_major=req.body.change_major;
@@ -47,30 +47,43 @@ main.bIInfoPost = function(req,res,next){
     var minor=req.body.minor;
     var minor_program=req.body.minor_program;
     var cellphone=req.body.cellphone;
-    var weChat=req.body.weChat;
+    var weChat=req.body.weChat||"noData";
     var email=req.body.email;
-    var graduate=req.body.graduate;
-    var no_graduate_reason=req.body.no_graduate_reason;
-    var finalPaper=req.body.finalPaper;
+    var graduate=req.body.graduate||"noData";
+    var no_graduate_reason=req.body.no_graduate_reason||"noData";
+    var finalPaper=req.body.finalPaper||"noData";
     var afterGraduate=req.body.afterGraduate;
-    var postgraduate=req.body.postgraduate;
+    var postgraduate=req.body.postgraduate||"noData";
     var postgraduate_major=req.body.postgraduate_major;
-    var doctor=req.body.doctor;
+    var doctor=req.body.doctor||"noData";
     var doctor_major=req.body.doctor_major;
-    var post_doctor=req.body.post_doctor;
+    var post_doctor=req.body.post_doctor||"noData";
     var post_doctor_major=req.body.post_doctor_major;
-    var job=req.body.job;
+    var job=req.body.job||"noData";
     var job_sort=req.body.job_sort;
-    var department=req.body.department;
+    var department=req.body.department||"noData";
     var department_sort=req.body.department_sort;
-    var tech_position=req.body.tech_position;
-    var administrative_function=req.body.administrative_function;
-    connection.query("insert into basicInformation values('" +name + "','" + ID + "','" + gender + "','" + birthday + "','" + province + "','" + gk_sort + "','" + math + "','" + english + "','" + enrol + "','" + enrol_major + "','" + change_major + "','" + present_major + "','" + double_major + "','" + second_major + "','" + minor + "','" + minor_program + "','" + cellphone + "','" + weChat + "','" + email + "','" + graduate + "','" + no_graduate_reason + "','" + finalPaper + "','" + afterGraduate + "','" + postgraduate + "','" + postgraduate_major + "','" + doctor + "','" + doctor_major + "','" + post_doctor + "','" + post_doctor_major + "','" + job + "','" + job_sort + "','" + department + "','" + department_sort + "','" + tech_position + "','" + administrative_function + "')",function(err,result){
+    var tech_position=req.body.tech_position||"noData";
+    var administrative_function=req.body.administrative_function||"noData";
+    connection.query("insert into basicInformation values('" +name + "','" + ID + "','" + gender + "','" +
+        birthday + "','" + province + "','" + gk_sort + "','" + math + "','" + english + "','" + enrol + "','" +
+        enrol_major + "','" + change_major + "','" + present_major + "','" + double_major + "','" + second_major +
+        "','" + minor + "','" + minor_program + "','" + cellphone + "','" + weChat + "','" + email + "','" +
+        graduate + "','" + no_graduate_reason + "','" + finalPaper + "','" + afterGraduate + "','" + postgraduate + "','" +
+        postgraduate_major + "','" + doctor + "','" + doctor_major + "','" + post_doctor + "','" + post_doctor_major + "','" +
+        job + "','" + job_sort + "','" + department + "','" + department_sort + "','" + tech_position + "','" +
+        administrative_function + "')",function(err,result){
+        if(!result.affectedRows){
+            console.log("未传输成功");
+            res.redirect('/main');
+        }
         if(result.affectedRows==1){
+            console.log("基本信息填写成功");
             req.session.name="haha";
             res.redirect('/main');
 
         } else{
+            console.log("已有此条记录");
             res.redirect("/main");
 
         }
@@ -90,15 +103,19 @@ main.cptInfoPost = function(req,res,next) {
     var leader=req.body.leader;
     var leader_name = req.body.leader_name;
     var memberList = req.body.memberList;
-    console.log()
-    connection.query("insert into competition values('" +personName + "','" + personID + "','" + level + "','" + cptName + "','" + time + "','" + grade + "','" + form + "','" + leader + "','" + leader_name + "','" + memberList + "')",function(err,result){
+    connection.query("insert into competition values('" +personName + "','" + personID + "','" + level + "','" +
+        cptName + "','" + time + "','" + grade + "','" + form + "','" + leader + "','" + leader_name + "','" +
+        memberList + "')",function(err,result){
         if(!result.affectedRows){
+            console.log("未传输成功");
             res.redirect('/main');
         }
         if(result.affectedRows==1){
+            console.log("基本信息填写成功");
             req.session.name="haha";
             res.redirect('/main');
         } else{
+            console.log("已有此条记录");
             res.redirect("/main");
         }
     });
@@ -114,13 +131,21 @@ main.CXCYInfoPost=function(req,res,next){
     var studentID=req.body.studentID;
     var teacherName=req.body.teacherName;
     var duty=req.body.duty;
-    var Leader=req.body.Leader;
+    var Leader=req.body.Leader||req.body.studentName;
     var MemberList=req.body.MemberList;
-    connection.query("insert into CXCY values('" +projectName + "','" + projectTime + "','" + projectLevel + "','" + projectSort + "','" + studentName + "','" + studentID + "','" + teacherName + "','" + duty + "','" + Leader + "','" + MemberList + "')",function(err,result){
+    connection.query("insert into CXCY values('" +projectName + "','" + projectTime + "','" + projectLevel + "','" +
+        projectSort + "','" + studentName + "','" + studentID + "','" + teacherName + "','" + duty + "','" +
+        Leader + "','" + MemberList + "')",function(err,result){
+        if(!result.affectedRows){
+            console.log("未传输成功");
+            res.redirect('/main');
+        }
         if(result.affectedRows==1){
+            console.log("基本信息填写成功");
             req.session.name="haha";
             res.redirect('/main');
         } else{
+            console.log("已有此条记录");
             res.redirect("/main");
         }
     });
@@ -136,11 +161,18 @@ main.KYXMInfoPost = function(req,res,next){
     var personName=req.body.personName;
     var personID=req.body.personID;
     var teacher=req.body.teacher;
-    connection.query("insert into KYXM values('" +projectName + "','" + time + "','" + level + "','" + personName + "','" + personID + "','" + teacher + "')",function(err,result){
+    connection.query("insert into KYXM values('" +projectName + "','" + time + "','" + level + "','" +
+        personName + "','" + personID + "','" + teacher + "')",function(err,result){
+        if(!result.affectedRows){
+            console.log("未传输成功");
+            res.redirect('/main');
+        }
         if(result.affectedRows==1){
+            console.log("基本信息填写成功");
             req.session.name="haha";
             res.redirect('/main');
         } else{
+            console.log("已有此条记录");
             res.redirect("/main");
         }
     });
@@ -162,10 +194,16 @@ main.paperInfoPost=function(req,res,next){
     connection.query("insert into paper values('" +paperName + "','" + Name + "','" + ID + "','" + authorType + "','" +
         authorSingle + "','" + isFirstAuthor + "','" + firstAuthor + "','" + coAuthorList + "','" + teacherName + "','" +
         magazineName + "','" + publishTime + "')",function(err,result){
+        if(!result.affectedRows){
+            console.log("未传输成功");
+            res.redirect('/main');
+        }
         if(result.affectedRows==1){
+            console.log("基本信息填写成功");
             req.session.name="haha";
             res.redirect('/main');
         } else{
+            console.log("已有此条记录");
             res.redirect("/main");
         }
     });
