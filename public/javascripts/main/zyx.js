@@ -77,7 +77,7 @@ function CXCYSubmit() {
     //组员4
     var Member4 = document.getElementById("cxcy_member4").value;
     //生成组员列表
-    var MemberList = [];
+    var MemberList = "";
     if (Member1 != "") {MemberList+=Member1};
     if (Member2 != "") {MemberList+= ";";MemberList+=Member2};
     if (Member3 != "") {MemberList+= ";";MemberList+=Member3};
@@ -87,6 +87,7 @@ function CXCYSubmit() {
     //先检查必填的内容
     if (projectName == "" || studentName == "" || studentID == "" || teacherName == "" || projectLevel == "" || projectSort == "" || projectTime == "") {
         alert("信息不完善，请补全!");
+        return;
     }
     //再根据填写的内容进行检查
     if (duty == "teamLeader") {

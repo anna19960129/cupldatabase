@@ -133,6 +133,9 @@ main.CXCYInfoPost=function(req,res,next){
     var duty=req.body.duty;
     var Leader=req.body.Leader||req.body.studentName;
     var MemberList=req.body.MemberList;
+    console.log("insert into CXCY values('" +projectName + "','" + projectTime + "','" + projectLevel + "','" +
+        projectSort + "','" + studentName + "','" + studentID + "','" + teacherName + "','" + duty + "','" +
+        Leader + "','" + MemberList + "')");
     connection.query("insert into CXCY values('" +projectName + "','" + projectTime + "','" + projectLevel + "','" +
         projectSort + "','" + studentName + "','" + studentID + "','" + teacherName + "','" + duty + "','" +
         Leader + "','" + MemberList + "')",function(err,result){
