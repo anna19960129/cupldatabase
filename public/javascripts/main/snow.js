@@ -130,7 +130,7 @@ function cptSubmit(){
     cptInfo.form=  form;
     cptInfo.leader = leader||"noData";
     if (leader == "leader") {
-        cptInfo.leader_name = personName;
+        cptInfo.leader_name == personName;
     } else {
         cptInfo.leader_name = leader_name;
     }
