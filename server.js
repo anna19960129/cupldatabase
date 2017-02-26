@@ -4,7 +4,7 @@ var login = require('./private/login/login');
 var register = require('./private/register/register');
 var logout = require('./private/login/logout');
 var main = require('./private/main/main');
-var search=require('./private/search/search');
+var search =require('./private/search/search');
 
 app.set('port',18080);
 var server = app.listen(app.get('port'), function() {
@@ -18,6 +18,7 @@ app.get("/reLogin",login.reLoginGet);
 app.get("/logout",logout.get);
 app.get("/ajax/logout",logout.ajaxGet);
 app.get("/main",main.get);
+app.get("/search",search.get);
 
 app.post("/login",login.post);
 app.post("/register",register.post);

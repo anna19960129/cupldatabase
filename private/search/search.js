@@ -1,27 +1,70 @@
 /**
  * Created by samsung2014 on 2017/2/26.
  */
-search=function(){
+var database = require("../databaseManager").getInstance();
+var connection = database.getConnection();
 
+search=function(){
 }
+search.get = function(req,res,next){
+    res.render('search');
+};
 search.bIInfoPost=function(req,res,next){
     console.log(req.body);
-    var enrol=req.body.enrol;
-    var major=req.body.major;
-    var arr = [];
-    connection.query('select `姓名`,ID,`性别`,`出生年月`,`高考省份`,`高考类别`,`入学时间`,`入学专业`,`转专业`,`现专业`,`双专业`,`第二专业`,`辅修`,`辅修专业`,`高考数学成绩`,`高考英语成绩` from basicinformation WHERE `入学专业`="'+
-        major+'"and `入学时间` ="'+enrol+'"', function(err, rows, fields) {
+    var queryStr = generateQuery(req.body);
+    var finalStr = 'select * from basicinformation WHERE ' + queryStr;
+    console.log(finalStr);
+    connection.query(finalStr,
+        function(err, rows, fields) {
         if (err) throw err;
         if(!rows.length){
-            res.redirect("/search");
+            console.log("没有查到数据");
+            res.json({dataType:"noData"});
             return;
         }else{
-            for (var i = 0; i < rows.length; i++) {
-                arr[i] = rows[i].name;
-            }
-            req.session.userId = "haha";
-            res.redirect('/search');
+            console.log("查到数据了");
+            //for (var i = 0; i < rows.length; i++) {
+            //    arr[i] = rows[i].name;
+            //}
+            res.json({
+                dataType:"hasData",
+                data:rows
+            })
             return;
         }
     });
+};
+
+function generateQuery(info){
+    var str = " ";
+    var argList = [];
+    for(var argsName in info){
+        var arg_i = info[argsName];
+        if(arg_i != ""){
+            switch(argsName){
+                case "Name":
+                    name = "姓名";
+                    break;
+                case "ID":
+                    name = "ID";
+                    break;
+                case "gender":
+                    name = "性别";
+                    break;
+                case "birthday":
+                    name = "出生年月";
+                    break;
+            }
+            argList.push( "`" + name + "` = \"" + arg_i + "\"");
+        }
+    }
+    for(var i = 0;i<argList.length;i++){
+        str += argList[i];
+        if(i != (argList.length-1)){
+            str += " and "
+        }
+    }
+    return str;
 }
+
+module.exports = search;

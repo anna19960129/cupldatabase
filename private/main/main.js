@@ -1,7 +1,7 @@
 /**
  * Created by wgw on 2017/2/8.
  */
-    
+
 var database = require("../databaseManager").getInstance();
 var connection = database.getConnection();
 
