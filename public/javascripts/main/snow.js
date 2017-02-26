@@ -75,6 +75,7 @@ function cptSubmit(){
     var level = document.getElementById("cptInfo_level").value;
     //竞赛名称
     var cptName = document.getElementById("cptInfo_name").value;
+    var cptOtherName=document.getElementById("cptInfo_name_other").value;
     //获奖时间
     var time = document.getElementById("cpt_time").value;
     //获奖等级
@@ -124,7 +125,11 @@ function cptSubmit(){
     cptInfo.personName = personName;
     cptInfo.personID = personID;
     cptInfo.level = level;
-    cptInfo.cptName= cptName;
+    if(cptInfo.cptName=="其他"){
+        cptInfo.cptName=cptOtherName;
+    }else{
+        cptInfo.cptName=cptName;
+    }
     cptInfo.time = time;
     cptInfo.grade=  grade;
     cptInfo.form=  form;

@@ -270,17 +270,17 @@ function bISubmit(){
     var postgraduate = document.getElementById("bI_postgraduate").value;
     //研究生就读专业
     var postgraduate_major = document.getElementById("bI_postgraduate_major").value;
-    if(postgraduate_major=="其他"){postgraduate_major=document.getElementById("bI_postgraduate_other_major").value;}
+    var postgraduate_other_major=document.getElementById("bI_postgraduate_other_major").value;
     //博士就读院校
     var doctor = document.getElementById("bI_doctor").value;
     //博士就读专业
     var doctor_major = document.getElementById("bI_doctor_major").value;
-    if(doctor_major=="其他"){doctor_major=document.getElementById("bI_doctor_other_major").value;}
+    var doctor_other_major=document.getElementById("bI_doctor_other_major").value;
     //博士后就读院校
     var post_doctor = document.getElementById("bI_post_doctor").value;
     //博士后就读专业
     var post_doctor_major = document.getElementById("bI_post_doctor_major").value;
-    if(post_doctor_major=="其他"){post_doctor_major=document.getElementById("bI_post_doctor_other_major").value;}
+    var post_doctor_other_major=document.getElementById("bI_post_doctor_other_major").value;
     //工作单位
     var job = document.getElementById("bI_job").value;
     //工作单位类型
@@ -341,10 +341,13 @@ function bISubmit(){
     bIInfo.afterGraduate=afterGraduate;
     bIInfo.postgraduate=postgraduate||"noData";
     bIInfo.postgraduate_major=postgraduate_major;
+    bIInfo.postgraduate_other_major=postgraduate_other_major||"noData";
     bIInfo.doctor=doctor||"noData";
     bIInfo.doctor_major=doctor_major;
+    bIInfo.doctor_other_major=doctor_other_major||"noData";
     bIInfo.post_doctor=post_doctor||"noData";
     bIInfo.post_doctor_major=post_doctor_major;
+    bIInfo.post_doctor_other_major=post_doctor_other_major||"noData";
     bIInfo.job=job||"noData";
     bIInfo.job_sort=job_sort;
     bIInfo.department=department||"noData";

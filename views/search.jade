@@ -2,7 +2,7 @@
    Created by samsung2014 on 2017/2/25.
 extends layout
 block content
-   script(src="javascripts/main/main.js")
+   script(src="javascripts/search/search.js")
    link(rel='stylesheet', href='/stylesheets/buttons.css')
    link(rel='stylesheet', href='/stylesheets/main.css')
    link(rel='stylesheet', href='/stylesheets/anna.css')
@@ -41,13 +41,18 @@ block content
          p 不统一的问题也将得到有效解决。
       //基本信息框
       div(id = "basicInfoDiv" class = "baseStruct")
-         form(id = "basicInfoForm" class = "baseStructForm" action="" )
+         form(id = "basicInfoForm" class = "baseStructForm" action="./search" )
             table(id = "basicInfoTable1" class = "baseStructTable")
                //查询条件
                tr
                   td 入学时间：
                   td
-                     input(id="bI_enrol"  type="text"  )
+                     select(id="bI_enrol")
+                        option(value="2013") 2013
+                        option(value="2014") 2014
+                        option(value="2015") 2015
+                        option(value="2016") 2016
+
                tr
                   td 入学专业：
                   td
@@ -56,6 +61,10 @@ block content
                         option(value="国际商务") 国际商务
                         option(value="经济学") 经济学
                         option(value="成思危现代金融菁英班") 成思危现代金融菁英班
+               tr
+                  td
+                  td
+                     input(type = "submit" id = "bIInfo_submit" value = "查询" onclick = "bISearch()")
                //结果 所有结果均可下载
                //页面表格呈现 姓名 学号 入学年份 专业 转专业 现专业    双专业 第二专业 辅修 辅修专业 毕业去向 研究生专业 单位类型 所在部门属性
                tr

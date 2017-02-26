@@ -4,6 +4,7 @@ var login = require('./private/login/login');
 var register = require('./private/register/register');
 var logout = require('./private/login/logout');
 var main = require('./private/main/main');
+var search=require('./private/search/search');
 
 app.set('port',18080);
 var server = app.listen(app.get('port'), function() {
@@ -30,3 +31,4 @@ app.post("/ajax/cptInfoSubmit",main.cptInfoPost);
 app.post("/ajax/CXCYInfoSubmit",main.CXCYInfoPost);
 app.post("/ajax/KYXMInfoSubmit",main.KYXMInfoPost);
 app.post("/ajax/paperInfoSubmit",main.paperInfoPost);
+app.post("/ajax/bIInfoSearch",search.bIInfoPost);

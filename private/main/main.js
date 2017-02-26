@@ -48,10 +48,13 @@ main.bIInfoPost = function(req,res,next){
     var afterGraduate=req.body.afterGraduate;
     var postgraduate=req.body.postgraduate||"noData";
     var postgraduate_major=req.body.postgraduate_major;
+    var postgraduate_other_major=req.body.postgraduate_other_major||"noData";
     var doctor=req.body.doctor||"noData";
     var doctor_major=req.body.doctor_major;
+    var doctor_other_major=req.body.doctor_other_major||"noData";
     var post_doctor=req.body.post_doctor||"noData";
     var post_doctor_major=req.body.post_doctor_major;
+    var post_doctor_other_major=req.body.post_doctor_other_major||"noData";
     var job=req.body.job||"noData";
     var job_sort=req.body.job_sort;
     var department=req.body.department||"noData";
@@ -64,8 +67,9 @@ main.bIInfoPost = function(req,res,next){
         enrol_major + "','" + change_major + "','" + present_major + "','" + double_major + "','" + second_major +
         "','" + minor + "','" + minor_program + "','" + cellphone + "','" + weChat + "','" + email + "','" +
         graduate + "','" + no_graduate_reason + "','" + finalPaper + "','" + afterGraduate + "','" + postgraduate + "','" +
-        postgraduate_major + "','" + doctor + "','" + doctor_major + "','" + post_doctor + "','" + post_doctor_major + "','" +
-        job + "','" + job_sort + "','" + department + "','" + department_sort + "','" + tech_position + "','" +
+        postgraduate_major + "','" + postgraduate_other_major + "','" + doctor + "','" + doctor_major + "','" + doctor_other_major
+        + "','" + post_doctor + "','" + post_doctor_major + "','" + post_doctor_other_major + "','" + job + "','" + job_sort + "','" + department + "','" +
+        department_sort + "','" + tech_position + "','" +
         administrative_function + "')",
         function(err,result){
             defaultCallback(err,result,"default",req,res,next);
