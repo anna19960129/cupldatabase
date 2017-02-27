@@ -54,8 +54,13 @@ function generateQuery(info){
                 case "birthday":
                     name = "出生年月";
                     break;
+                case "enrol_major":
+                    name="入学专业";
+                    break;
+                case"enrolTimeList":
+                    name="入学时间";
             }
-            argList.push( "`" + name + "` = \"" + arg_i + "\"");
+            argList.push( "`" + name + "` in (\"" + arg_i + "\")");
         }
     }
     for(var i = 0;i<argList.length;i++){

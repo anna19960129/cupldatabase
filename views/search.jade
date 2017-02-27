@@ -42,7 +42,31 @@ block content
          p 不统一的问题也将得到有效解决。
       //基本信息框
       div(id = "basicInfoDiv" class = "baseStruct")
-         span(id = "searchResultShow")查询结果：
+         span(id= "searchCondition") 查询条件：
+         table(id="baseInfoCondition")
+            tr
+               td 入学时间：
+               td 起始时间：
+                  select(id="bI_enrol_begin" )
+                     option(value="2013") 2013
+                     option(value="2014") 2014
+                     option(value="2015") 2015
+                     option(value="2016") 2016
+               td 终值时间：
+                  select(id="bI_enrol_stop" )
+                     option(value="2013") 2013
+                     option(value="2014") 2014
+                     option(value="2015") 2015
+                     option(value="2016") 2016
+            tr
+               td 入学专业：
+               td
+                  select(id ="bI_enrol_major")
+                     option(value="工商管理") 工商管理
+                     option(value="国际商务") 国际商务
+                     option(value="经济学") 经济学
+                     option(value="成思危现代金融菁英班") 成思危现代金融菁英班
+         span(id = "searchResultShow") 查询结果：
          table(id = "baseInfoShowTable")
          input(type = "button" id = "bIInfo_submit" value = "查询" onclick = "bISearch()")
       div(id = "cptInfoDiv" class = "baseStruct")

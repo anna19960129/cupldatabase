@@ -324,7 +324,7 @@ function bISubmit(){
     bIInfo.gk_sort=gk_sort;
     bIInfo.math=math||"noData";
     bIInfo.english=english||"noData";
-    bIInfo.enrol=enrol;
+    bIInfo.enrol= enrol.slice(0,4);
     bIInfo.enrol_major=enrol_major;
     bIInfo.change_major=change_major;
     bIInfo.present_major=present_major;
@@ -335,7 +335,7 @@ function bISubmit(){
     bIInfo.cellphone=cellphone;
     bIInfo.weChat=weChat||"noData";
     bIInfo.email=email;
-    bIInfo.graduate=graduate||"noData";
+    bIInfo.graduate=graduate.slice(0,4)||"noData";
     bIInfo.no_graduate_reason=no_graduate_reason||"noData";
     bIInfo.finalPaper=finalPaper||"noData";
     bIInfo.afterGraduate=afterGraduate;

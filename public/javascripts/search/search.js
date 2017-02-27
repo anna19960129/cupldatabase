@@ -2,16 +2,25 @@
  * Created by samsung2014 on 2017/2/26.
  */
 function bISearch(){
-    var bIInfo = {};
-    var enrol=document.getElementById("bI_enrol").value;
-    var major=document.getElementById("bI_enrol_major").value;
-    bIInfo.enrol=enrol;
-    bIInfo.major=major;
+    var bIInfoCon = {};
+    var enrol_begin=document.getElementById("bI_enrol_begin").value;
+    var enrol_stop=document.getElementById("bI_enrol_stop").value;
+    var enrol_count=enrol_stop- enrol_begin;
+    var enrol_major=document.getElementById("bI_enrol_major").value;
+    var enrolTimeList ="";
+    for(var i= 0;i<parseInt(enrol_count)+2;i++){
+        var obj = parseInt(enrol_begin) + i;
+        enrolTimeList += obj;
+        if(obj>parseInt(enrol_stop)-1)break;
+        if(enrolTimeList != ""){enrolTimeList+='","'}
+    }
+    bIInfoCon.enrolTimeList=enrolTimeList;
+    bIInfoCon.enrol_major=enrol_major;
     $.ajax({
         url:"/ajax/bIInfoSearch",
         type:"POST",
         dataType:"json",
-        data:{Name:"anna",gender:"m"},
+        data:bIInfoCon,
         success:function(data){
             checkBISuc(data);
 
