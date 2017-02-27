@@ -470,6 +470,12 @@ function paperSubmit(){
             return;
         }
     }
+    if(isFirstAuthor="true"){
+        if(firstAuthor!==Name){
+            alert("第一作者填写错误!");
+            return;
+        }
+    }
     //生成数据==========================================================================================================
     paperInfo.paperName = paperName;
     paperInfo.Name = Name;

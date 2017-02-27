@@ -34,6 +34,31 @@ search.bIInfoPost=function(req,res,next){
         }
     });
 };
+search.cptInfoPost=function(req,res,next){
+    console.log(req.body);
+    var queryStr = generateQuery(req.body);
+    var finalStr = 'select * from competition WHERE ' + queryStr;
+    console.log(finalStr);
+    connection.query(finalStr,
+        function(err, rows, fields) {
+            if (err) throw err;
+            if(!rows.length){
+                console.log("没有查到数据");
+                res.json({dataType:"noData"});
+                return;
+            }else{
+                console.log("查到数据了");
+                //for (var i = 0; i < rows.length; i++) {
+                //    arr[i] = rows[i].name;
+                //}
+                res.json({
+                    dataType:"hasData",
+                    data:rows
+                })
+                return;
+            }
+        });
+};
 
 function generateQuery(info){
     var str = " ";

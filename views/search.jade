@@ -70,113 +70,33 @@ block content
          table(id = "baseInfoShowTable")
          input(type = "button" id = "bIInfo_submit" value = "查询" onclick = "bISearch()")
       div(id = "cptInfoDiv" class = "baseStruct")
-         div(id = "cptAlreadySubmit")
-            div(id = "cptAS_header")
-               span(id = "cptAS_header_text" class = "pI_title") 已提交
-            div(id = "cptAS_intro")
-               span 当前已提交竞赛项目数量为：0
-            table
-         div(id = "cptSubmitting")
-            span(id = "cpt_header_text" class = "pI_title") 待提交
-         form(id = "cptInfoForm" class = "baseStructForm" style="display:none" action="./main"  )
-            table(id = "cptInfoTable" class = "baseStructTable")
-               tr
-                  td 入学时间：
-                  td
-                     input(id="bI_enrol" name="bI_enrol" type="month" onchange="enroltime()" required)
-               tr
-                  td 入学专业：
-                  td
-                     select(id ="bI_enrol_major")
-                        option(value="工商管理") 工商管理
-                        option(value="国际商务") 国际商务
-                        option(value="经济学") 经济学
-                        option(value="成思危现代金融菁英班") 成思危现代金融菁英班
-               //结果均可下载 呈现所有表格内容
-               //姓名
-               tr
-                  td 姓名：
-                  td
-                     input(type = "text" id = "cptInfo_personName")
-               //学号
-               tr
-                  td 学号：
-                  td
-                     input(type = "text" id = "cptInfo_personID")
-               //竞赛级别
-               tr
-                  td 竞赛级别：
-                  td
-                     select(id = "cptInfo_level")
-                        option(value="national") 国家级
-                        option(value="provincial") 省市级
-                        option(value="school") 校级
-               //竞赛名称
-               tr
-                  td 竞赛名称：
-                  td
-                     select(id = "cptInfo_name" onchange="cptShow()")
-                        option(value="北京大学生数学建模与计算机应用竞赛") 北京大学生数学建模与计算机应用竞赛
-                        option(value="全国大学生数学建模竞赛") 全国大学生数学建模竞赛
-                        option(value="美国大学生数学建模竞赛") 美国大学生数学建模竞赛
-                        option(value="全国大学生英语竞赛") 全国大学生英语竞赛
-                        option(value="全国大学生电子商务竞赛") 全国大学生电子商务竞赛
-                        option(value="全国大学生模拟法庭竞赛") 全国大学生模拟法庭竞赛
-                        option(value="中国大学生（文科）计算机设计大赛") 中国大学生（文科）计算机设计大赛
-                        option(value="北京大学生模拟法庭竞赛") 北京大学生模拟法庭竞赛
-                        option(value="北京大学生英语演讲比赛") 北京大学生英语演讲比赛
-                        option(value="北京大学生模拟法庭竞赛") 北京大学生模拟法庭竞赛
-                        option(value="中国政法大学创新论坛") 中国政法大学创新论坛
-                        option(value="其他") 其他
-               //竞赛名称补充
-               tr
-                  td
-                  td
-                     input(type="text" id="cptInfo_name_other" style="display:none" placeholder="填写具体比赛名称")
-               //获奖时间
-               tr
-                  td 获奖时间：
-                  td
-                     input(type = "month" id ="cpt_time")
-               //获奖等级
-               tr
-                  td 获奖等级：
-                  td
-                     input(type = "text" id ="cpt_grade")
-               //竞赛形式
-               tr
-                  td 竞赛形式：
-                  td
-                     span 个人：
-                     input(type = "radio" id = "cpt_form0" value = "cpt_single" name = "cpt_form" onclick="document.getElementById('cptInfoTableGroup').style.display ='none';")
-                     span 团体：
-                     input(type = "radio" id = "cpt_form1" value = "cpt_multiple" name = "cpt_form" onclick="document.getElementById('cptInfoTableGroup').style.display ='';")
-               //是否为组长
-               tr(id = "cptInfoTableGroup"  style="display:none")
-                  td 是否为组长:
-                  td
-                     span 是
-                     input(type="radio" id="cpt_leader_yes" name="cpt_leader"  value="leader" onclick="display_cpt1()")
-                     span 否
-                     input(type="radio" id="cpt_leader_no" name="cpt_leader"  value="member" onclick="display_cpt2()")
-               //组员构成（组长）
-               tr(id = "cptInfoTableLeader" class = "cptInfoTableLM" style="display:none")
-                  td
-                     span 组长：
-                  td
-                     input(type="text" id="cpt_leader_name"  placeholder="请填写组长姓名")
-               //组员构成（普通组员）
-               tr(id = "cptInfoTableMember" class = "cptInfoTableLM" style="display:none")
-                  td
-                     span 组员：
-                  td
-                     input(type="text" id="cpt_member1" placeholder="请填写组员姓名")
-                     input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add()")
-                     input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del()")
-            input(type = "submit" id = "cptInfo_submit" value = "保存" onclick="cptSubmit()")
-            input(type = "button" id = "cptInfo_reset" value = '重置')
-         input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="createCpt()")
-      //创新创业信息框
+         span(id= "searchCondition") 查询条件：
+         table(id="cptInfoCondition")
+            tr
+               td 入学时间：
+               td 起始时间：
+                  select(id="cpt_enrol_begin" )
+                     option(value="2013") 2013
+                     option(value="2014") 2014
+                     option(value="2015") 2015
+                     option(value="2016") 2016
+               td 终值时间：
+                  select(id="cpt_enrol_stop" )
+                     option(value="2013") 2013
+                     option(value="2014") 2014
+                     option(value="2015") 2015
+                     option(value="2016") 2016
+            tr
+               td 入学专业：
+               td
+                  select(id ="cpt_enrol_major")
+                     option(value="工商管理") 工商管理
+                     option(value="国际商务") 国际商务
+                     option(value="经济学") 经济学
+                     option(value="成思危现代金融菁英班") 成思危现代金融菁英班
+         span(id = "searchResultShow") 查询结果：
+         table(id = "cptInfoShowTable")
+         input(type = "button" id = "cptInfo_submit" value = "查询" onclick = "cptSearch()")
       div(id = "CXCYInfoDiv" class = "baseStruct")
          div(id = "CXCYAlreadySubmit")
             div(id = "CXCYAS_header")
