@@ -33,3 +33,5 @@ app.post("/ajax/CXCYInfoSubmit",main.CXCYInfoPost);
 app.post("/ajax/KYXMInfoSubmit",main.KYXMInfoPost);
 app.post("/ajax/paperInfoSubmit",main.paperInfoPost);
 app.post("/ajax/bIInfoSearch",search.bIInfoPost);
+app.post("/ajax/cptInfoSearch",search.cptInfoPost);
+

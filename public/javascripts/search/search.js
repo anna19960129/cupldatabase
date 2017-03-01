@@ -62,7 +62,7 @@ function cptSearch(){
     cptInfoCon.enrolTimeList=enrolTimeList;
     cptInfoCon.enrol_major=enrol_major;
     $.ajax({
-        url:"/ajax/bIInfoSearch",
+        url:"/ajax/cptInfoSearch",
         type:"POST",
         dataType:"json",
         data:cptInfoCon,
@@ -86,7 +86,7 @@ function checkCptSuc(data){
         var dataDetail = data.data;
         var len = dataDetail.length;
         showSpan.innerText = "查询结果：共找到" + len + "条数据";
-        var table = document.getElementById("baseInfoShowTable");
+        var table = document.getElementById("cptInfoShowTable");
         addDataToTable(dataDetail,table);
         return
     }
