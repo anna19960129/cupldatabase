@@ -83,12 +83,12 @@ main.cptInfoPost = function(req,res,next) {
     var personName = req.body.personName;
     var personID = req.body.personID;
     var level = req.body.level;
-    var cptName = req.body.cptName;
+    var cptName = req.body.cptName||req.body.cptOtherName;
     var time = req.body.time;
     var grade = req.body.grade;
     var form = req.body.form;
     var leader=req.body.leader;
-    var leader_name = req.body.leader_name;
+    var leader_name = req.body.leader_name||req.body.personName;
     var memberList = req.body.memberList;
     connection.query(
         "insert into competition values('" +personName + "','" + personID + "','" + level + "','" +
