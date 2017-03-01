@@ -127,9 +127,9 @@ function cptSubmit(){
     cptInfo.level = level;
     cptInfo.cptOtherName=cptOtherName;
     if(cptName =="其他"){
-        cptInfo.cptName ==cptOtherName;
+        cptInfo.cptName = cptOtherName;
     }else{
-        cptInfo.cptName =cptName;
+        cptInfo.cptName = cptName;
     }
     cptInfo.time = time;
     cptInfo.grade=  grade;

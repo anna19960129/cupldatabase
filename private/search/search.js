@@ -37,7 +37,7 @@ search.bIInfoPost=function(req,res,next){
 search.cptInfoPost=function(req,res,next){
     console.log(req.body);
     var queryStr = generateQuery(req.body);
-    var finalStr = 'select * from competition c left join on basicinformation b on c.ID = (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
+    var finalStr = 'select * from competition c left join basicinformation b on  (c.ID = b.ID) where c.ID = (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
     console.log(finalStr);
     connection.query(finalStr,
         function(err, rows, fields) {
