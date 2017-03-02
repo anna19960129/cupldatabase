@@ -34,4 +34,7 @@ app.post("/ajax/KYXMInfoSubmit",main.KYXMInfoPost);
 app.post("/ajax/paperInfoSubmit",main.paperInfoPost);
 app.post("/ajax/bIInfoSearch",search.bIInfoPost);
 app.post("/ajax/cptInfoSearch",search.cptInfoPost);
+app.post("/ajax/CXCYInfoSearch",search.CXCYInfoPost);
+app.post("/ajax/KYXMInfoSearch",search.KYXMInfoPost);
+app.post("/ajax/paperInfoSearch",search.paperInfoPost);
 

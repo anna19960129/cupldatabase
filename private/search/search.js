@@ -37,7 +37,7 @@ search.bIInfoPost=function(req,res,next){
 search.cptInfoPost=function(req,res,next){
     console.log(req.body);
     var queryStr = generateQuery(req.body);
-    var finalStr = 'select * from competition c left join basicinformation b on  (c.ID = b.ID) where b.ID in (select b.ID from basicinformation WHERE  ' + queryStr+')';
+    var finalStr = 'select * from competition c left join basicinformation b on  (c.ID = b.ID) where b.ID in (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
     console.log(finalStr);
     connection.query(finalStr,
         function(err, rows, fields) {
@@ -59,6 +59,82 @@ search.cptInfoPost=function(req,res,next){
             }
         });
 };
+
+search.CXCYInfoPost=function(req,res,next){
+    console.log(req.body);
+    var queryStr = generateQuery(req.body);
+    var finalStr = 'select * from cxcy c left join basicinformation b on  (c.ID = b.ID) where b.ID in (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
+    console.log(finalStr);
+    connection.query(finalStr,
+        function(err, rows, fields) {
+            if (err) throw err;
+            if(!rows.length){
+                console.log("没有查到数据");
+                res.json({dataType:"noData"});
+                return;
+            }else{
+                console.log("查到数据了");
+                res.json({
+                    dataType:"hasData",
+                    data:rows
+                })
+                return;
+            }
+        });
+};
+
+search.KYXMInfoPost=function(req,res,next){
+    console.log(req.body);
+    var queryStr = generateQuery(req.body);
+    var finalStr = 'select * from kyxm k left join basicinformation b on  (k.ID = b.ID) where b.ID in (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
+    console.log(finalStr);
+    connection.query(finalStr,
+        function(err, rows, fields) {
+            if (err) throw err;
+            if(!rows.length){
+                console.log("没有查到数据");
+                res.json({dataType:"noData"});
+                return;
+            }else{
+                console.log("查到数据了");
+                //for (var i = 0; i < rows.length; i++) {
+                //    arr[i] = rows[i].name;
+                //}
+                res.json({
+                    dataType:"hasData",
+                    data:rows
+                })
+                return;
+            }
+        });
+};
+
+search.paperInfoPost=function(req,res,next){
+    console.log(req.body);
+    var queryStr = generateQuery(req.body);
+    var finalStr = 'select * from paper p left join basicinformation b on  (p.ID = b.ID) where b.ID in (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
+    console.log(finalStr);
+    connection.query(finalStr,
+        function(err, rows, fields) {
+            if (err) throw err;
+            if(!rows.length){
+                console.log("没有查到数据");
+                res.json({dataType:"noData"});
+                return;
+            }else{
+                console.log("查到数据了");
+                //for (var i = 0; i < rows.length; i++) {
+                //    arr[i] = rows[i].name;
+                //}
+                res.json({
+                    dataType:"hasData",
+                    data:rows
+                })
+                return;
+            }
+        });
+};
+
 
 function generateQuery(info){
     var str = " ";

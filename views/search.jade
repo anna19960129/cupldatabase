@@ -66,7 +66,7 @@ block content
                      option(value="国际商务") 国际商务
                      option(value="经济学") 经济学
                      option(value="成思危现代金融菁英班") 成思危现代金融菁英班
-         span(id = "searchResultShow") 查询结果：
+         span(id = "searchResultShow1") 查询结果：
          table(id = "baseInfoShowTable")
          input(type = "button" id = "bIInfo_submit" value = "查询" onclick = "bISearch()")
       div(id = "cptInfoDiv" class = "baseStruct")
@@ -94,260 +94,93 @@ block content
                      option(value="国际商务") 国际商务
                      option(value="经济学") 经济学
                      option(value="成思危现代金融菁英班") 成思危现代金融菁英班
-         span(id = "searchResultShow") 查询结果：
+         span(id = "searchResultShow2") 查询结果：
          table(id = "cptInfoShowTable")
          input(type = "button" id = "cptInfo_submit" value = "查询" onclick = "cptSearch()")
       div(id = "CXCYInfoDiv" class = "baseStruct")
-         div(id = "CXCYAlreadySubmit")
-            div(id = "CXCYAS_header")
-               span(id = "CXCYAS_header_text" class = "pI_title") 已提交
-            div(id = "CXCYAS_intro")
-               span 当前已提交创新创业项目数量为：0
-            table
-         div(id = "CXCYSubmitting")
-            span(id = "CXCY_header_text" class = "pI_title") 待提交
-         form(id = "CXCYInfoForm" class = "baseStructForm" style="display:none" action="./main")
-            table(id = "CXCYInfoTable" class = "baseStructTable")
+         span(id= "searchCondition") 查询条件：
+            table(id="CXCYInfoCondition")
                tr
                   td 入学时间：
-                  td
-                     input(id="bI_enrol" name="bI_enrol" type="month" onchange="enroltime()" required)
+                  td 起始时间：
+                     select(id="CXCY_enrol_begin" )
+                        option(value="2013") 2013
+                        option(value="2014") 2014
+                        option(value="2015") 2015
+                        option(value="2016") 2016
+                  td 终值时间：
+                     select(id="CXCY_enrol_stop" )
+                        option(value="2013") 2013
+                        option(value="2014") 2014
+                        option(value="2015") 2015
+                        option(value="2016") 2016
                tr
                   td 入学专业：
                   td
-                     select(id ="bI_enrol_major")
+                     select(id ="CXCY_enrol_major")
                         option(value="工商管理") 工商管理
                         option(value="国际商务") 国际商务
                         option(value="经济学") 经济学
                         option(value="成思危现代金融菁英班") 成思危现代金融菁英班
-               //结果均可下载 呈现所有表格内容
-               tr
-                  td 项目名称：
-                  td
-                     input(type = "text" id = "CXCYInfo_projectName")
-               tr
-                  td 立项年份：
-                  td
-                     input(type = "month" id = "CXCYInfo_time")
-               tr
-                  td 项目级别：
-                  td
-                     select(id = "CXCYInfo_level")
-                        option(value="国家级") 国家级
-                        option(value="北京市级") 北京市级
-                        option(value="校级") 校级
-               tr
-                  td 项目类别：
-                  td
-                     select(id = "CXCYInfo_sort")
-                        option(value="创新项目") 创新项目
-                        option(value="创业项目") 创业项目
-               tr
-                  td 姓名：
-                  td
-                     input(type = "text" id = "CXCYInfo_personName")
-               tr
-                  td 学号：
-                  td
-                     input(type = "text" id = "CXCYInfo_personID")
-               tr
-                  td 指导教师：
-                  td
-                     input(type = "text" id = "CXCYInfo_teacher")
-               tr
-                  td 职务：
-                  td
-                     span 组长
-                     input(type = "radio" id = "CXCYInfo_position0" value = "teamLeader" name = "CXCYInfo_position" onclick="display_cxcy1()")
-                     span 组员
-                     input(type = "radio" id = "CXCYInfo_position1" value = "teammate" name = "CXCYInfo_position" onclick="display_cxcy2()")
-               tr(id = "CXCYInfoTableLeader" class = "CXCYInfoTableLM" style="display:none" )
-                  td
-                     span 组长:
-                  td
-                     input(id="cxcy_leader"  name="major" type="text" placeholder="填写组长姓名")
-               tr(id = "CXCYInfoTableMember"  class = "CXCYInfoTableLM" style="display:none" )
-                  td
-                     span 组员1:
-                  td
-                     input(id="cxcy_member1"  name="member" type="text" placeholder="填写组员姓名,包括本人")
-               tr(  class = "CXCYInfoTableLM" style="display:none" )
-                  td
-                     span 组员2:
-                  td
-                     input(id="cxcy_member2"  name="member" type="text" placeholder="填写组员姓名,包括本人")
-               tr( class = "CXCYInfoTableLM" style="display:none" )
-                  td
-                     span 组员3:
-                  td
-                     input(id="cxcy_member3"  name="member" type="text" placeholder="填写组员姓名,包括本人")
-               tr(  class = "CXCYInfoTableLM" style="display:none" )
-                  td
-                     span 组员4:
-                  td
-                     input(id="cxcy_member4"  name="member" type="text" placeholder="填写组员姓名,包括本人")
-            input(type = "submit" id = "CXCYInfo_submit" value = "保存" onclick="CXCYSubmit()")
-            input(type = "button" id = "CXCYInfo_reset" value = '重置')
-         input(type = "button" id ="KYXMInfo_create" value="新增" onclick="createCXCY()")
+            span(id = "searchResultShow3") 查询结果：
+            table(id = "CXCYInfoShowTable")
+            input(type = "button" id = "CXCYInfo_submit" value = "查询" onclick = "CXCYSearch()")
       //科研项目信息框
       div(id = "KYXMInfoDiv" class = "baseStruct")
-         div(id = "KYXMAlreadySubmit")
-            div(id = "KYXMAS_header")
-               span(id = "KYXMAS_header_text" class = "pI_title") 已提交
-            div(id = "KYXMAS_intro")
-               span 当前已提交科研项目数量为：0
-            table
-         div(id = "KYXMSubmitting")
-            span(id = "KYXM_header_text" class = "pI_title") 待提交
-         form(id = "KYXMInfoForm" class = "baseStructForm" style="display:none" action="./main")
-            table(id = "KYXMInfoTable" class = "baseStructTable")
+         span(id= "searchCondition") 查询条件：
+            table(id="KYXMInfoCondition")
                tr
                   td 入学时间：
-                  td
-                     input(id="bI_enrol" name="bI_enrol" type="month" onchange="enroltime()" required)
+                  td 起始时间：
+                     select(id="KYXM_enrol_begin" )
+                        option(value="2013") 2013
+                        option(value="2014") 2014
+                        option(value="2015") 2015
+                        option(value="2016") 2016
+                  td 终值时间：
+                     select(id="KYXM_enrol_stop" )
+                        option(value="2013") 2013
+                        option(value="2014") 2014
+                        option(value="2015") 2015
+                        option(value="2016") 2016
                tr
                   td 入学专业：
                   td
-                     select(id ="bI_enrol_major")
+                     select(id ="KYXM_enrol_major")
                         option(value="工商管理") 工商管理
                         option(value="国际商务") 国际商务
                         option(value="经济学") 经济学
                         option(value="成思危现代金融菁英班") 成思危现代金融菁英班
-               //结果均可下载 呈现所有表格内容
-               tr
-                  td 项目名称：
-                  td
-                     input(type = "text" id = "KYXMInfo_projectName")
-               tr
-                  td 立项年份：
-                  td
-                     input(type = "month" id = "KYXMInfo_time")
-               tr
-                  td 项目级别：
-                  td
-                     select(id = "KYXMInfo_level")
-                        option(value="国家级") 国家级
-                        option(value="北京市") 北京市
-                        option(value="校级") 校级
-               tr
-                  td 姓名：
-                  td
-                     input(type = "text" id = "KYXMInfo_personName")
-               tr
-                  td 学号：
-                  td
-                     input(type = "text" id = "KYXMInfo_personID")
-               tr
-                  td 指导教师：
-                  td
-                     input(type = "text" id = "KYXMInfo_teacher")
-            input(type = "submit" id = "KYXMInfo_submit" value = "保存" onclick="KYXMSubmit()")
-            input(type = "button" id = "KYXMInfo_reset" value = '重置')
-         input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatKYXM()")
+            span(id = "searchResultShow4") 查询结果：
+            table(id = "KYXMInfoShowTable")
+            input(type = "button" id = "KYXMInfo_submit" value = "查询" onclick = "KYXMSearch()")
       //论文信息框
       div(id = "paperInfoDiv" class = "baseStruct")
-         //已提交论文
-         div(id = "paperAlreadySubmit")
-            div(id = "pAS_header")
-               span(id = "pAS_header_text" class = "pI_title") 已提交
-            div(id = "pAS_intro")
-               span 当前已提交论文数量为：0
-            table
-         //待提交论文
-         div(id = "paperSubmitting")
-            span(id = "pAS_header_text" class = "pI_title") 待提交
-         //待提交表单
-         form(id = "paperInfoForm" class = "baseStructForm" style="display:none" action="./main")
-            table(id = "paperInfoTable" class = "baseStructTable")
+         span(id= "searchCondition") 查询条件：
+            table(id="paperInfoCondition")
                tr
                   td 入学时间：
-                  td
-                     input(id="bI_enrol" name="bI_enrol" type="month" onchange="enroltime()" required)
+                  td 起始时间：
+                     select(id="paper_enrol_begin" )
+                        option(value="2013") 2013
+                        option(value="2014") 2014
+                        option(value="2015") 2015
+                        option(value="2016") 2016
+                  td 终值时间：
+                     select(id="paper_enrol_stop" )
+                        option(value="2013") 2013
+                        option(value="2014") 2014
+                        option(value="2015") 2015
+                        option(value="2016") 2016
                tr
                   td 入学专业：
                   td
-                     select(id ="bI_enrol_major")
+                     select(id ="paper_enrol_major")
                         option(value="工商管理") 工商管理
                         option(value="国际商务") 国际商务
                         option(value="经济学") 经济学
                         option(value="成思危现代金融菁英班") 成思危现代金融菁英班
-               //结果均可下载 呈现所有表格内容
-               tr
-                  td 论文名称：
-                  td
-                     input(type="text" id = "paperInfo_paperName")
-               tr
-                  td 姓名：
-                  td
-                     input(type="text" id = "paperInfo_name")
-               tr
-                  td 学号：
-                  td
-                     input(type="text" id = "paperInfo_ID")
-               tr
-                  td 著作信息：
-                  td
-                     span 独著：
-                     input(type = "radio" id = "paperInfo_authors0" value = "single" name = "paperInfo_authorType" onclick="display_paper1()" )
-                     span 合著：
-                     input(type = "radio" id = "paperInfo_authors1" value = "multiple" name = "paperInfo_authorType" onclick="display_paper2()" )
-               tr(id = "paperInfo_tr_singleA" style="display:none")
-                  td
-                     span 作者名称：
-                  td
-                     input(type="text" id = "paperInfo_authorSingle" )
-               tr(id = "paperInfo_tr_firstA" style="display:none")
-                  td
-                     span 第一作者：
-                  td
-                     span &nbsp&nbsp&nbsp&nbsp是：
-                     input(type="radio" id="paperInfo_isFirstAuthor1" name="paperInfo_isFirstAuthor"  value="true" onclick="display_paper3()")
-                     span &nbsp&nbsp&nbsp&nbsp否：
-                     input(type="radio" id="paperInfo_isFirsAuthors2" name="paperInfo_isFirstAuthor"  value="false" onclick="display_paper4()")
-               //第一作者
-               tr(style = "display:none" class = "multiAuthorInput" id="paperInfoFirstAuthor")
-                  td
-                     span 第一作者：
-                  td
-                     input(type="text" id = "paperInfo_firstAuthor" name = "firstAuthor")
-               //合作者1
-               tr(style = "display:none" class = "multiAuthorInput")
-                  td
-                     span 合作者 1：
-                  td
-                     input(type="text" id = "paperInfo_coAuthor1" name = "coAuthor1")
-               //合作者2
-               tr(style = "display:none" class = "multiAuthorInput")
-                  td
-                     span 合作者 2：
-                  td
-                     input(type="text" id = "paperInfo_coAuthor2" name = "coAuthor2")
-               //合作者3
-               tr(style = "display:none" class = "multiAuthorInput")
-                  td
-                     span 合作者 3：
-                  td
-                     input(type="text" id = "paperInfo_coAuthor3" name = "coAuthor3")
-               //合作者4
-               tr(style = "display:none" class = "multiAuthorInput")
-                  td
-                     span 合作者 4：
-                  td
-                     input(type="text" id = "paperInfo_coAuthor4" name = "coAuthor4")
-               //指导老师
-               tr
-                  td 指导老师：
-                  td
-                     input(type="text" id ="paperInfo_teacherName")
-               tr
-                  td 期刊名称：
-                  td
-                     input(type = "text" id = "paperInfo_magName")
-               tr
-                  td 发表时间：
-                  td
-                     input(type = "month" id ="paperInfo_time")
-            input(type = "submit" id = "paperInfo_submit" value="保存" onclick = "paperSubmit()")
-            input(type = "button" id = "paperInfo_reset" value="重置")
-         input(type = "button" id ="paperInfo_creat" value="新增" onclick="createPaper()")
+            span(id = "searchResultShow5") 查询结果：
+            table(id = "paperInfoShowTable")
+            input(type = "button" id = "paperInfo_submit" value = "查询" onclick = "paperSearch()")
 
