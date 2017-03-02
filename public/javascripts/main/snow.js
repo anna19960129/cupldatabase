@@ -125,9 +125,9 @@ function cptSubmit(){
     cptInfo.personName = personName;
     cptInfo.personID = personID;
     cptInfo.level = level;
-    cptInfo.cptOtherName=cptOtherName;
+    cptInfo.cptOtherName = cptOtherName;
     if(cptName =="其他"){
-        cptInfo.cptName = cptOtherName;
+        cptInfo.cptName = "";
     }else{
         cptInfo.cptName = cptName;
     }

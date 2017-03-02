@@ -84,6 +84,7 @@ main.cptInfoPost = function(req,res,next) {
     var personID = req.body.personID;
     var level = req.body.level;
     var cptName = req.body.cptName||req.body.cptOtherName;
+    var cptOtherName =req.body.cptOtherName;
     var time = req.body.time;
     var grade = req.body.grade;
     var form = req.body.form;
@@ -92,7 +93,7 @@ main.cptInfoPost = function(req,res,next) {
     var memberList = req.body.memberList;
     connection.query(
         "insert into competition values('" +personName + "','" + personID + "','" + level + "','" +
-        cptName + "','" + time + "','" + grade + "','" + form + "','" + leader + "','" + leader_name + "','" +
+        cptName + "','" + cptOtherName + "','" + time + "','" + grade + "','" + form + "','" + leader + "','" + leader_name + "','" +
         memberList + "')",
         function(err,result){
             defaultCallback(err,result,"default",req,res,next);
