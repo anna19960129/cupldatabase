@@ -37,7 +37,7 @@ search.bIInfoPost=function(req,res,next){
 search.cptInfoPost=function(req,res,next){
     console.log(req.body);
     var queryStr = generateQuery(req.body);
-    var finalStr = 'select * from competition c left join basicinformation b on  (c.ID = b.ID) where b.ID in (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
+    var finalStr = 'select c.`姓名`,c.ID,c.`竞赛级别`,c.`竞赛名称`,c.`获奖时间`,c.`获奖等级`,c.`竞赛形式`,c.`是否为组长`,c.`组长姓名`,c.`组员` from competition c left join basicinformation b on  (c.ID = b.ID) where b.ID in (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
     console.log(finalStr);
     connection.query(finalStr,
         function(err, rows, fields) {
