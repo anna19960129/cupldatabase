@@ -19,3 +19,8 @@
     height: 40px;
     background-color:#16a085;
 }
+body{
+    background:url(
+    main.png
+    );background-repeat:repeat-x;
+}

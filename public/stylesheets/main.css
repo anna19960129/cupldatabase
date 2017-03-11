@@ -7,20 +7,30 @@
 .baseStructTable{
     margin: 0 auto;
 }
-/*�˵���*/
+
 #menuTable{
+    position: absolute;
     margin: 0 auto;
-    width:90%;
-    height: 50px;
+    width: 12%;
+    height: 500px;
 }
 .menuBtn{
     margin-left: 1%;
-    width: 15%;
+    margin-top: 10px;
+    width: 90%;
     height: 40px;
 }
 #menuIntro{
     margin-left: 0 ;
 }
+
+#mainDiv{
+    position: absolute;
+    margin-left: 15%;
+    width: 75%;
+    border: 3px solid black;
+}
+
 #basicInfoDiv{
     display:none;
 }
@@ -37,8 +47,3 @@
     display: none;
 }
 /*��չʾ��*/
-#mainDiv{
-    margin: 0 auto;
-    width: 85%;
-    border: 3px solid black;
-}
