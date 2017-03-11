@@ -11,6 +11,14 @@ block content
       form(id = "loginForm" method= "post" action = "./login" onsubmit="return checkSubmit()")
          table(id = "loginTable")
             tr
+               td
+                  span 身份：
+               td
+                  span 学生
+                  input(type="radio" id="chooseID_student" name="chooseID1"  value="student")
+                  span 管理员
+                  input(type="radio" id="chooseID_teacher" name="chooseID1"  value="teacher")
+            tr
                td 用户名：
                td
                   input(type = "text" id = "loginName" name = "name" class="")
@@ -26,6 +34,14 @@ block content
       span(id = "inform") 用户名已被注册，请更改用户名
       form(id = "registerForm" method= "post" action = "./register" onsubmit="return checkRegisterSubmit()")
          table(id = "registerTable")
+            tr
+              td
+                 span 身份：
+              td
+                 span 学生
+                 input(type="radio" id="chooseID_student2" name="chooseID2"  value="student")
+                 span 管理员
+                 input(type="radio" id="chooseID_teacher2" name="chooseID2"  value="teacher")
             tr
                td
                   span 用户名：

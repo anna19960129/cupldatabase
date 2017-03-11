@@ -18,19 +18,32 @@ register.post = function(req,res,next){
     //那么获得提交对象的方式，是var a = req.body.(json里面的变量名）
     var userName= req.body.name;
     var passWord = req.body.r1password;
+    var identity = req.body.$("input[name='chooseID2']:checked").val();
     if(!registerCheck(userName,passWord)){
         res.redirect('/reLogin');
     };
     //var userName = document.getElementById("loginNameR");
     //var passWord =document.getElementById("PasswordR1");
-    connection.query("insert into login values('" + userName + "','" + passWord + "')",function(err,result){
-        if(result.affectedRows==1){
-            req.session.name="haha";
-            res.redirect('/index');
-        } else{
-            res.redirect("/reRegister");
-        }
-    });
+    if(identity="student"){
+        connection.query("insert into login values('" + userName + "','" + passWord + "')",function(err,result){
+            if(result.affectedRows==1){
+                req.session.name="haha";
+                res.redirect('/index');
+            } else{
+                res.redirect("/reRegister");
+            }
+        });
+    }else{
+        connection.query("insert into login_teacher values('" + userName + "','" + passWord + "')",function(err,result){
+            if(result.affectedRows==1){
+                req.session.name="haha";
+                res.redirect('/index');
+            } else{
+                res.redirect("/reRegister");
+            }
+        });
+    }
+
 }
 
 function registerCheck(userName,passWord){

@@ -7,10 +7,10 @@
 .baseStructTable{
     margin: 0 auto;
 }
-/*²Ëµ¥À¸*/
+/*ï¿½Ëµï¿½ï¿½ï¿½*/
 #menuTable{
     margin: 0 auto;
-    width: 90%;
+    width:90%;
     height: 50px;
 }
 .menuBtn{
@@ -36,7 +36,7 @@
 #paperInfoDiv{
     display: none;
 }
-/*Ö÷Õ¹Ê¾´°*/
+/*ï¿½ï¿½Õ¹Ê¾ï¿½ï¿½*/
 #mainDiv{
     margin: 0 auto;
     width: 85%;
