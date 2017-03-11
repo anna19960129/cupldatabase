@@ -25,39 +25,22 @@ login.mainPort =function(req,res,next){
 login.post = function(req,res,next){
     var userName = req.body.name;
     var password = req.body.password;
-    var identity = req.body.$("input[name='chooseID1']:checked").val();
     if(!connection){res.redirect("/reLogin")};
-    if(identity="student"){
-        connection.query('select password from login where name="'+userName+'"', function(err, rows, fields) {
-            if (err) throw err;
-            if(!rows.length){
-                res.redirect("/reLogin");
-                return;
-            }
-            var result =  rows[0].password;
-            if(result == password){
-                req.session.userId = "haha";
-                res.redirect('/main');
-            }else{
-                res.redirect("/reLogin");
-            }
-        });
-    }else{
-        connection.query('select password from login_teacher where name="'+userName+'"', function(err, rows, fields) {
-            if (err) throw err;
-            if(!rows.length){
-                res.redirect("/reLogin");
-                return;
-            }
-            var result =  rows[0].password;
-            if(result == password){
-                req.session.userId = "haha";
-                res.redirect('/search');
-            }else{
-                res.redirect("/reLogin");
-            }
-        });
-    }
+
+    connection.query('select password from login where name="'+userName+'"', function(err, rows, fields) {
+        if (err) throw err;
+        if(!rows.length){
+            res.redirect("/reLogin");
+            return;
+        }
+        var result =  rows[0].password;
+        if(result == password){
+            req.session.userId = "haha";
+            res.redirect('/main');
+        }else{
+            res.redirect("/reLogin");
+        }
+    });
 }
 
 login.logout = function(req,res,next){
