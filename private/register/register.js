@@ -18,7 +18,7 @@ register.post = function(req,res,next){
     //那么获得提交对象的方式，是var a = req.body.(json里面的变量名）
     var userName= req.body.name;
     var passWord = req.body.r1password;
-    var identity = req.body.$("input[name='chooseID2']:checked").val();
+    var identity = req.body.chooseID2;
     if(!registerCheck(userName,passWord)){
         res.redirect('/reLogin');
     };
