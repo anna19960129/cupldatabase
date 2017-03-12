@@ -25,7 +25,8 @@ login.mainPort =function(req,res,next){
 login.post = function(req,res,next){
     var userName = req.body.name;
     var password = req.body.password;
-    var identity = req.body.$("input[name='chooseID1']:checked").val();
+    var identity = req.body.chooseID1;
+    console.log(req.body);
     if(!connection){res.redirect("/reLogin")};
     if(identity="student"){
         connection.query('select password from login where name="'+userName+'"', function(err, rows, fields) {
