@@ -28,7 +28,7 @@ login.post = function(req,res,next){
     var identity = req.body.chooseID1;
     console.log(req.body);
     if(!connection){res.redirect("/reLogin")};
-    if(identity="student"){
+    if(identity=="student"){
         connection.query('select password from login where name="'+userName+'"', function(err, rows, fields) {
             if (err) throw err;
             if(!rows.length){
