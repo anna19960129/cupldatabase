@@ -7,39 +7,20 @@
 .baseStructTable{
     margin: 0 auto;
 }
-<<<<<<< HEAD
 
-=======
-/*�˵���*/
->>>>>>> parent of ecab53a... 学生老师登陆功能 不知道如何获取radio的value值
 #menuTable{
-    position: absolute;
     margin: 0 auto;
-<<<<<<< HEAD
-    width: 12%;
-    height: 500px;
-=======
-    width: 90%;
+    width:90%;
     height: 50px;
->>>>>>> parent of ecab53a... 学生老师登陆功能 不知道如何获取radio的value值
 }
 .menuBtn{
     margin-left: 1%;
-    margin-top: 10px;
-    width: 90%;
+    width: 15%;
     height: 40px;
 }
 #menuIntro{
     margin-left: 0 ;
 }
-
-#mainDiv{
-    position: absolute;
-    margin-left: 15%;
-    width: 75%;
-    border: 3px solid black;
-}
-
 #basicInfoDiv{
     display:none;
 }
@@ -55,13 +36,9 @@
 #paperInfoDiv{
     display: none;
 }
-<<<<<<< HEAD
-/*��չʾ��*/
-=======
-/*��չʾ��*/
+
 #mainDiv{
     margin: 0 auto;
     width: 85%;
     border: 3px solid black;
 }
->>>>>>> parent of ecab53a... 学生老师登陆功能 不知道如何获取radio的value值
