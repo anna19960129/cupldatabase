@@ -465,17 +465,19 @@ function paperSubmit(){
             return;
         }
     }else{
+        if(isFirstAuthor == "true"){
+            if(firstAuthor!==Name){
+                alert("第一作者填写错误!");
+                return;
+            }
+        }
         if(firstAuthor == ""||coAuthorList == ""){
             alert("信息不完善，请补全!");
             return;
         }
     }
-    if(isFirstAuthor="true"){
-        if(firstAuthor!==Name){
-            alert("第一作者填写错误!");
-            return;
-        }
-    }
+
+
     //生成数据==========================================================================================================
     paperInfo.paperName = paperName;
     paperInfo.Name = Name;
@@ -503,9 +505,24 @@ function paperSubmit(){
         data:paperInfo,
         success:function(data){
             console.log(data);
+            checkPaperCount(data);
         },
         error:function(data){
             console.log(data);
         }
     });
+}
+
+function checkPaperCount(data){
+    var dataType = data.dataType;
+    var paperCount=document.getElementById("paperCount");
+    if(dataType == "noData"){
+        paperCount.innerText = "当前已提交论文数量为：0";
+        return
+    }else if(dataType == "hasData"){
+        var dataDetail = data.data;
+        var len = dataDetail.length;
+        paperCount.innerText = "当前已提交论文数量为：" + len + "";
+        return
+    }
 }
