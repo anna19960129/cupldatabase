@@ -159,7 +159,6 @@ function KYXMSearch(){
         data:KYXMInfoCon,
         success:function(data){
             checkKYXMSuc(data);
-
         },
         error:function(data){
             console.log(data);
