@@ -117,6 +117,7 @@ search.paperInfoPost=function(req,res,next){
     connection.query(finalStr,
         function(err, rows, fields) {
             if (err) throw err;
+            console.log(rows);
             if(!rows.length){
                 console.log("没有查到数据");
                 res.json({dataType:"noData"});

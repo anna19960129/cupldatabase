@@ -153,29 +153,14 @@ main.paperInfoPost=function(req,res,next){
     var teacherName = req.body.teacherName;
     var magazineName = req.body.magazineName;
     var publishTime = req.body.publishTime;
-    var queryStr = generateQuery(req.body);
-    var finalStr = 'select * from paper WHERE  ' + queryStr+')';
-    console.log(finalStr);
     connection.query(
         "insert into paper values('" +paperName + "','" + Name + "','" + ID + "','" + authorType + "','" +
         authorSingle + "','" + isFirstAuthor + "','" + firstAuthor + "','" + coAuthorList + "','" + teacherName + "','" +
         magazineName + "','" + publishTime + "')",
-        finalStr,
-        function(err,result,rows, fields){
+        function(err,result){
             defaultCallback(err,result,"default",req,res,next);
             if (err) throw err;
-            if (!rows.length) {
-                console.log("没有查到数据");
-                res.json({dataType: "noData"});
-                return;
-            } else {
-                console.log("查到数据了");
-                res.json({
-                    dataType: "hasData",
-                    data: rows
-                })
-                return;
-            }
+
         }
     );
 
@@ -195,7 +180,29 @@ function defaultCallback(err,result,type,req,res,next){
     if(result.affectedRows==1){
         console.log("填写成功");
         req.session.name="haha";
-        res.redirect('/main');
+
+        var queryStr = req.body.ID;
+        var finalStr = 'select * from paper WHERE  paper.ID in  (\"' + queryStr+'\" )';
+        console.log(finalStr);
+        connection.query(finalStr,
+            function(err, fields) {
+                if (err) throw err;
+                var rows = "[RowDataPocket:{'sd':'ha'}]";
+                console.log(rows);
+                if(!rows.length){
+                    console.log("没有查到数据");
+                    res.json({dataType:"noData"});
+                    return;
+                }else{
+                    console.log("查到数据了");
+                    res.json({
+                        dataType:"hasData",
+                        data:rows
+                    })
+                    return;
+                }
+            }
+        );
         return;
     } else{
         console.log("已有此条记录");
@@ -207,28 +214,7 @@ function defaultCallback(err,result,type,req,res,next){
 
 
 
-function generateQuery(info){
-    var str = " ";
-    var argList = [];
-    for(var argsName in info){
-        var arg_i = info[argsName];
-        if(arg_i != ""){
-            switch(argsName){
-                case "ID":
-                    name = "ID";
-                    break;
-            }
-            argList.push( "`" + name + "` in (\"" + arg_i + "\")");
-        }
-    }
-    for(var i = 0;i<argList.length;i++){
-        str += argList[i];
-        if(i != (argList.length-1)){
-            str += " and "
-        }
-    }
-    return str;
-}
+
 
 module.exports = main;
 
