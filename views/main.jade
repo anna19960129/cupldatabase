@@ -45,6 +45,14 @@ block content
       p 不统一的问题也将得到有效解决。
     //基本信息框
     div(id = "basicInfoDiv" class = "baseStruct")
+      div(id = "basicInfoAlreadySubmit")
+        div(id = "basicInfoAS_header")
+          span(id = "basicInfoAS_header_text" class = "pI_title") 已提交
+        div(id = "basicInfoAS_intro")
+          span(id="basicInfoCount")
+        table(id = "basicInfoShowTable")
+      div(id = "basicInfoSubmitting")
+        span(id = "basicInfo_header_text" class = "pI_title") 待提交
       form(id = "basicInfoForm" class = "baseStructForm" action="./main" )
         table(id = "basicInfoTable1" class = "baseStructTable")
           tr
@@ -339,18 +347,20 @@ block content
             td 行政职务：
             td
               input(type = "text" id ="bI_administrative_function")
-        input(type = "submit" id = "bIInfo_submit" value = "保存" onclick = "bISubmit()")
-        input(type = "button" id = "bIInfo_reset" value = '重置')
+        input(type = "button" id = "bIInfo_submit" value = "保存" onclick = "bISubmit()")
+        input(type = "reset" id = "bIInfo_reset" value = '重置')
+
+
     div(id = "cptInfoDiv" class = "baseStruct")
       div(id = "cptAlreadySubmit")
         div(id = "cptAS_header")
           span(id = "cptAS_header_text" class = "pI_title") 已提交
         div(id = "cptAS_intro")
           span(id="cptCount")
-        table
+        table(id = "cptInfoShowTable")
       div(id = "cptSubmitting")
         span(id = "cpt_header_text" class = "pI_title") 待提交
-      form(id = "cptInfoForm" class = "baseStructForm" style="display:none" action="./main"  )
+      form(id = "cptInfoForm" class = "baseStructForm"  action="./main"  )
         table(id = "cptInfoTable" class = "baseStructTable")
           //姓名
           tr
@@ -432,9 +442,9 @@ block content
               input(type="text" id="cpt_member1" placeholder="请填写组员姓名")
               input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add()")
               input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del()")
-        input(type = "submit" id = "cptInfo_submit" value = "保存" onclick="cptSubmit()")
-        input(type = "button" id = "cptInfo_reset" value = '重置')
-      input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="createCpt()")
+        input(type = "button" id = "cptInfo_submit" value = "保存" onclick="cptSubmit()")
+        input(type = "reset" id = "cptInfo_reset" value = '重置')
+
     //创新创业信息框
     div(id = "CXCYInfoDiv" class = "baseStruct")
       div(id = "CXCYAlreadySubmit")
@@ -442,10 +452,10 @@ block content
           span(id = "CXCYAS_header_text" class = "pI_title") 已提交
         div(id = "CXCYAS_intro")
           span(id="CXCYCount")
-        table
+        table(id = "CXCYInfoShowTable")
       div(id = "CXCYSubmitting")
         span(id = "CXCY_header_text" class = "pI_title") 待提交
-      form(id = "CXCYInfoForm" class = "baseStructForm" style="display:none" action="./main")
+      form(id = "CXCYInfoForm" class = "baseStructForm"  action="./main")
         table(id = "CXCYInfoTable" class = "baseStructTable")
           tr
             td 项目名称：
@@ -512,9 +522,9 @@ block content
               span 组员4:
             td
               input(id="cxcy_member4"  name="member" type="text" placeholder="填写组员姓名,包括本人")
-        input(type = "submit" id = "CXCYInfo_submit" value = "保存" onclick="CXCYSubmit()")
-        input(type = "button" id = "CXCYInfo_reset" value = '重置')
-      input(type = "button" id ="KYXMInfo_create" value="新增" onclick="createCXCY()")
+        input(type = "button" id = "CXCYInfo_submit" value = "保存" onclick="CXCYSubmit()")
+        input(type = "reset" id = "CXCYInfo_reset" value = '重置')
+
     //科研项目信息框
     div(id = "KYXMInfoDiv" class = "baseStruct")
       div(id = "KYXMAlreadySubmit")
@@ -522,10 +532,10 @@ block content
           span(id = "KYXMAS_header_text" class = "pI_title") 已提交
         div(id = "KYXMAS_intro")
           span(id="KYXMCount")
-        table
+        table(id = "KYXMInfoShowTable")
       div(id = "KYXMSubmitting")
         span(id = "KYXM_header_text" class = "pI_title") 待提交
-      form(id = "KYXMInfoForm" class = "baseStructForm" style="display:none" action="./main")
+      form(id = "KYXMInfoForm" class = "baseStructForm" action="./main")
         table(id = "KYXMInfoTable" class = "baseStructTable")
           tr
             td 项目名称：
@@ -554,9 +564,8 @@ block content
             td 指导教师：
             td
               input(type = "text" id = "KYXMInfo_teacher")
-        input(type = "submit" id = "KYXMInfo_submit" value = "保存" onclick="KYXMSubmit()")
-        input(type = "button" id = "KYXMInfo_reset" value = '重置')
-      input(type = "button" id ="KYXMInfo_creat" value="新增" onclick="creatKYXM()")
+        input(type = "button" id = "KYXMInfo_submit" value = "保存" onclick="KYXMSubmit()")
+        input(type = "reset" id = "KYXMInfo_reset" value = '重置')
     //论文信息框
     div(id = "paperInfoDiv" class = "baseStruct")
       //已提交论文
@@ -570,7 +579,7 @@ block content
       div(id = "paperSubmitting")
         span(id = "pAS_header_text" class = "pI_title") 待提交
       //待提交表单
-      form(id = "paperInfoForm" class = "baseStructForm" style="display:none" action="./main")
+      form(id = "paperInfoForm" class = "baseStructForm"  action="./main")
         table(id = "paperInfoTable" class = "baseStructTable")
           tr
             td 论文名称：
@@ -648,9 +657,9 @@ block content
             td
               input(type = "month" id ="paperInfo_time")
 
-        input(type = "submit" id = "paperInfo_submit" value="保存" onclick = "paperSubmit()")
-        input(type = "button" id = "paperInfo_reset" value="重置")
-      input(type = "button" id ="paperInfo_creat" value="新增" onclick="createPaper()")
+        input(type = "button" id = "paperInfo_submit" value="保存" onclick = "paperSubmit()")
+        input(type = "reset" id = "paperInfo_reset" value="重置")
+
 
 
 

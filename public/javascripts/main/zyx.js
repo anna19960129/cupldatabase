@@ -144,6 +144,8 @@ function checkCXCYCount(data){
         var dataDetail = data.data;
         var len = dataDetail.length;
         paperCount.innerText = "当前已提交创新创业项目数量为：" + len + "";
+        var table = document.getElementById("CXCYInfoShowTable");
+        addDataToTable(dataDetail,table);
         return
     }
 }

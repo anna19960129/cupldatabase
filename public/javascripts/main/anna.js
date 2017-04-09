@@ -362,12 +362,31 @@ function bISubmit(){
         data:bIInfo,
         success:function(data){
             console.log(data);
+            checkBasicInformation(data);
         },
         error:function(data){
             console.log(data);
         }
     });
 }
+function checkBasicInformation(data) {
+    var element = document.getElementById("basicInfoForm");
+    element.style.display ="none";
+    var dataType = data.dataType;
+    var paperCount=document.getElementById("basicInfoCount");
+    if(dataType == "noData"){
+        paperCount.innerText = "基本信息未提交成功";
+        return
+    }else if(dataType == "hasData"){
+        var dataDetail = data.data;
+        paperCount.innerText = "基本信息提交成功";
+        var table = document.getElementById("basicInfoShowTable");
+        addDataToTable(dataDetail,table);
+        return
+    }
+}
+
+
 
 //提交科研项目
 function KYXMSubmit(){
@@ -423,6 +442,8 @@ function checkKYXMCount(data){
         var dataDetail = data.data;
         var len = dataDetail.length;
         paperCount.innerText = "当前已提交科研项目数量为：" + len + "";
+        var table = document.getElementById("KYXMInfoShowTable");
+        addDataToTable(dataDetail,table);
         return
     }
 }
