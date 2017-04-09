@@ -406,13 +406,26 @@ function KYXMSubmit(){
         data:KYXMInfo,
         success:function(data){
             console.log(data);
+            checkKYXMCount(data);
         },
         error:function(data){
             console.log(data);
         }
     });
 }
-
+function checkKYXMCount(data){
+    var dataType = data.dataType;
+    var paperCount=document.getElementById("KYXMCount");
+    if(dataType == "noData"){
+        paperCount.innerText = "当前已提交科研项目数量为：0";
+        return
+    }else if(dataType == "hasData"){
+        var dataDetail = data.data;
+        var len = dataDetail.length;
+        paperCount.innerText = "当前已提交科研项目数量为：" + len + "";
+        return
+    }
+}
 //提交论文
 function paperSubmit(){
     var paperInfo = {};
@@ -523,6 +536,35 @@ function checkPaperCount(data){
         var dataDetail = data.data;
         var len = dataDetail.length;
         paperCount.innerText = "当前已提交论文数量为：" + len + "";
+        var table = document.getElementById("paperInfoShowTable");
+        addDataToTable(dataDetail,table);
         return
     }
+}
+
+function addDataToTable(dataDetail,table){
+    table.innerHTML = "";
+    var tr;
+    var title = dataDetail[0];
+    if(!title)return;
+
+    tr = document.createElement("tr");
+    for(var i in title){
+        var td = document.createElement("td");
+        td.innerHTML = i;
+        tr.appendChild(td);
+    }
+    table.appendChild(tr);
+
+    for(var i = 0;i<dataDetail.length;i++){
+        var data_i = dataDetail[i];
+        tr = document.createElement("tr");
+        for(var d in data_i){
+            var td = document.createElement("td");
+            td.innerHTML = data_i[d];
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+
 }

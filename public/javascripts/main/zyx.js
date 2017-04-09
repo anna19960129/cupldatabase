@@ -126,9 +126,24 @@ function CXCYSubmit() {
         data:CXCYInfo,
         success: function (data) {
             console.log(data);
+            checkCXCYCount(data);
         },
         error: function (data) {
             console.log(data);
         }
     });
+}
+
+function checkCXCYCount(data){
+    var dataType = data.dataType;
+    var paperCount=document.getElementById("CXCYCount");
+    if(dataType == "noData"){
+        paperCount.innerText = "当前已提交创新创业项目数量为：0";
+        return
+    }else if(dataType == "hasData"){
+        var dataDetail = data.data;
+        var len = dataDetail.length;
+        paperCount.innerText = "当前已提交创新创业项目数量为：" + len + "";
+        return
+    }
 }

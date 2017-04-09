@@ -150,9 +150,23 @@ function cptSubmit(){
         data:cptInfo,
         success:function(data){
             console.log(data);
+            checkCptCount(data);
         },
         error:function(data){
             console.log(data);
         }
     });
+}
+function checkCptCount(data){
+    var dataType = data.dataType;
+    var paperCount=document.getElementById("CptCount");
+    if(dataType == "noData"){
+        paperCount.innerText = "当前已提交竞赛项目数量为：0";
+        return
+    }else if(dataType == "hasData"){
+        var dataDetail = data.data;
+        var len = dataDetail.length;
+        paperCount.innerText = "当前已提交竞赛项目数量为：" + len + "";
+        return
+    }
 }

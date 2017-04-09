@@ -71,8 +71,47 @@ main.bIInfoPost = function(req,res,next){
         + "','" + post_doctor + "','" + post_doctor_major + "','" + post_doctor_other_major + "','" + job + "','" + job_sort + "','" + department + "','" +
         department_sort + "','" + tech_position + "','" +
         administrative_function + "')",
-        function(err,result){
-            defaultCallback(err,result,"default",req,res,next);
+        function(err,result,fields){
+            if(err){
+                console.log("数据没有放入数据库" + err);
+                res.redirect('/main');
+                return;
+            }
+            if(!result.affectedRows){
+                console.log("未传输成功");
+                res.redirect('/main');
+                return;
+            }
+            if(result.affectedRows==1){
+                console.log("填写成功");
+                req.session.name="haha";
+                var queryStr = req.body.ID;
+                var finalStr = 'select * from basicInformation WHERE  basicInformation.ID in  (\"' + queryStr+'\" )';
+                console.log(finalStr);
+                connection.query(finalStr,
+                    function(err,rows, fields) {
+                        if (err) throw err;
+                        console.log(rows);
+                        if(!rows.length){
+                            console.log("没有查到数据");
+                            res.json({dataType:"noData"});
+                            return;
+                        }else{
+                            console.log("查到数据了");
+                            res.json({
+                                dataType:"hasData",
+                                data:rows
+                            })
+                            return;
+                        }
+                    }
+                );
+                return;
+            } else{
+                console.log("已有此条记录");
+                res.redirect("/main");
+                return;
+            }
         }
     );
 
@@ -81,7 +120,7 @@ main.bIInfoPost = function(req,res,next){
 main.cptInfoPost = function(req,res,next) {
     console.log(req.body);
     var personName = req.body.personName;
-    var personID = req.body.personID;
+    var ID = req.body.personID;
     var level = req.body.level;
     var cptName = req.body.cptName||req.body.cptOtherName;
     var cptOtherName =req.body.cptOtherName;
@@ -92,11 +131,49 @@ main.cptInfoPost = function(req,res,next) {
     var leader_name = req.body.leader_name||req.body.personName;
     var memberList = req.body.memberList;
     connection.query(
-        "insert into competition values('" +personName + "','" + personID + "','" + level + "','" +
+        "insert into competition values('" +personName + "','" + ID + "','" + level + "','" +
         cptName + "','" + cptOtherName + "','" + time + "','" + grade + "','" + form + "','" + leader + "','" + leader_name + "','" +
         memberList + "')",
-        function(err,result){
-            defaultCallback(err,result,"default",req,res,next);
+        function(err,result,fields){
+            if(err){
+                console.log("数据没有放入数据库" + err);
+                res.redirect('/main');
+                return;
+            }
+            if(!result.affectedRows){
+                console.log("未传输成功");
+                res.redirect('/main');
+                return;
+            }
+            if(result.affectedRows==1){
+                console.log("填写成功");
+                req.session.name="haha";
+                var finalStr = 'select * from competition WHERE  competition.ID in  (\"' + ID+'\" )';
+                console.log(finalStr);
+                connection.query(finalStr,
+                    function(err,rows, fields) {
+                        if (err) throw err;
+                        console.log(rows);
+                        if(!rows.length){
+                            console.log("没有查到数据");
+                            res.json({dataType:"noData"});
+                            return;
+                        }else{
+                            console.log("查到数据了");
+                            res.json({
+                                dataType:"hasData",
+                                data:rows
+                            })
+                            return;
+                        }
+                    }
+                );
+                return;
+            } else{
+                console.log("已有此条记录");
+                res.redirect("/main");
+                return;
+            }
         }
     );
 }
@@ -108,17 +185,55 @@ main.CXCYInfoPost=function(req,res,next){
     var projectLevel=req.body.projectLevel;
     var projectSort=req.body.projectSort;
     var studentName=req.body.studentName;
-    var studentID=req.body.studentID;
+    var ID=req.body.studentID;
     var teacherName=req.body.teacherName;
     var duty=req.body.duty;
     var Leader=req.body.Leader||req.body.studentName;
     var MemberList=req.body.MemberList;
     connection.query(
         "insert into CXCY values('" +projectName + "','" + projectTime + "','" + projectLevel + "','" +
-        projectSort + "','" + studentName + "','" + studentID + "','" + teacherName + "','" + duty + "','" +
+        projectSort + "','" + studentName + "','" + ID + "','" + teacherName + "','" + duty + "','" +
         Leader + "','" + MemberList + "')",
-        function(err,result){
-            defaultCallback(err,result,"default",req,res,next);
+        function(err,result,fields){
+            if(err){
+                console.log("数据没有放入数据库" + err);
+                res.redirect('/main');
+                return;
+            }
+            if(!result.affectedRows){
+                console.log("未传输成功");
+                res.redirect('/main');
+                return;
+            }
+            if(result.affectedRows==1){
+                console.log("填写成功");
+                req.session.name="haha";
+                var finalStr = 'select * from CXCY WHERE  CXCY.ID in  (\"' + ID+'\" )';
+                console.log(finalStr);
+                connection.query(finalStr,
+                    function(err,rows, fields) {
+                        if (err) throw err;
+                        console.log(rows);
+                        if(!rows.length){
+                            console.log("没有查到数据");
+                            res.json({dataType:"noData"});
+                            return;
+                        }else{
+                            console.log("查到数据了");
+                            res.json({
+                                dataType:"hasData",
+                                data:rows
+                            })
+                            return;
+                        }
+                    }
+                );
+                return;
+            } else{
+                console.log("已有此条记录");
+                res.redirect("/main");
+                return;
+            }
         }
     );
 }
@@ -129,13 +244,51 @@ main.KYXMInfoPost = function(req,res,next){
     var time=req.body.time;
     var level=req.body.level;
     var personName=req.body.personName;
-    var personID=req.body.personID;
+    var ID=req.body.personID;
     var teacher=req.body.teacher;
     connection.query(
         "insert into KYXM values('" +projectName + "','" + time + "','" + level + "','" +
-        personName + "','" + personID + "','" + teacher + "')",
-        function(err,result){
-            defaultCallback(err,result,"default",req,res,next);
+        personName + "','" + ID + "','" + teacher + "')",
+        function(err,result,fields){
+        if(err){
+            console.log("数据没有放入数据库" + err);
+            res.redirect('/main');
+            return;
+        }
+        if(!result.affectedRows){
+            console.log("未传输成功");
+            res.redirect('/main');
+            return;
+        }
+        if(result.affectedRows==1){
+            console.log("填写成功");
+            req.session.name="haha";
+            var finalStr = 'select * from KYXM WHERE  KYXM.ID in  (\"' + ID+'\" )';
+            console.log(finalStr);
+            connection.query(finalStr,
+                function(err,rows, fields) {
+                    if (err) throw err;
+                    console.log(rows);
+                    if(!rows.length){
+                        console.log("没有查到数据");
+                        res.json({dataType:"noData"});
+                        return;
+                    }else{
+                        console.log("查到数据了");
+                        res.json({
+                            dataType:"hasData",
+                            data:rows
+                        })
+                        return;
+                    }
+                }
+            );
+            return;
+        } else{
+            console.log("已有此条记录");
+            res.redirect("/main");
+            return;
+        }
         }
     );
 }
@@ -157,61 +310,51 @@ main.paperInfoPost=function(req,res,next){
         "insert into paper values('" +paperName + "','" + Name + "','" + ID + "','" + authorType + "','" +
         authorSingle + "','" + isFirstAuthor + "','" + firstAuthor + "','" + coAuthorList + "','" + teacherName + "','" +
         magazineName + "','" + publishTime + "')",
-        function(err,result){
-            defaultCallback(err,result,"default",req,res,next);
-            if (err) throw err;
-
+        function(err,result,fields){
+            if(err){
+                console.log("数据没有放入数据库" + err);
+                res.redirect('/main');
+                return;
+            }
+            if(!result.affectedRows){
+                console.log("未传输成功");
+                res.redirect('/main');
+                return;
+            }
+            if(result.affectedRows==1){
+                console.log("填写成功");
+                req.session.name="haha";
+                var queryStr = req.body.ID;
+                var finalStr = 'select * from paper WHERE  paper.ID in  (\"' + queryStr+'\" )';
+                console.log(finalStr);
+                connection.query(finalStr,
+                    function(err,rows, fields) {
+                        if (err) throw err;
+                        console.log(rows);
+                        if(!rows.length){
+                            console.log("没有查到数据");
+                            res.json({dataType:"noData"});
+                            return;
+                        }else{
+                            console.log("查到数据了");
+                            res.json({
+                                dataType:"hasData",
+                                data:rows
+                            })
+                            return;
+                        }
+                    }
+                );
+                return;
+            } else{
+                console.log("已有此条记录");
+                res.redirect("/main");
+                return;
+            }
         }
     );
 
 }
-
-function defaultCallback(err,result,type,req,res,next){
-    if(err){
-        console.log("数据没有放入数据库" + err);
-        res.redirect('/main');
-        return;
-    }
-    if(!result.affectedRows){
-        console.log("未传输成功");
-        res.redirect('/main');
-        return;
-    }
-    if(result.affectedRows==1){
-        console.log("填写成功");
-        req.session.name="haha";
-
-        var queryStr = req.body.ID;
-        var finalStr = 'select * from paper WHERE  paper.ID in  (\"' + queryStr+'\" )';
-        console.log(finalStr);
-        connection.query(finalStr,
-            function(err, fields) {
-                if (err) throw err;
-                var rows = "[RowDataPocket:{'sd':'ha'}]";
-                console.log(rows);
-                if(!rows.length){
-                    console.log("没有查到数据");
-                    res.json({dataType:"noData"});
-                    return;
-                }else{
-                    console.log("查到数据了");
-                    res.json({
-                        dataType:"hasData",
-                        data:rows
-                    })
-                    return;
-                }
-            }
-        );
-        return;
-    } else{
-        console.log("已有此条记录");
-        res.redirect("/main");
-        return;
-    }
-}
-
-
 
 
 
