@@ -386,6 +386,10 @@ function checkBasicInformation(data) {
     }
 }
 
+function createBasicInfo() {
+    var element = document.getElementById("basicInfoForm");
+    element.style.display = "";
+}
 
 
 //提交科研项目
