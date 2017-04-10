@@ -378,6 +378,7 @@ function checkBasicInformation(data) {
         paperCount.innerText = "基本信息未提交成功";
         return
     }else if(dataType == "hasData"){
+        alert("录入成功!");
         var dataDetail = data.data;
         paperCount.innerText = "基本信息提交成功";
         var table = document.getElementById("basicInfoShowTable");
@@ -445,6 +446,7 @@ function checkKYXMCount(data){
         paperCount.innerText = "当前已提交科研项目数量为：0";
         return
     }else if(dataType == "hasData"){
+        alert("录入成功!");
         var dataDetail = data.data;
         var len = dataDetail.length;
         paperCount.innerText = "当前已提交科研项目数量为：" + len + "";
@@ -562,6 +564,7 @@ function checkPaperCount(data){
         paperCount.innerText = "当前已提交论文数量为：0";
         return
     }else if(dataType == "hasData"){
+        alert("录入成功!");
         var dataDetail = data.data;
         var len = dataDetail.length;
         paperCount.innerText = "当前已提交论文数量为：" + len + "";

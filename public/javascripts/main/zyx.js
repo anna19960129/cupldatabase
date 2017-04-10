@@ -143,6 +143,7 @@ function checkCXCYCount(data){
         paperCount.innerText = "当前已提交创新创业项目数量为：0";
         return
     }else if(dataType == "hasData"){
+        alert("录入成功!");
         var dataDetail = data.data;
         var len = dataDetail.length;
         paperCount.innerText = "当前已提交创新创业项目数量为：" + len + "";
