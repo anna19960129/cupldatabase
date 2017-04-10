@@ -117,7 +117,7 @@ function createKYXM(){
 
 }
 
-function creatKYXM(){
+function createKYXM(){
     var element = document.getElementById("KYXMInfoForm");
     element.style.display = "";
 }
@@ -437,6 +437,8 @@ function KYXMSubmit(){
     });
 }
 function checkKYXMCount(data){
+    var element = document.getElementById("KYXMInfoForm");
+    element.style.display = "none";
     var dataType = data.dataType;
     var paperCount=document.getElementById("KYXMCount");
     if(dataType == "noData"){
@@ -552,6 +554,8 @@ function paperSubmit(){
 }
 
 function checkPaperCount(data){
+    var element = document.getElementById("paperInfoForm");
+    element.style.display = "none";
     var dataType = data.dataType;
     var paperCount=document.getElementById("paperCount");
     if(dataType == "noData"){
@@ -592,4 +596,10 @@ function addDataToTable(dataDetail,table){
         table.appendChild(tr);
     }
 
+}
+
+function cpt_single(){
+    document.getElementById('cptInfoTableGroup').style.display ='none';
+    document.getElementById('cptInfoTableLeader').style.display ='none';
+    document.getElementById('cptInfoTableMember').style.display ='none';
 }

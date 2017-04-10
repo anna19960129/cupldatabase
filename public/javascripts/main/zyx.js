@@ -135,6 +135,8 @@ function CXCYSubmit() {
 }
 
 function checkCXCYCount(data){
+    var element = document.getElementById("CXCYInfoForm");
+    element.style.display = "none";
     var dataType = data.dataType;
     var paperCount=document.getElementById("CXCYCount");
     if(dataType == "noData"){

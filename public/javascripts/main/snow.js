@@ -158,6 +158,8 @@ function cptSubmit(){
     });
 }
 function checkCptCount(data){
+    var element = document.getElementById("cptInfoForm");
+    element.style.display = "none";
     var dataType = data.dataType;
     var paperCount=document.getElementById("cptCount");
     if(dataType == "noData"){
