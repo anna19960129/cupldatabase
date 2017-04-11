@@ -19,3 +19,73 @@
     height: 40px;
     background-color:#16a085;
 }
+
+#KYXMAS_header{
+    width: 100%;
+    height: 40px;
+    background-color:#1abc9c;
+}
+
+#KYXMAS_intro{
+    width: 100%;
+    height: 20px;
+    background-color: #ecf0f1;
+}
+#KYXMSubmitting{
+    width: 100%;
+    height: 40px;
+    background-color:#16a085;
+}
+
+
+#CXCYAS_header{
+    width: 100%;
+    height: 40px;
+    background-color:#1abc9c;
+}
+
+#CXCYAS_intro{
+    width: 100%;
+    height: 20px;
+    background-color: #ecf0f1;
+}
+#CXCYSubmitting{
+    width: 100%;
+    height: 40px;
+    background-color:#16a085;
+}
+
+#cptAS_header{
+    width: 100%;
+    height: 40px;
+    background-color:#1abc9c;
+}
+
+#cptAS_intro{
+    width: 100%;
+    height: 20px;
+    background-color: #ecf0f1;
+}
+#cptSubmitting{
+    width: 100%;
+    height: 40px;
+    background-color:#16a085;
+}
+
+
+#basicInfoAS_header{
+    width: 100%;
+    height: 40px;
+    background-color:#1abc9c;
+}
+
+#basicInfoAS_intro{
+    width: 100%;
+    height: 20px;
+    background-color: #ecf0f1;
+}
+#basicInfoSubmitting{
+    width: 100%;
+    height: 40px;
+    background-color:#16a085;
+}

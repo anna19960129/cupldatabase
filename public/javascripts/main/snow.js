@@ -158,15 +158,20 @@ function cptSubmit(){
     });
 }
 function checkCptCount(data){
+    var element = document.getElementById("cptInfoForm");
+    element.style.display = "none";
     var dataType = data.dataType;
-    var paperCount=document.getElementById("CptCount");
+    var paperCount=document.getElementById("cptCount");
     if(dataType == "noData"){
         paperCount.innerText = "当前已提交竞赛项目数量为：0";
         return
     }else if(dataType == "hasData"){
+        alert("录入成功!");
         var dataDetail = data.data;
         var len = dataDetail.length;
         paperCount.innerText = "当前已提交竞赛项目数量为：" + len + "";
+        var table = document.getElementById("cptInfoShowTable");
+        addDataToTable(dataDetail,table);
         return
     }
 }

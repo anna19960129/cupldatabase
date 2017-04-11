@@ -21,101 +21,187 @@ main.get = function(req,res,next){
 
 }
 
-main.bIInfoPost = function(req,res,next){
+main.bIInfoPost = function(req,res,next) {
     console.log(req.body);
-    var name=req.body.Name;
-    var ID=req.body.ID;
-    var gender=req.body.gender;
-    var birthday=req.body.birthday;
-    var province=req.body.province;
-    var gk_sort=req.body.gk_sort;
-    var math=req.body.math||"noData";
-    var english=req.body.english||"noData";
-    var enrol=req.body.enrol;
-    var enrol_major=req.body.enrol_major;
-    var change_major=req.body.change_major;
-    var present_major=req.body.present_major;
-    var double_major=req.body.double_major;
-    var second_major=req.body.second_major;
-    var minor=req.body.minor;
-    var minor_program=req.body.minor_program;
-    var cellphone=req.body.cellphone;
-    var weChat=req.body.weChat||"noData";
-    var email=req.body.email;
-    var graduate=req.body.graduate||"noData";
-    var no_graduate_reason=req.body.no_graduate_reason||"noData";
-    var finalPaper=req.body.finalPaper||"noData";
-    var afterGraduate=req.body.afterGraduate;
-    var postgraduate=req.body.postgraduate||"noData";
-    var postgraduate_major=req.body.postgraduate_major;
-    var postgraduate_other_major=req.body.postgraduate_other_major||"noData";
-    var doctor=req.body.doctor||"noData";
-    var doctor_major=req.body.doctor_major;
-    var doctor_other_major=req.body.doctor_other_major||"noData";
-    var post_doctor=req.body.post_doctor||"noData";
-    var post_doctor_major=req.body.post_doctor_major;
-    var post_doctor_other_major=req.body.post_doctor_other_major||"noData";
-    var job=req.body.job||"noData";
-    var job_sort=req.body.job_sort;
-    var department=req.body.department||"noData";
-    var department_sort=req.body.department_sort;
-    var tech_position=req.body.tech_position||"noData";
-    var administrative_function=req.body.administrative_function||"noData";
-    connection.query(
-        "insert into basicInformation values('" +name + "','" + ID + "','" + gender + "','" +
-        birthday + "','" + province + "','" + gk_sort + "','" + math + "','" + english + "','" + enrol + "','" +
-        enrol_major + "','" + change_major + "','" + present_major + "','" + double_major + "','" + second_major +
-        "','" + minor + "','" + minor_program + "','" + cellphone + "','" + weChat + "','" + email + "','" +
-        graduate + "','" + no_graduate_reason + "','" + finalPaper + "','" + afterGraduate + "','" + postgraduate + "','" +
-        postgraduate_major + "','" + postgraduate_other_major + "','" + doctor + "','" + doctor_major + "','" + doctor_other_major
-        + "','" + post_doctor + "','" + post_doctor_major + "','" + post_doctor_other_major + "','" + job + "','" + job_sort + "','" + department + "','" +
-        department_sort + "','" + tech_position + "','" +
-        administrative_function + "')",
-        function(err,result,fields){
-            if(err){
-                console.log("数据没有放入数据库" + err);
-                res.redirect('/main');
-                return;
-            }
-            if(!result.affectedRows){
-                console.log("未传输成功");
-                res.redirect('/main');
-                return;
-            }
-            if(result.affectedRows==1){
-                console.log("填写成功");
-                req.session.name="haha";
-                var queryStr = req.body.ID;
-                var finalStr = 'select * from basicInformation WHERE  basicInformation.ID in  (\"' + queryStr+'\" )';
-                console.log(finalStr);
-                connection.query(finalStr,
-                    function(err,rows, fields) {
-                        if (err) throw err;
-                        console.log(rows);
-                        if(!rows.length){
-                            console.log("没有查到数据");
-                            res.json({dataType:"noData"});
+    var name = req.body.Name;
+    var ID = req.body.ID;
+    var gender = req.body.gender;
+    var birthday = req.body.birthday;
+    var province = req.body.province;
+    var gk_sort = req.body.gk_sort;
+    var math = req.body.math || "noData";
+    var english = req.body.english || "noData";
+    var enrol = req.body.enrol;
+    var enrol_major = req.body.enrol_major;
+    var change_major = req.body.change_major;
+    var present_major = req.body.present_major;
+    var double_major = req.body.double_major;
+    var second_major = req.body.second_major;
+    var minor = req.body.minor;
+    var minor_program = req.body.minor_program;
+    var cellphone = req.body.cellphone;
+    var weChat = req.body.weChat || "noData";
+    var email = req.body.email;
+    var graduate = req.body.graduate || "noData";
+    var no_graduate_reason = req.body.no_graduate_reason || "noData";
+    var finalPaper = req.body.finalPaper || "noData";
+    var afterGraduate = req.body.afterGraduate;
+    var postgraduate = req.body.postgraduate || "noData";
+    var postgraduate_major = req.body.postgraduate_major;
+    var postgraduate_other_major = req.body.postgraduate_other_major || "noData";
+    var doctor = req.body.doctor || "noData";
+    var doctor_major = req.body.doctor_major;
+    var doctor_other_major = req.body.doctor_other_major || "noData";
+    var post_doctor = req.body.post_doctor || "noData";
+    var post_doctor_major = req.body.post_doctor_major;
+    var post_doctor_other_major = req.body.post_doctor_other_major || "noData";
+    var job = req.body.job || "noData";
+    var job_sort = req.body.job_sort;
+    var department = req.body.department || "noData";
+    var department_sort = req.body.department_sort;
+    var tech_position = req.body.tech_position || "noData";
+    var administrative_function = req.body.administrative_function || "noData";
+    connection.query('select * from basicInformation WHERE  basicInformation.ID in  (\"' + ID + '\" )',
+        function (err, rows, fields) {
+            if (err) throw err;
+            console.log(rows);
+            if (!rows.length) {
+                console.log("没有查到数据");
+                connection.query("insert into basicInformation values('" + name + "','" + ID + "','" + gender + "','" +
+                    birthday + "','" + province + "','" + gk_sort + "','" + math + "','" + english + "','" + enrol + "','" +
+                    enrol_major + "','" + change_major + "','" + present_major + "','" + double_major + "','" + second_major +
+                    "','" + minor + "','" + minor_program + "','" + cellphone + "','" + weChat + "','" + email + "','" +
+                    graduate + "','" + no_graduate_reason + "','" + finalPaper + "','" + afterGraduate + "','" + postgraduate + "','" +
+                    postgraduate_major + "','" + postgraduate_other_major + "','" + doctor + "','" + doctor_major + "','" + doctor_other_major
+                    + "','" + post_doctor + "','" + post_doctor_major + "','" + post_doctor_other_major + "','" + job + "','" + job_sort + "','" + department + "','" +
+                    department_sort + "','" + tech_position + "','" +
+                    administrative_function + "')",
+                    function (err, result, fields) {
+                        if (err) {
+                            console.log("数据没有放入数据库" + err);
+                            res.redirect('/main');
                             return;
-                        }else{
-                            console.log("查到数据了");
-                            res.json({
-                                dataType:"hasData",
-                                data:rows
-                            })
+                        }
+                        if (!result.affectedRows) {
+                            console.log("未传输成功");
+                            res.redirect('/main');
+                            return;
+                        }
+                        if (result.affectedRows == 1) {
+                            console.log("填写成功");
+                            req.session.name = "haha";
+                            var queryStr = req.body.ID;
+                            var finalStr = 'select * from basicInformation WHERE  basicInformation.ID in  (\"' + queryStr + '\" )';
+                            console.log(finalStr);
+                            connection.query(finalStr,
+                                function (err, rows, fields) {
+                                    if (err) throw err;
+                                    console.log(rows);
+                                    if (!rows.length) {
+                                        console.log("没有查到数据");
+                                        res.json({dataType: "noData"});
+                                        return;
+                                    } else {
+                                        console.log("查到数据了");
+                                        res.json({
+                                            dataType: "hasData",
+                                            data: rows
+                                        })
+                                        return;
+                                    }
+                                }
+                            );
+                            return;
+                        } else {
+                            console.log("已有此条记录");
+                            res.redirect("/main");
                             return;
                         }
                     }
                 );
                 return;
-            } else{
-                console.log("已有此条记录");
-                res.redirect("/main");
+            } else {
+                console.log("查到数据了");
+                connection.query('delete from basicInformation  WHERE  basicInformation.ID in  (\"' + ID + '\" )',
+                    function (err, result, fields) {
+                        if (err) throw err;
+                        console.log(rows);
+                        if (!result.affectedRows) {
+                            console.log("未删除成功");
+                            res.redirect('/main');
+                            return;
+                        }
+                        if (result.affectedRows == 1) {
+                            console.log("删除成功");
+                            req.session.name = "haha";
+                            connection.query("insert into basicInformation values('" + name + "','" + ID + "','" + gender + "','" +
+                                birthday + "','" + province + "','" + gk_sort + "','" + math + "','" + english + "','" + enrol + "','" +
+                                enrol_major + "','" + change_major + "','" + present_major + "','" + double_major + "','" + second_major +
+                                "','" + minor + "','" + minor_program + "','" + cellphone + "','" + weChat + "','" + email + "','" +
+                                graduate + "','" + no_graduate_reason + "','" + finalPaper + "','" + afterGraduate + "','" + postgraduate + "','" +
+                                postgraduate_major + "','" + postgraduate_other_major + "','" + doctor + "','" + doctor_major + "','" + doctor_other_major
+                                + "','" + post_doctor + "','" + post_doctor_major + "','" + post_doctor_other_major + "','" + job + "','" + job_sort + "','" + department + "','" +
+                                department_sort + "','" + tech_position + "','" +
+                                administrative_function + "')",
+                                function (err, result, fields) {
+                                    if (err) {
+                                        console.log("数据没有放入数据库" + err);
+                                        res.redirect('/main');
+                                        return;
+                                    }
+                                    if (!result.affectedRows) {
+                                        console.log("未传输成功");
+                                        res.redirect('/main');
+                                        return;
+                                    }
+                                    if (result.affectedRows == 1) {
+                                        console.log("填写成功");
+                                        req.session.name = "haha";
+                                        var queryStr = req.body.ID;
+                                        var finalStr = 'select * from basicInformation WHERE  basicInformation.ID in  (\"' + queryStr + '\" )';
+                                        console.log(finalStr);
+                                        connection.query(finalStr,
+                                            function (err, rows, fields) {
+                                                if (err) throw err;
+                                                console.log(rows);
+                                                if (!rows.length) {
+                                                    console.log("没有查到数据");
+                                                    res.json({dataType: "noData"});
+                                                    return;
+                                                } else {
+                                                    console.log("查到数据了");
+                                                    res.json({
+                                                        dataType: "hasData",
+                                                        data: rows
+                                                    })
+                                                    return;
+                                                }
+                                            }
+                                        );
+                                        return;
+                                    } else {
+                                        console.log("已有此条记录");
+                                        res.redirect("/main");
+                                        return;
+                                    }
+                                }
+                            );
+                            return;
+                        } else {
+                            console.log("已有此条记录");
+                            res.redirect("/main");
+                            return;
+                        }
+                    }
+                );
                 return;
             }
         }
     );
-
 }
+
+
+
 
 main.cptInfoPost = function(req,res,next) {
     console.log(req.body);

@@ -135,15 +135,20 @@ function CXCYSubmit() {
 }
 
 function checkCXCYCount(data){
+    var element = document.getElementById("CXCYInfoForm");
+    element.style.display = "none";
     var dataType = data.dataType;
     var paperCount=document.getElementById("CXCYCount");
     if(dataType == "noData"){
         paperCount.innerText = "当前已提交创新创业项目数量为：0";
         return
     }else if(dataType == "hasData"){
+        alert("录入成功!");
         var dataDetail = data.data;
         var len = dataDetail.length;
         paperCount.innerText = "当前已提交创新创业项目数量为：" + len + "";
+        var table = document.getElementById("CXCYInfoShowTable");
+        addDataToTable(dataDetail,table);
         return
     }
 }
