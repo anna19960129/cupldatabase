@@ -11,6 +11,11 @@ var server = app.listen(app.get('port'), function() {
     debug('Express server listening on port ' + server.address().port);
 });
 
+process.on("uncaughtException", function (err) {
+    console.log(err);
+    //打印出错误的调用栈方便调试
+    console.log(err.stack);
+});
 
 app.get("/index",login.get);
 app.get("/login",login.get);
