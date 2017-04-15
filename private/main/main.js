@@ -200,9 +200,53 @@ main.bIInfoPost = function(req,res,next) {
     );
 }
 
+main.BasicInfoAppearSubmit=function(req,res,next) {
+    var ID= req.body.ID;
+    console.log(req.body);
+    connection.query('select * from basicInformation WHERE  basicInformation.ID in  (\"' + ID + '\" )',
+        function (err, rows, fields) {
+            if (err) throw err;
+            console.log(rows);
+            if (!rows.length) {
+                    console.log("没有查到数据");
+                    res.json({dataType: "noData"});
+                    return;
+            } else {
+                    console.log("查到数据了");
+                    res.json({
+                        dataType: "hasData",
+                        data: rows
+                    })
+                    return;
+            }
 
+        }
+    );
+}
 
+main.cptAppearSubmit=function(req,res,next) {
+    var ID= req.body.ID;
+    console.log(req.body);
+    connection.query('select * from competition WHERE  competition.ID in  (\"' + ID + '\" )',
+        function (err, rows, fields) {
+            if (err) throw err;
+            console.log(rows);
+            if (!rows.length) {
+                    console.log("没有查到数据");
+                    res.json({dataType: "noData"});
+                    return;
+            } else {
+                    console.log("查到数据了");
+                    res.json({
+                        dataType: "hasData",
+                        data: rows
+                    })
+                    return;
+            }
+        }
 
+    );
+}
 main.cptInfoPost = function(req,res,next) {
     console.log(req.body);
     var personName = req.body.personName;
@@ -263,7 +307,29 @@ main.cptInfoPost = function(req,res,next) {
         }
     );
 }
+main.CXCYAppearSubmit=function(req,res,next) {
+    var ID= req.body.ID;
+    console.log(req.body);
+    connection.query('select * from CXCY WHERE  cxcy.ID in  (\"' + ID + '\" )',
+        function (err, rows, fields) {
+            if (err) throw err;
+            console.log(rows);
+            if (!rows.length) {
+                    console.log("没有查到数据");
+                    res.json({dataType: "noData"});
+                    return;
+            } else {
+                    console.log("查到数据了");
+                    res.json({
+                        dataType: "hasData",
+                        data: rows
+                    })
+                    return;
+            }
 
+        }
+    );
+}
 main.CXCYInfoPost=function(req,res,next){
     console.log(req.body);
     var projectName=req.body.projectName;
@@ -324,6 +390,31 @@ main.CXCYInfoPost=function(req,res,next){
     );
 }
 
+
+main.KYXMAppearSubmit=function(req,res,next) {
+    var ID= req.body.ID;
+    console.log(req.body);
+    connection.query('select * from KYXM WHERE  KYXM.ID in  (\"' + ID + '\" )',
+        function (err, rows, fields) {
+            if (err) throw err;
+            console.log(rows);
+            if (!rows.length) {
+                    console.log("没有查到数据");
+                    res.json({dataType: "noData"});
+                    return;
+            } else {
+                    console.log("查到数据了");
+                    res.json({
+                        dataType: "hasData",
+                        data: rows
+                    })
+                    return;
+            }
+
+        }
+    );
+}
+
 main.KYXMInfoPost = function(req,res,next){
     console.log(req.body);
     var projectName=req.body.projectName;
@@ -378,6 +469,32 @@ main.KYXMInfoPost = function(req,res,next){
         }
     );
 }
+
+main.paperAppearSubmit=function(req,res,next) {
+    var ID= req.body.ID;
+    console.log(req.body);
+    connection.query('select * from paper WHERE  paper.ID in  (\"' + ID + '\" )',
+        function (err, rows, fields) {
+            if (err) throw err;
+            console.log(rows);
+            if (!rows.length) {
+                    console.log("没有查到数据");
+                    res.json({dataType: "noData"});
+                    return;
+            } else {
+                    console.log("查到数据了");
+                    res.json({
+                        dataType: "hasData",
+                        data: rows
+                    })
+                    return;
+                }
+            }
+
+    );
+}
+
+
 
 main.paperInfoPost=function(req,res,next){
     console.log(req.body);

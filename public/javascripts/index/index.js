@@ -8,6 +8,10 @@ var checkSubmit = function() {
         return false;
     }
     var userName = document.getElementById("loginName").value;
+    localStorage.setItem( "ID",userName);
+    console.log(localStorage.ID);
+
+
     if(userName == ""){
         alert("请输入用户名");
         return false;
