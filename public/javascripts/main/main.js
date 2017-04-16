@@ -171,21 +171,6 @@ function KYXMAppear(){
     });
 }
 
-function checkKYXMAppear(data){
-    var dataType = data.dataType;
-    var paperCount=document.getElementById("KYXMCount");
-    if(dataType == "noData"){
-        paperCount.innerText = "当前已提交科研项目数量为：0";
-        return
-    }else if(dataType == "hasData"){
-        var dataDetail = data.data;
-        var len = dataDetail.length;
-        paperCount.innerText = "当前已提交科研项目数量为：" + len + "";
-        var table = document.getElementById("KYXMInfoShowTable");
-        addDataToTable(dataDetail,table);
-        return
-    }
-}
 
 
 
