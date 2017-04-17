@@ -26,6 +26,14 @@ register.post = function(req,res,next){
     //var passWord =document.getElementById("PasswordR1");
     if(identity=="student"){
         connection.query("insert into login values('" + userName + "','" + passWord + "')",function(err,result){
+            if (err) throw err;
+            console.log(result);
+            console.log(err);
+            if (!result.affectedRows) {
+                console.log("未传输成功");
+                res.redirect('/reRegister');
+                return;
+            }
             if(result.affectedRows==1){
                 req.session.name="haha";
                 res.redirect('/index');
