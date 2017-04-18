@@ -91,3 +91,33 @@ a {
   right: 10px;
   top:10px;
 }
+
+#reRegisterBtn{
+  margin-top: 2%;
+  width: 100%;
+  height: 30px;
+}
+
+
+#reRegister{
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 300px;
+}
+
+#reRegisterTable{
+  border: 1px solid grey;
+  margin: 0 auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+#reRegisterTable tr{
+  height: 30px;
+  border-top: 1px solid grey;
+}
+
+#reRegisterRBtn{
+  margin-top: 2%;
+  width: 100%;
+  height: 40px;
+}

@@ -7,33 +7,10 @@ block content
    script(src= "javascripts/index/index.js")
    h1 中国政法大学商学院学生信息录入系统
    div(id = "backgroundDiv")
-   div(id = "login")
-      form(id = "loginForm" method= "post" action = "./login" onsubmit="return checkSubmit()")
-         table(id = "loginTable")
-            tr
-               td
-                  span 身份：
-               td
-                  span 学生
-                  input(type="radio" id="chooseID_student" name="chooseID1" checked="checked" value="student")
-                  span 管理员
-                  input(type="radio" id="chooseID_teacher" name="chooseID1"  value="teacher")
-            tr
-               td 用户名：
-               td
-                  input(type = "text" id = "loginName" name = "name" class="")
-            tr
-               td 密&nbsp&nbsp&nbsp码：
-               td
-                  input(type = "password" id = "loginPassword" name = "password")
-         div(id = "loginBtnDiv")
-            input(type = "submit" id = "loginBtn" value = "登录" class= "")
-            input(type = "button" id = "registerBtn" value = "注册" onclick="register()" class = "")
-   div(id = "register")
-      div
+   div(id = "reRegister")
       span(id = "inform") 用户名已被注册，请更改用户名
-      form(id = "registerForm" method= "post" action = "./register" onsubmit="return checkRegisterSubmit()")
-         table(id = "registerTable")
+      form(id = "reRegisterForm" method= "post" action = "./register" onsubmit="return checkRegisterSubmit()")
+         table(id = "reRegisterTable")
             tr
               td
                  span 身份：
@@ -57,6 +34,6 @@ block content
                   span 确认密码：
                td
                   input(type = "password" id = "PasswordR2" name = "r2password")
-         div(id = "registerBtnDiv")
+         div(id = "reRegisterBtnDiv")
             input(type = "submit" id = "registerRBtn" value = "注册")
             input(type = "button" id = "loginRBtn" value = "返回登录" onclick="backToLogin()")

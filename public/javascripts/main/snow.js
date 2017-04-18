@@ -70,7 +70,7 @@ function cptSubmit(){
     //获取数据==========================================================================================================
     //姓名学号
     var personName = document.getElementById("cptInfo_personName").value;
-    var personID = document.getElementById("cptInfo_personID").value;
+    var personID = localStorage.getItem("ID");
     //竞赛级别
     var level = document.getElementById("cptInfo_level").value;
     //竞赛名称

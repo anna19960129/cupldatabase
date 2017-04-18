@@ -68,6 +68,9 @@ function registerCheck(userName,passWord){
 }
 
 
+register.reRegisterGet = function(req,res,next){
+    res.render("reRegister");
+}
 
 
 module.exports = register;

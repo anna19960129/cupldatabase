@@ -219,11 +219,12 @@ function createPaper() {
 
 //提交基本信息
 function bISubmit(){
+    document.getElementById('bIInfo_submit').disabled ='disabled';
     var bIInfo = {};
     //获取数据==========================================================================================================
     //姓名
     var Name = document.getElementById("bIName").value;
-    var ID= document.getElementById("bIId").value;
+    var ID=localStorage.getItem("ID");
     //性别：{male/female}
     var gender = $("input[name='gender']:checked").val();
     //出生年月
@@ -370,6 +371,7 @@ function bISubmit(){
     });
 }
 function checkBasicInformation(data) {
+    document.getElementById('bIInfo_submit').removeAttribute(disabled);
     var element = document.getElementById("basicInfoForm");
     element.style.display ="none";
     var dataType = data.dataType;
@@ -406,7 +408,7 @@ function KYXMSubmit(){
     //姓名
     var personName = document.getElementById("KYXMInfo_personName").value;
     //学号
-    var personID = document.getElementById("KYXMInfo_personID").value;
+    var personID = localStorage.getItem("ID");
     //教师姓名
     var teacher = document.getElementById("KYXMInfo_teacher").value;
     //数据检查==========================================================================================================
@@ -464,7 +466,7 @@ function paperSubmit(){
     //论文名称
     var Name = document.getElementById("paperInfo_name").value;
     //论文名称
-    var ID = document.getElementById("paperInfo_ID").value;
+    var ID =localStorage.getItem("ID");
     //作者类型：{single/multiple}
     var authorType = $("input[name='paperInfo_authorType']:checked").val();
     //独著作者

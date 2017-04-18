@@ -61,7 +61,7 @@ function CXCYSubmit() {
     //姓名
     var studentName = document.getElementById("CXCYInfo_personName").value;
     //学号
-    var studentID = document.getElementById("CXCYInfo_personID").value;
+    var studentID = localStorage.getItem("ID");
     //指导教师
     var teacherName = document.getElementById("CXCYInfo_teacher").value;
     //职务:{teamLeader/teammate}

@@ -24,9 +24,9 @@ app.get("/logout",logout.get);
 app.get("/ajax/logout",logout.ajaxGet);
 app.get("/main",main.get);
 app.get("/search",search.get);
-
 app.post("/login",login.post);
 app.post("/register",register.post);
+app.get("/reRegister",register.reRegisterGet);
 app.post("/logout",logout.post);
 //app.post 函数有两个参数，第一个参数“ajax/KYXMInfoSubmit"表示了路径
 //第二个参数main.KYXMInfoPost表示用哪个函数来处理你传递来的数据
