@@ -26,11 +26,18 @@ register.post = function(req,res,next){
     //var passWord =document.getElementById("PasswordR1");
     if(identity=="student"){
         connection.query("insert into login values('" + userName + "','" + passWord + "')",function(err,result){
-            if (err) throw err;
-            console.log(result);
-            console.log(err);
+            console.log("错误1");
+            if (err) {
+                console.log("注册问题" + err);
+                console.log(err);
+                console.log("错误2");
+                res.redirect('/reRegister');
+                return;
+            }
             if (!result.affectedRows) {
                 console.log("未传输成功");
+                console.log("错误3");
+                console.log(result);
                 res.redirect('/reRegister');
                 return;
             }

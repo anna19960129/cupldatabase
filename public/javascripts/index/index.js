@@ -36,6 +36,7 @@ var checkRegisterSubmit = function() {
         alert("两次输入密码不匹配！");
         return false;
     }
+
     return true;
 }
 var register = function(){

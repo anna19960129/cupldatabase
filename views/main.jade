@@ -140,6 +140,7 @@ block content
                 option(value="国际商务") 国际商务
                 option(value="经济学") 经济学
                 option(value="成思危现代金融菁英班") 成思危现代金融菁英班
+                option(value="其他") 其他
           tr
             td 转专业：
             td
@@ -153,6 +154,7 @@ block content
             td
               select(id="bI_present_major" style="display:none")
                 option(value="noData")
+                option(value="侦查专业") 侦查专业
                 option(value="政治学与行政学专业") 政治学与行政学专业
                 option(value="国际政治专业") 国际政治专业
                 option(value="行政管理专业") 行政管理专业
@@ -182,6 +184,7 @@ block content
               select(id="bI_second_major" style="display:none")
                 option(value="noData")
                 option(value="法学专业") 法学专业
+                option(value="侦查专业") 侦查专业
                 option(value="政治学与行政学专业") 政治学与行政学专业
                 option(value="国际政治专业") 国际政治专业
                 option(value="行政管理专业") 行政管理专业
@@ -212,6 +215,7 @@ block content
               select(id="bI_minor_program" style="display:none")
                 option(value="noData")
                 option(value="法学专业") 法学专业
+                option(value="侦查专业") 侦查专业
                 option(value="政治学与行政学专业") 政治学与行政学专业
                 option(value="国际政治专业") 国际政治专业
                 option(value="行政管理专业") 行政管理专业
@@ -441,8 +445,7 @@ block content
               span 组员：
             td
               input(type="text" id="cpt_member1" placeholder="请填写组员姓名")
-              input(type="button"   class="btn btn-success"  value="增加" id="cpt_addTable" onclick="cpt_add()")
-              input(type="button"   class="btn btn-success"  value="删除" id="cpt_deleteTable" onclick="cpt_del()")
+
         input(type = "button" id = "cptInfo_submit" value = "保存" onclick="cptSubmit()")
         input(type = "reset" id = "cptInfo_reset" value = '重置')
       input(type = "button" id ="cptInfo_change" value="新增" onclick="createCpt()")
