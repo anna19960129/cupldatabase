@@ -66,6 +66,10 @@ function createCpt(){
 
 //提交竞赛
 function cptSubmit(){
+    document.getElementById('cptInfo_submit').disabled ='disabled';
+    var upload=document.getElementById('cptUpload');
+    upload.innerText = "基本信息正在提交中";
+    upload.style.color="red";
     var cptInfo = {};
     //获取数据==========================================================================================================
     //姓名学号
@@ -158,6 +162,9 @@ function cptSubmit(){
     });
 }
 function checkCptCount(data){
+    document.getElementById('cptInfo_submit').removeAttribute("disabled");
+    var upload=document.getElementById('cptUpload');
+    upload.innerText="";
     var element = document.getElementById("cptInfoForm");
     element.style.display = "none";
     var dataType = data.dataType;

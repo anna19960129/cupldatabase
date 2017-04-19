@@ -48,6 +48,10 @@ function createCXCY() {
 
 //提交
 function CXCYSubmit() {
+    document.getElementById('CXCYInfo_submit').disabled ='disabled';
+    var upload=document.getElementById('CXCYUpload');
+    upload.innerText = "基本信息正在提交中";
+    upload.style.color="red";
     var CXCYInfo = {};
     //获取数据==========================================================================================================
     //创新创业项目名称
@@ -135,6 +139,9 @@ function CXCYSubmit() {
 }
 
 function checkCXCYCount(data){
+    document.getElementById('CXCYInfo_submit').removeAttribute("disabled");
+    var upload=document.getElementById('CXCYUpload');
+    upload.innerText="";
     var element = document.getElementById("CXCYInfoForm");
     element.style.display = "none";
     var dataType = data.dataType;
