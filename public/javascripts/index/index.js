@@ -48,6 +48,8 @@ var register = function(){
 var backToLogin = function(){
     var loginDiv = document.getElementById("login");
     loginDiv.style.display = "block";
+    var registerDiv1 =document.getElementById("reRegister");
+    registerDiv1.style.display = "none";
     var registerDiv =document.getElementById("register");
     registerDiv.style.display = "none";
 }
