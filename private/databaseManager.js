@@ -3,13 +3,24 @@
  */
 
 var mysql = require('mysql');
-var connection = mysql.createConnection({
+var connectionProp = {
     host: 'localhost',
-    port:"3306",
+    port:"3305",
     user: 'root',
-    password: 'anna0129',
+    password: 'mysql',
     database:'test'
-});
+};
+
+var connection;
+var pool = mysql.createPool(connectionProp);
+//pool.getConnection(function(err,con){
+//    if(err) {
+//        console.log(err);
+//    } else {
+//        console.log("initSuc");
+//        connection = con;
+//    }
+//});
 var instance = null;
 
 /**
@@ -24,10 +35,24 @@ dataBase = function(){
 
 dataBase.prototype = {
     init:function(){
+        var self = this;
         if(!this.setOK)return;
-        connection.connect();
-        this.connection = connection;
-        this.isConnected = true;
+        checkConnection();
+        function checkConnection(){
+            if(!pool){
+                console.log("notInitYet");
+                setTimeout(function(){
+                    checkConnection();
+                },1);
+                return 0;
+            }
+            console.log("right=============================");
+            //connection.connect();
+            self.connection = pool;
+            instance = self;
+            self.isConnected = true;
+        }
+
     },
     connect:function(){
         this.connection.connect();

@@ -27,6 +27,7 @@ login.post = function(req,res,next){
     var password = req.body.password;
     var identity = req.body.chooseID1;
     console.log(req.body);
+    connection = require("../databaseManager").getInstance().getConnection();
     if(!connection){res.redirect("/reLogin")};
     if(identity=="student"){
         connection.query('select password from login where name="'+userName+'"', function(err, rows, fields) {
@@ -36,6 +37,7 @@ login.post = function(req,res,next){
                 return;
             }
             var result =  rows[0].password;
+            console.log(result);
             if(result == password){
                 req.session.userId = "haha";
                 res.redirect('/main');
