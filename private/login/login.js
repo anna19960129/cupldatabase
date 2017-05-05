@@ -17,6 +17,8 @@ login.reLoginGet = function(req,res,next){
     res.render("reLogin");
 }
 
+
+
 login.mainPort =function(req,res,next){
     console.log("mainPort");
     res.redirect("/login");

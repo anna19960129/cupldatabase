@@ -220,6 +220,9 @@ function createPaper() {
 //提交基本信息
 function bISubmit(){
     document.getElementById('bIInfo_submit').disabled ='disabled';
+    var upload=document.getElementById('bIUpload');
+    upload.innerText = "基本信息正在提交中";
+    upload.style.color="red";
     var bIInfo = {};
     //获取数据==========================================================================================================
     //姓名
@@ -371,7 +374,9 @@ function bISubmit(){
     });
 }
 function checkBasicInformation(data) {
-    document.getElementById('bIInfo_submit').removeAttribute(disabled);
+    document.getElementById('bIInfo_submit').removeAttribute("disabled");
+    var upload=document.getElementById('bIUpload');
+    upload.innerText="";
     var element = document.getElementById("basicInfoForm");
     element.style.display ="none";
     var dataType = data.dataType;
@@ -384,6 +389,7 @@ function checkBasicInformation(data) {
         var dataDetail = data.data;
         paperCount.innerText = "基本信息提交成功";
         var table = document.getElementById("basicInfoShowTable");
+
         addDataToTable(dataDetail,table);
         return
     }
@@ -397,6 +403,10 @@ function createBasicInfo() {
 
 //提交科研项目
 function KYXMSubmit(){
+    document.getElementById('KYXMInfo_submit').disabled ='disabled';
+    var upload=document.getElementById('KYXMUpload');
+    upload.innerText = "基本信息正在提交中";
+    upload.style.color="red";
     var KYXMInfo = {};
     //获取数据==========================================================================================================
     //项目名称
@@ -440,6 +450,9 @@ function KYXMSubmit(){
     });
 }
 function checkKYXMCount(data){
+    document.getElementById('KYXMInfo_submit').removeAttribute("disabled");
+    var upload=document.getElementById('KYXMUpload');
+    upload.innerText="";
     var element = document.getElementById("KYXMInfoForm");
     element.style.display = "none";
     var dataType = data.dataType;
@@ -459,6 +472,10 @@ function checkKYXMCount(data){
 }
 //提交论文
 function paperSubmit(){
+    document.getElementById('paperInfo_submit').disabled ='disabled';
+    var upload=document.getElementById('paperUpload');
+    upload.innerText = "基本信息正在提交中";
+    upload.style.color="red";
     var paperInfo = {};
     //获取数据==========================================================================================================
     //论文名称
@@ -558,6 +575,9 @@ function paperSubmit(){
 }
 
 function checkPaperCount(data){
+    document.getElementById('paperInfo_submit').removeAttribute("disabled");
+    var upload=document.getElementById('paperUpload');
+    upload.innerText="";
     var element = document.getElementById("paperInfoForm");
     element.style.display = "none";
     var dataType = data.dataType;
