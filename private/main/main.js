@@ -6,7 +6,6 @@ var database = require("../databaseManager").getInstance();
 var connection = database.getConnection();
 
 main = function(){
-
 }
 
 main.get = function(req,res,next){
