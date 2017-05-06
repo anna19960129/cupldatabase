@@ -63,13 +63,13 @@ main.bIInfoPost = function(req,res,next) {
     var administrative_function = req.body.administrative_function || "noData";
     connection = require("../databaseManager").getInstance().getConnection();
     if(!connection){res.redirect("/main")};
-    connection.query('select * from basicInformation WHERE  basicInformation.ID in  (\"' + ID + '\" )',
+    connection.query('select * from basicinformation WHERE  basicinformation.ID in  (\"' + ID + '\" )',
         function (err, rows, fields) {
             if (err) throw err;
             console.log(rows);
             if (!rows.length) {
                 console.log("没有查到数据");
-                connection.query("insert into basicInformation values('" + name + "','" + ID + "','" + gender + "','" +
+                connection.query("insert into basicinformation values('" + name + "','" + ID + "','" + gender + "','" +
                     birthday + "','" + province + "','" + gk_sort + "','" + math + "','" + english + "','" + enrol + "','" +
                     enrol_major + "','" + change_major + "','" + present_major + "','" + double_major + "','" + second_major +
                     "','" + minor + "','" + minor_program + "','" + cellphone + "','" + weChat + "','" + email + "','" +
@@ -93,7 +93,7 @@ main.bIInfoPost = function(req,res,next) {
                             console.log("填写成功");
                             req.session.name = "haha";
                             var queryStr = req.body.ID;
-                            var finalStr = 'select * from basicInformation WHERE  basicInformation.ID in  (\"' + queryStr + '\" )';
+                            var finalStr = 'select * from basicinformation WHERE  basicinformation.ID in  (\"' + queryStr + '\" )';
                             console.log(finalStr);
                             connection.query(finalStr,
                                 function (err, rows, fields) {
@@ -124,7 +124,7 @@ main.bIInfoPost = function(req,res,next) {
                 return;
             } else {
                 console.log("查到数据了");
-                connection.query('delete from basicInformation  WHERE  basicInformation.ID in  (\"' + ID + '\" )',
+                connection.query('delete from basicinformation  WHERE  basicinformation.ID in  (\"' + ID + '\" )',
                     function (err, result, fields) {
                         if (err) throw err;
                         console.log(rows);
@@ -136,7 +136,7 @@ main.bIInfoPost = function(req,res,next) {
                         if (result.affectedRows == 1) {
                             console.log("删除成功");
                             req.session.name = "haha";
-                            connection.query("insert into basicInformation values('" + name + "','" + ID + "','" + gender + "','" +
+                            connection.query("insert into basicinformation values('" + name + "','" + ID + "','" + gender + "','" +
                                 birthday + "','" + province + "','" + gk_sort + "','" + math + "','" + english + "','" + enrol + "','" +
                                 enrol_major + "','" + change_major + "','" + present_major + "','" + double_major + "','" + second_major +
                                 "','" + minor + "','" + minor_program + "','" + cellphone + "','" + weChat + "','" + email + "','" +
@@ -160,7 +160,7 @@ main.bIInfoPost = function(req,res,next) {
                                         console.log("填写成功");
                                         req.session.name = "haha";
                                         var queryStr = req.body.ID;
-                                        var finalStr = 'select * from basicInformation WHERE  basicInformation.ID in  (\"' + queryStr + '\" )';
+                                        var finalStr = 'select * from basicinformation WHERE  basicinformation.ID in  (\"' + queryStr + '\" )';
                                         console.log(finalStr);
                                         connection.query(finalStr,
                                             function (err, rows, fields) {
@@ -207,7 +207,7 @@ main.BasicInfoAppearSubmit=function(req,res,next) {
     console.log(req.body);
     connection = require("../databaseManager").getInstance().getConnection();
     if(!connection){res.redirect("/main")};
-    connection.query('select * from basicInformation WHERE  basicInformation.ID in  (\"' + ID + '\" )',
+    connection.query('select * from basicinformation WHERE  basicinformation.ID in  (\"' + ID + '\" )',
         function (err, rows, fields) {
             if (err) throw err;
             console.log(rows);
@@ -320,7 +320,7 @@ main.CXCYAppearSubmit=function(req,res,next) {
     console.log(req.body);
     connection = require("../databaseManager").getInstance().getConnection();
     if(!connection){res.redirect("/main")};
-    connection.query('select * from CXCY WHERE  cxcy.ID in  (\"' + ID + '\" )',
+    connection.query('select * from cxcy WHERE  cxcy.ID in  (\"' + ID + '\" )',
         function (err, rows, fields) {
             if (err) throw err;
             console.log(rows);
@@ -355,7 +355,7 @@ main.CXCYInfoPost=function(req,res,next){
     connection = require("../databaseManager").getInstance().getConnection();
     if(!connection){res.redirect("/main")};
     connection.query(
-        "insert into CXCY values('" +projectName + "','" + projectTime + "','" + projectLevel + "','" +
+        "insert into cxcy values('" +projectName + "','" + projectTime + "','" + projectLevel + "','" +
         projectSort + "','" + studentName + "','" + ID + "','" + teacherName + "','" + duty + "','" +
         Leader + "','" + MemberList + "')",
         function(err,result,fields){
@@ -372,7 +372,7 @@ main.CXCYInfoPost=function(req,res,next){
             if(result.affectedRows==1){
                 console.log("填写成功");
                 req.session.name="haha";
-                var finalStr = 'select * from CXCY WHERE  CXCY.ID in  (\"' + ID+'\" )';
+                var finalStr = 'select * from cxcy WHERE  cxcy.ID in  (\"' + ID+'\" )';
                 console.log(finalStr);
                 connection.query(finalStr,
                     function(err,rows, fields) {
@@ -408,7 +408,7 @@ main.KYXMAppearSubmit=function(req,res,next) {
     console.log(req.body);
     connection = require("../databaseManager").getInstance().getConnection();
     if(!connection){res.redirect("/main")};
-    connection.query('select * from KYXM WHERE  KYXM.ID in  (\"' + ID + '\" )',
+    connection.query('select * from kyxm WHERE  kyxm.ID in  (\"' + ID + '\" )',
         function (err, rows, fields) {
             if (err) throw err;
             console.log(rows);
@@ -440,7 +440,7 @@ main.KYXMInfoPost = function(req,res,next){
     connection = require("../databaseManager").getInstance().getConnection();
     if(!connection){res.redirect("/main")};
     connection.query(
-        "insert into KYXM values('" +projectName + "','" + time + "','" + level + "','" +
+        "insert into kyxm values('" +projectName + "','" + time + "','" + level + "','" +
         personName + "','" + ID + "','" + teacher + "')",
         function(err,result,fields){
         if(err){
@@ -456,7 +456,7 @@ main.KYXMInfoPost = function(req,res,next){
         if(result.affectedRows==1){
             console.log("填写成功");
             req.session.name="haha";
-            var finalStr = 'select * from KYXM WHERE  KYXM.ID in  (\"' + ID+'\" )';
+            var finalStr = 'select * from kyxm WHERE  kyxm.ID in  (\"' + ID+'\" )';
             console.log(finalStr);
             connection.query(finalStr,
                 function(err,rows, fields) {
