@@ -18,9 +18,10 @@ function exit(){
     });
 };
 
-setTimeout(function(){
+//setTimeout(function(){
 
-    $("#menuIntro").click(function(){
+    var menuIntro = $("#menuIntro");
+    menuIntro.click(function(){
         hideAndShow($("#introDiv"));
     });
     $("#menuBasicInfo").click(function(){
@@ -38,7 +39,7 @@ setTimeout(function(){
     $("#menuLWQK").click(function(){
         hideAndShow($("#paperInfoDiv"));
     });
-},10);
+//},10);
 
 function hideAndShow(obj){
     obj.siblings().css("display","none");
