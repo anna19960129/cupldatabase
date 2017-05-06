@@ -14,6 +14,8 @@ search.bIInfoPost=function(req,res,next){
     var queryStr = generateQuery(req.body);
     var finalStr = 'select * from basicinformation WHERE ' + queryStr;
     console.log(finalStr);
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/search")};
     connection.query(finalStr,
         function(err, rows, fields) {
         if (err) throw err;
@@ -39,6 +41,8 @@ search.cptInfoPost=function(req,res,next){
     var queryStr = generateQuery(req.body);
     var finalStr = 'select c.`竞赛级别`,c.`竞赛名称`,c.`获奖时间`,c.`获奖等级`,c.`竞赛形式`,c.`是否为组长`,c.`组长姓名`,c.`组员`,c.`姓名`,c.ID,b.`入学时间`,b.`入学专业` from competition c left join basicinformation b on  (c.ID = b.ID) where b.ID in (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
     console.log(finalStr);
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/search")};
     connection.query(finalStr,
         function(err, rows, fields) {
             if (err) throw err;
@@ -65,6 +69,8 @@ search.CXCYInfoPost=function(req,res,next){
     var queryStr = generateQuery(req.body);
     var finalStr = 'select c.`项目名称`,c.`立项年份`,c.`项目级别`,c.`项目类别`,c.`指导教师`,c.`职务`,c.`组长姓名`,c.`组员`,c.`姓名`,c.ID,b.`入学时间`,b.`入学专业` from cxcy c left join basicinformation b on  (c.ID = b.ID) where b.ID in (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
     console.log(finalStr);
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/search")};
     connection.query(finalStr,
         function(err, rows, fields) {
             if (err) throw err;
@@ -88,6 +94,8 @@ search.KYXMInfoPost=function(req,res,next){
     var queryStr = generateQuery(req.body);
     var finalStr = 'select k.`项目名称`,k.`立项年份`,k.`项目级别`,k.`指导教师`,k.`姓名`,k.ID,b.`入学时间`,b.`入学专业` from kyxm k left join basicinformation b on  (k.ID = b.ID) where b.ID in (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
     console.log(finalStr);
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/search")};
     connection.query(finalStr,
         function(err, rows, fields) {
             if (err) throw err;
@@ -114,6 +122,8 @@ search.paperInfoPost=function(req,res,next){
     var queryStr = generateQuery(req.body);
     var finalStr = 'select p.`论文名称`,p.`著作信息`,p.`作者名称`,p.`第一作者`,p.`第一作者姓名`,p.`合作者`,p.`指导老师`,p.`期刊名称`,p.`发表时间`,b.`姓名`,b.ID,b.`入学时间`,b.`入学专业` from paper p left join basicinformation b on  (p.ID = b.ID) where b.ID in (select basicinformation.ID from basicinformation WHERE  ' + queryStr+')';
     console.log(finalStr);
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/search")};
     connection.query(finalStr,
         function(err, rows, fields) {
             if (err) throw err;

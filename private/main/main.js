@@ -61,6 +61,8 @@ main.bIInfoPost = function(req,res,next) {
     var department_sort = req.body.department_sort;
     var tech_position = req.body.tech_position || "noData";
     var administrative_function = req.body.administrative_function || "noData";
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/main")};
     connection.query('select * from basicInformation WHERE  basicInformation.ID in  (\"' + ID + '\" )',
         function (err, rows, fields) {
             if (err) throw err;
@@ -203,6 +205,8 @@ main.bIInfoPost = function(req,res,next) {
 main.BasicInfoAppearSubmit=function(req,res,next) {
     var ID= req.body.ID;
     console.log(req.body);
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/main")};
     connection.query('select * from basicInformation WHERE  basicInformation.ID in  (\"' + ID + '\" )',
         function (err, rows, fields) {
             if (err) throw err;
@@ -227,6 +231,8 @@ main.BasicInfoAppearSubmit=function(req,res,next) {
 main.cptAppearSubmit=function(req,res,next) {
     var ID= req.body.ID;
     console.log(req.body);
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/main")};
     connection.query('select * from competition WHERE  competition.ID in  (\"' + ID + '\" )',
         function (err, rows, fields) {
             if (err) throw err;
@@ -260,6 +266,8 @@ main.cptInfoPost = function(req,res,next) {
     var leader=req.body.leader;
     var leader_name = req.body.leader_name||req.body.personName;
     var memberList = req.body.memberList;
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/main")};
     connection.query(
         "insert into competition values('" +personName + "','" + ID + "','" + level + "','" +
         cptName + "','" + cptOtherName + "','" + time + "','" + grade + "','" + form + "','" + leader + "','" + leader_name + "','" +
@@ -310,6 +318,8 @@ main.cptInfoPost = function(req,res,next) {
 main.CXCYAppearSubmit=function(req,res,next) {
     var ID= req.body.ID;
     console.log(req.body);
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/main")};
     connection.query('select * from CXCY WHERE  cxcy.ID in  (\"' + ID + '\" )',
         function (err, rows, fields) {
             if (err) throw err;
@@ -342,6 +352,8 @@ main.CXCYInfoPost=function(req,res,next){
     var duty=req.body.duty;
     var Leader=req.body.Leader||req.body.studentName;
     var MemberList=req.body.MemberList;
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/main")};
     connection.query(
         "insert into CXCY values('" +projectName + "','" + projectTime + "','" + projectLevel + "','" +
         projectSort + "','" + studentName + "','" + ID + "','" + teacherName + "','" + duty + "','" +
@@ -394,6 +406,8 @@ main.CXCYInfoPost=function(req,res,next){
 main.KYXMAppearSubmit=function(req,res,next) {
     var ID= req.body.ID;
     console.log(req.body);
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/main")};
     connection.query('select * from KYXM WHERE  KYXM.ID in  (\"' + ID + '\" )',
         function (err, rows, fields) {
             if (err) throw err;
@@ -423,6 +437,8 @@ main.KYXMInfoPost = function(req,res,next){
     var personName=req.body.personName;
     var ID=req.body.personID;
     var teacher=req.body.teacher;
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/main")};
     connection.query(
         "insert into KYXM values('" +projectName + "','" + time + "','" + level + "','" +
         personName + "','" + ID + "','" + teacher + "')",
@@ -473,6 +489,8 @@ main.KYXMInfoPost = function(req,res,next){
 main.paperAppearSubmit=function(req,res,next) {
     var ID= req.body.ID;
     console.log(req.body);
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/main")};
     connection.query('select * from paper WHERE  paper.ID in  (\"' + ID + '\" )',
         function (err, rows, fields) {
             if (err) throw err;
@@ -509,6 +527,8 @@ main.paperInfoPost=function(req,res,next){
     var teacherName = req.body.teacherName;
     var magazineName = req.body.magazineName;
     var publishTime = req.body.publishTime;
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/main")};
     connection.query(
         "insert into paper values('" +paperName + "','" + Name + "','" + ID + "','" + authorType + "','" +
         authorSingle + "','" + isFirstAuthor + "','" + firstAuthor + "','" + coAuthorList + "','" + teacherName + "','" +

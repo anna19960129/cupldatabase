@@ -24,6 +24,8 @@ register.post = function(req,res,next){
     };
     //var userName = document.getElementById("loginNameR");
     //var passWord =document.getElementById("PasswordR1");
+    connection = require("../databaseManager").getInstance().getConnection();
+    if(!connection){res.redirect("/reRegister")};
     if(identity=="student"){
         connection.query("insert into login values('" + userName + "','" + passWord + "')",function(err,result){
             console.log("错误1");
