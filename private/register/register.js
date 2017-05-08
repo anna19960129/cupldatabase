@@ -52,6 +52,21 @@ register.post = function(req,res,next){
         });
     }else{
         connection.query("insert into login_teacher values('" + userName + "','" + passWord + "')",function(err,result){
+            console.log("错误1");
+            if (err) {
+                console.log("注册问题" + err);
+                console.log(err);
+                console.log("错误2");
+                res.redirect('/reRegister');
+                return;
+            }
+            if (!result.affectedRows) {
+                console.log("未传输成功");
+                console.log("错误3");
+                console.log(result);
+                res.redirect('/reRegister');
+                return;
+            }
             if(result.affectedRows==1){
                 req.session.name="haha";
                 res.redirect('/index');
